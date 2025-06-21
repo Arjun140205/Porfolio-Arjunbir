@@ -1,5 +1,11 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
+import { FaReact, FaGit, FaPython, FaSass } from "react-icons/fa";
+import { DiMongodb, DiJavascript1 } from "react-icons/di";
+import { SiExpress, SiTailwindcss, SiCplusplus } from "react-icons/si";
+import { BsCloudFill } from "react-icons/bs";
+import { TbBrain } from "react-icons/tb";
+import { AiOutlineTeam } from "react-icons/ai";
 
 const skillCategories = [
   { id: "all", label: "All" },
@@ -13,28 +19,28 @@ const skillCategories = [
 const skillsData = {
   frontend: [
     {
-      icon: "J",
+      icon: <DiJavascript1 className="text-2xl" />,
       title: "JavaScript",
       description:
         "Modern JS including ES6+, async/await, and functional programming concepts",
       proficiency: "Advanced",
     },
     {
-      icon: "R",
+      icon: <FaReact className="text-2xl" />,
       title: "React",
       description:
         "Building complex UIs with hooks, context API and state management",
       proficiency: "Advanced",
     },
     {
-      icon: "C",
+      icon: <FaSass className="text-2xl" />,
       title: "CSS/SASS",
       description:
         "Advanced styling with flexbox, grid, animations, and responsive design",
       proficiency: "Advanced",
     },
     {
-      icon: "T",
+      icon: <SiTailwindcss className="text-2xl" />,
       title: "Tailwind CSS",
       description: "Utility-first CSS framework for rapidly building custom designs",
       proficiency: "Advanced",
@@ -42,13 +48,13 @@ const skillsData = {
   ],
   backend: [
     {
-      icon: "E",
+      icon: <SiExpress className="text-2xl" />,
       title: "Express.js",
       description: "Building robust and scalable backend APIs with Node.js",
       proficiency: "Intermediate",
     },
     {
-      icon: "M",
+      icon: <DiMongodb className="text-2xl" />,
       title: "MongoDB",
       description: "NoSQL database design and operations",
       proficiency: "Intermediate",
@@ -56,14 +62,14 @@ const skillsData = {
   ],
   languages: [
     {
-      icon: "P",
+      icon: <FaPython className="text-2xl" />,
       title: "Python",
       description:
         "Data structures, algorithms, and computational applications",
       proficiency: "Advanced",
     },
     {
-      icon: "C",
+      icon: <SiCplusplus className="text-2xl" />,
       title: "C++",
       description: "Object-oriented programming and system-level development",
       proficiency: "Intermediate",
@@ -71,20 +77,20 @@ const skillsData = {
   ],
   concepts: [
     {
-      icon: "AI",
+      icon: <TbBrain className="text-2xl" />,
       title: "AI & Neural Networks",
       description:
         "Understanding of artificial intelligence fundamentals and neural networks",
       proficiency: "Intermediate",
     },
     {
-      icon: "CC",
+      icon: <BsCloudFill className="text-2xl" />,
       title: "Cloud Computing",
       description: "Working with cloud services and distributed systems",
       proficiency: "Intermediate",
     },
     {
-      icon: "AG",
+      icon: <AiOutlineTeam className="text-2xl" />,
       title: "Agile Methodology",
       description:
         "Experience with agile development practices and workflows",
@@ -93,7 +99,7 @@ const skillsData = {
   ],
   tools: [
     {
-      icon: "G",
+      icon: <FaGit className="text-2xl" />,
       title: "Git",
       description: "Version control and collaborative development",
       proficiency: "Advanced",
