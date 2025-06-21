@@ -119,7 +119,7 @@ const About = () => {
                   </div>
                   <div className="mt-8">
                     <ButtonLink
-                      url="https://drive.google.com/file/d/1kgWuY3ih0CRYxuE7v8ZDCTFOcW89o3mt/view?usp=drive_link"
+                      url="https://drive.google.com/file/d/19fccecE7QFaHMwweGXZSdh3Vr7OIcmqU/view?usp=sharing"
                       text="View Resume →"
                       padding={`p-3`}
                     />
