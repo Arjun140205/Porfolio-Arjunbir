@@ -1,5 +1,6 @@
 import React from 'react';
 import cognifyzLogo from '../assets/cognifyz logo.png';
+import Footer from './Footer';
 
 const Internship = () => {
     const pageStyle = {
@@ -74,27 +75,30 @@ const Internship = () => {
     };
 
     return (
-        <div style={pageStyle}>
-            <div style={boxStyle}>
-                <div style={contentStyle}>
-                    <h1 style={headingStyle}>Internship Details</h1>
-                    <p style={paragraphStyle}><strong>Company Name:</strong> Cognifyz</p>
-                    <p style={paragraphStyle}><strong>Position:</strong> FULL STACK DEVELOPER INTERN</p>
-                    <p style={paragraphStyle}><strong>Internship Tenure:</strong> Oct 2024 - Nov 2024</p>
-                    <a href="https://cognifyz.com/" target="_blank" rel="noopener noreferrer" style={linkStyle}>
-                        Visit Company Website
-                    </a>
-                    <button style={buttonStyle} onClick={handleOfferLetterClick}>
-                        Offer Letter
-                    </button>
+        <>
+            <div style={pageStyle}>
+                <div style={boxStyle}>
+                    <div style={contentStyle}>
+                        <h1 style={headingStyle}>Internship Details</h1>
+                        <p style={paragraphStyle}><strong>Company Name:</strong> Cognifyz</p>
+                        <p style={paragraphStyle}><strong>Position:</strong> FULL STACK DEVELOPER INTERN</p>
+                        <p style={paragraphStyle}><strong>Internship Tenure:</strong> Oct 2024 - Nov 2024</p>
+                        <a href="https://cognifyz.com/" target="_blank" rel="noopener noreferrer" style={linkStyle}>
+                            Visit Company Website
+                        </a>
+                        <button style={buttonStyle} onClick={handleOfferLetterClick}>
+                            Offer Letter
+                        </button>
+                    </div>
+                    <img
+                        src={cognifyzLogo} 
+                        alt="Company Logo"
+                        style={logoStyle}
+                    />
                 </div>
-                <img
-                    src={cognifyzLogo} 
-                    alt="Company Logo"
-                    style={logoStyle}
-                />
             </div>
-        </div>
+            <Footer />
+        </>
     );
 };
 
