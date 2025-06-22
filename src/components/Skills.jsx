@@ -6,6 +6,7 @@ import { SiExpress, SiTailwindcss, SiCplusplus } from "react-icons/si";
 import { BsCloudFill } from "react-icons/bs";
 import { TbBrain } from "react-icons/tb";
 import { AiOutlineTeam } from "react-icons/ai";
+import Footer from "./Footer";
 
 const skillCategories = [
   { id: "all", label: "All" },
@@ -149,6 +150,7 @@ const Skills = () => {
       : skillsData[selectedCategory] || [];
 
   return (
+    <>
     <div className="min-h-screen bg-black pt-16">
       <div className="container mx-auto px-4 py-12">
         <motion.div
@@ -193,6 +195,8 @@ const Skills = () => {
         </div>
       </div>
     </div>
+    <Footer />
+    </>
   );
 };
 
