@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X } from "lucide-react";
 import Navbar from "./Navbar";
+import Footer from "./Footer";
 
 const techIcons = {
   HTML: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg",
@@ -158,34 +159,37 @@ const Projects = () => {
   const [openIndex, setOpenIndex] = useState(null);
 
   return (
-    <div className="min-h-screen bg-black pt-16 px-4 relative flex flex-col">
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        className="container mx-auto py-10 flex-grow"
-      >
-        <h2 className="text-4xl font-bold text-white mb-10 text-center">Projects</h2>
-        <h3 className="text-xl text-white mb-10 text-center">Engineering empathy into every line of code. Building with purpose, not just logic. </h3>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-6xl mx-auto">
-          {project.map((item, index) => (
-            <ProjectCard
-              key={index}
-              title={item.title}
-              onClick={() => setOpenIndex(index)}
+    <>
+      <div className="min-h-screen bg-black pt-16">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="container mx-auto py-10 flex-grow"
+        >
+          <h2 className="text-4xl font-bold text-white mb-10 text-center">Projects</h2>
+          <h3 className="text-xl text-white mb-10 text-center">Engineering empathy into every line of code. Building with purpose, not just logic. </h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-6xl mx-auto">
+            {project.map((item, index) => (
+              <ProjectCard
+                key={index}
+                title={item.title}
+                onClick={() => setOpenIndex(index)}
+              />
+            ))}
+          </div>
+        </motion.div>
+        <AnimatePresence>
+          {openIndex !== null && (
+            <ExpandedProjectModal
+              {...project[openIndex]}
+              onClose={() => setOpenIndex(null)}
             />
-          ))}
-        </div>
-      </motion.div>
-      <AnimatePresence>
-        {openIndex !== null && (
-          <ExpandedProjectModal
-            {...project[openIndex]}
-            onClose={() => setOpenIndex(null)}
-          />
-        )}
-      </AnimatePresence>
-    </div>
+          )}
+        </AnimatePresence>
+      </div>
+      <Footer />
+    </>
   );
 };
 
