@@ -20,7 +20,7 @@ const Certifications = () => {
               className='relative vertical-timeline-element--work'
               contentStyle={{ background: "#1d1836", color: "#fff" }}
               contentArrowStyle={{ borderRight: "7px solid #232631" }}
-              date={certifications.duration}
+              date={certification.duration}
               iconStyle={{
                 background: '#ffffff',
                 display: 'flex',
@@ -33,7 +33,7 @@ const Certifications = () => {
               }}
               icon={
                 <a
-                  href={certifications.url}
+                  href={certification.url}
                   target='_blank'
                   rel='noopener noreferrer'
                   className='w-full h-full flex items-center justify-center no-underline text-black'
@@ -43,9 +43,9 @@ const Certifications = () => {
               }
             >
               <div>
-                <h3 className='text-white text-[20px] sm:text-[24px] font-bold'>{certifications.role}</h3>
+                <h3 className='text-white text-[20px] sm:text-[24px] font-bold'>{certification.role}</h3>
                 <p className='text-gray-400 text-[14px] sm:text-[16px] font-semibold' style={{ margin: 0 }}>
-                  {certifications.company}
+                  {certification.company}
                 </p>
               </div>
 
