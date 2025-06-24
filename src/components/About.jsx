@@ -1,18 +1,8 @@
-import React, { lazy, Suspense } from 'react';
+import React from 'react';
 import { motion } from "framer-motion";
 import '../App.css';
 import ButtonLink from './ButtonLink';
 import Footer from './Footer';
-
-// Lazy load the ServiceCard component
-//const ServiceCard = lazy(() => import('./ServiceCard'));
-
-// Loading component
-const LoadingSpinner = () => (
-  <div className="flex items-center justify-center w-full h-64">
-    <div className="w-12 h-12 border-4 border-cyan-400 border-t-transparent rounded-full animate-spin"></div>
-  </div>
-);
 
 const About = () => {
   return (
