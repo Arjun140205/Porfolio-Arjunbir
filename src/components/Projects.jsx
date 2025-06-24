@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X } from "lucide-react";
-import Navbar from "./Navbar";
 import Footer from "./Footer";
 
 const techIcons = {
