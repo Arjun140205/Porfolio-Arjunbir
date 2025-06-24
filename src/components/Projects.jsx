@@ -82,13 +82,13 @@ const ProjectCard = ({ title, onClick }) => (
 
 const ExpandedProjectModal = ({ title, description, git, technologies, onClose }) => (
   <motion.div
-    className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm"
+    className="fixed inset-0 z-50 flex items-center justify-center bg-black/80"
     initial={{ opacity: 0 }}
     animate={{ opacity: 1 }}
     exit={{ opacity: 0 }}
   >
     <motion.div
-      className="bg-neutral-900 border border-neutral-700 p-6 rounded-xl shadow-lg max-w-2xl w-[90%] sm:w-[70%] max-h-[85vh] overflow-y-auto relative"
+      className="bg-neutral-900 border border-neutral-700 p-4 xs:p-6 rounded-xl shadow-lg max-w-lg w-[95%] sm:w-[80%] max-h-[90vh] overflow-y-auto relative"
       initial={{ scale: 0.95, y: 20 }}
       animate={{ scale: 1, y: 0 }}
       exit={{ 
@@ -130,16 +130,16 @@ const ExpandedProjectModal = ({ title, description, git, technologies, onClose }
           </span>
         </div>
       </div>
-      <h3 className="text-2xl font-bold text-white mb-2">{title}</h3>
-      <p className="text-gray-300 text-sm sm:text-base mb-4">{description}</p>
-      <div className="flex flex-wrap gap-3 mb-4">
+      <h3 className="text-xl xs:text-2xl sm:text-2xl font-bold text-white mb-2 break-words">{title}</h3>
+      <p className="text-gray-300 text-sm xs:text-base mb-4 break-words">{description}</p>
+      <div className="flex flex-wrap gap-2 sm:gap-3 mb-4">
         {technologies.map((tech, index) => (
           <img
             key={index}
             src={techIcons[tech] || techIcons.API}
             alt={tech}
             title={tech}
-            className="w-6 h-6 sm:w-8 sm:h-8 object-contain"
+            className="w-6 h-6 xs:w-7 xs:h-7 sm:w-8 sm:h-8 object-contain"
           />
         ))}
       </div>
@@ -147,7 +147,7 @@ const ExpandedProjectModal = ({ title, description, git, technologies, onClose }
         href={git}
         target="_blank"
         rel="noopener noreferrer"
-        className="inline-block bg-neutral-800 border border-neutral-600 text-white px-4 py-2 rounded-lg hover:bg-neutral-700 transition-all text-sm"
+        className="inline-block bg-neutral-800 border border-neutral-600 text-white px-4 py-2 rounded-lg hover:bg-neutral-700 transition-all text-xs xs:text-sm"
       >
         View on GitHub
       </a>
@@ -165,11 +165,11 @@ const Projects = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="container mx-auto py-10 flex-grow"
+          className="container mx-auto py-6 px-2 sm:px-4 flex-grow"
         >
-          <h2 className="text-4xl font-bold text-white mb-10 text-center">Projects</h2>
-          <h3 className="text-xl text-white mb-10 text-center">Engineering empathy into every line of code. Building with purpose, not just logic. </h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-6xl mx-auto">
+          <h2 className="text-2xl xs:text-3xl sm:text-4xl font-bold text-white mb-6 sm:mb-10 text-center">Projects</h2>
+          <h3 className="text-base xs:text-lg sm:text-xl text-white mb-6 sm:mb-10 text-center">Engineering empathy into every line of code. Building with purpose, not just logic. </h3>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 max-w-6xl mx-auto">
             {project.map((item, index) => (
               <ProjectCard
                 key={index}
