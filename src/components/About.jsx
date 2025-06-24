@@ -20,7 +20,7 @@ const About = () => {
       <motion.div 
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        className='min-h-screen bg-black pt-24 pb-24'
+        className='min-h-screen bg-black pt-36 pb-24' // was pt-24
       >
         <section className='text-white container mx-auto px-4 md:px-8' id='about'>
           {/* Main content wrapper */}
