@@ -4,7 +4,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { EMAIL_JS_SERVICE_ID, EMAIL_JS_TEMPLATE_ID, EMAIL_JS_PUBLIC_KEY } from "../constants";
 import { HighlightGroup, HighlighterItem, Particles } from "./ui/highlighter.jsx";
-import { Button, buttonVariants } from "./ui/button.jsx";
+import { Button } from "./ui/button.jsx";
 import { useAnimate } from "framer-motion";
 import { cn } from "../lib/utils";
 import Footer from "./Footer";
