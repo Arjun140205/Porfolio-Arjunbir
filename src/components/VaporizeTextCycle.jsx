@@ -18,9 +18,9 @@ export default function VaporizeTextCycle({
   spread = 5,
   density = 5,
   animation = {
-    vaporizeDuration: 2,
-    fadeInDuration: 1,
-    waitDuration: 0.5,
+    vaporizeDuration: 0.6, // even faster
+    fadeInDuration: 0.35, // even faster
+    waitDuration: 0.1,    // even faster
   },
   direction = "left-to-right",
   alignment = "center",
