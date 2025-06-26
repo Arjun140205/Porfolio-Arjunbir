@@ -1,32 +1,5 @@
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Link } from 'react-router-dom';
-
-const NavItem = ({ text, to, onClick }) => {
-  const [isHovered, setIsHovered] = useState(false);
-  return (
-    <motion.div
-      onHoverStart={() => setIsHovered(true)}
-      onHoverEnd={() => setIsHovered(false)}
-      whileHover={{
-        backgroundColor: "rgba(255, 255, 255, 0.1)",
-        backdropFilter: "blur(10px)",
-      }}
-      transition={{ duration: 0.2 }}
-      className="relative rounded-lg overflow-hidden"
-    >
-      <Link to={to} className="px-6 py-2 block text-white relative" onClick={onClick}>
-        {text}
-        <motion.div
-          initial={{ scaleX: 0 }}
-          animate={{ scaleX: isHovered ? 1 : 0 }}
-          transition={{ duration: 0.2 }}
-          className="absolute bottom-0 left-0 w-full h-[2px] bg-cyan-400 origin-left"
-        />
-      </Link>
-    </motion.div>
-  );
-};
+import React from 'react';
+import { Link, useLocation } from 'react-router-dom';
 
 const navLinks = [
   { text: "Home", to: "/" },
@@ -34,89 +7,70 @@ const navLinks = [
   { text: "Academics", to: "/academics" },
   { text: "Certifications", to: "/certifications" },
   { text: "Projects", to: "/projects" },
-  { text: "Internship", to: "/internship" },
+  { text: "Experience", to: "/experience" },
   { text: "Skills", to: "/skills" },
   { text: "Contact", to: "/contact" },
 ];
 
 const Navbar = () => {
-  const [menuOpen, setMenuOpen] = useState(false);
-
-  // Prevent body scroll when menu is open
-  React.useEffect(() => {
-    if (menuOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = '';
-    }
-    return () => {
-      document.body.style.overflow = '';
-    };
-  }, [menuOpen]);
+  const location = useLocation();
 
   return (
-    <motion.nav
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.5 }}
-      className="fixed top-0 left-0 right-0 z-[100] bg-black/80 backdrop-blur-md border-b border-gray-800"
-    >
-      <div className="container mx-auto px-6 py-4">
-        <div className="flex justify-between items-center">
-          <motion.div
-            whileHover={{ scale: 1.1 }}
-            transition={{ duration: 0.2 }}
-          >
-            <Link to="/" className="text-2xl font-bold text-white whitespace-nowrap">MyPortfolio</Link>
-          </motion.div>
-
-          {/* Desktop Nav */}
-          <div className="hidden md:flex space-x-8">
-            {navLinks.map(link => (
-              <NavItem key={link.to} text={link.text} to={link.to} />
-            ))}
+    <nav className="fixed top-6 left-1/2 -translate-x-1/2 z-[100] w-full flex justify-center">
+      <div className="flex items-center w-full max-w-5xl px-2">
+        <div className="w-full flex justify-center items-center px-2 relative">
+          {/* Logo always visible, professional shadow, mobile responsive */}
+          <img
+            src="/Arjun.png"
+            alt="Arjun"
+            className="fixed left-4 top-2 w-12 h-12 md:w-20 md:h-20 rounded-full border-2 border-white/20 shadow-xl bg-black/20 opacity-98 object-cover z-[101] transition-all duration-200"
+            style={{
+              filter: 'drop-shadow(0 4px 24px #23294655) brightness(1.10) contrast(1.10)',
+            }}
+          />
+          {/* Desktop pill navbar */}
+          <div className="hidden md:inline-flex items-center bg-[#18181b]/90 border border-white/10 shadow-xl rounded-full px-2 py-1 gap-1 md:gap-3 backdrop-blur-none min-h-[44px] w-auto mx-auto">
+            {/* Minimal icon on the left */}
+            <div className="flex items-center justify-center w-8 h-8 rounded-full bg-transparent mr-1 flex-shrink-0">
+              {/* Dots SVG icon */}
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="5" cy="12" r="2" fill="#b3b3b3"/><circle cx="12" cy="5" r="2" fill="#b3b3b3"/><circle cx="12" cy="19" r="2" fill="#b3b3b3"/><circle cx="19" cy="12" r="2" fill="#b3b3b3"/></svg>
+            </div>
+            {/* Nav links center, scrollable if needed */}
+            <div className="flex gap-1 md:gap-2 lg:gap-4 flex-1 justify-center min-w-0">
+              {navLinks.map(link => (
+                <Link
+                  key={link.to}
+                  to={link.to}
+                  className={`px-3 py-1.5 text-white font-medium rounded-full transition-all duration-30 ease-in-out focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 text-sm whitespace-nowrap relative hover:bg-white/10 ${location.pathname === link.to ? 'bg-white/10' : ''}`}
+                >
+                  {link.text}
+                </Link>
+              ))}
+            </div>
           </div>
-
-          {/* Hamburger Icon for Mobile */}
-          <button
-            className="md:hidden flex flex-col justify-center items-center w-10 h-10 focus:outline-none z-[110]"
-            onClick={() => setMenuOpen(!menuOpen)}
-            aria-label="Toggle menu"
-            type="button"
-          >
-            <span className={`block w-7 h-0.5 bg-white mb-1.5 rounded transition-all duration-300 ${menuOpen ? 'rotate-45 translate-y-2' : ''}`}></span>
-            <span className={`block w-7 h-0.5 bg-white mb-1.5 rounded transition-all duration-300 ${menuOpen ? 'opacity-0' : ''}`}></span>
-            <span className={`block w-7 h-0.5 bg-white rounded transition-all duration-300 ${menuOpen ? '-rotate-45 -translate-y-2' : ''}`}></span>
-          </button>
+          {/* Mobile: horizontally scrollable pill navbar */}
+          <div className="md:hidden w-full flex items-center justify-center">
+            <div className="flex items-center bg-[#18181b]/90 border border-white/10 shadow-xl rounded-full px-2 py-1 gap-1 backdrop-blur-none min-h-[44px] w-full overflow-x-auto scrollbar-hide mx-2">
+              {/* Minimal icon on the left */}
+              <div className="flex items-center justify-center w-8 h-8 rounded-full bg-transparent mr-1 flex-shrink-0">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="5" cy="12" r="2" fill="#b3b3b3"/><circle cx="12" cy="5" r="2" fill="#b3b3b3"/><circle cx="12" cy="19" r="2" fill="#b3b3b3"/><circle cx="19" cy="12" r="2" fill="#b3b3b3"/></svg>
+              </div>
+              <div className="flex gap-1 flex-1 min-w-0 overflow-x-auto scrollbar-hide">
+                {navLinks.map(link => (
+                  <Link
+                    key={link.to}
+                    to={link.to}
+                    className={`px-3 py-1.5 text-white font-medium rounded-full transition-all duration-30 ease-in-out focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 text-sm whitespace-nowrap relative hover:bg-white/10 ${location.pathname === link.to ? 'bg-white/10' : ''}`}
+                  >
+                    {link.text}
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-      {/* Mobile Menu Overlay */}
-      <AnimatePresence>
-        {menuOpen && (
-          <motion.div
-            initial={{ opacity: 0, x: 40 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: 40 }}
-            transition={{ duration: 0.2 }}
-            className="fixed top-0 right-0 h-full w-4/5 max-w-xs z-[200] bg-black opacity-95 flex flex-col items-end md:hidden shadow-2xl px-0"
-          >
-            <button
-              className="mt-6 mr-6 text-white text-4xl focus:outline-none self-end"
-              onClick={() => setMenuOpen(false)}
-              aria-label="Close menu"
-              type="button"
-            >
-              &times;
-            </button>
-            <nav className="flex flex-col gap-6 w-full px-8 py-8 mt-4">
-              {navLinks.map(link => (
-                <NavItem key={link.to} text={link.text} to={link.to} onClick={() => setMenuOpen(false)} />
-              ))}
-            </nav>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </motion.nav>
+    </nav>
   );
 };
 
