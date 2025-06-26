@@ -5,7 +5,7 @@ import Home from './components/Home';
 import Certifications from './components/Certifications';
 import Skills from './components/Skills';
 import Academics from './components/Academics';
-import Internship from './components/Internship';
+import Experience from './components/Experience';
 import About from './components/About';
 import Projects from './components/Projects';
 import Contact from './components/Contact';
@@ -50,7 +50,7 @@ function App() {
                 <Route path="/academics" element={<Academics />} />
                 <Route path="/certifications" element={<Certifications />} />
                 <Route path="/projects" element={<Projects />} />
-                <Route path="/internship" element={<Internship />} />
+                <Route path="/experience" element={<Experience />} />
                 <Route path="/skills" element={<Skills />} />
                 <Route path="/contact" element={<Contact />} />
               </Routes>
