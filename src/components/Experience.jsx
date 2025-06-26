@@ -70,7 +70,7 @@ const cardVariants = {
 };
 
 const Experience = () => (
-  <div className="min-h-screen bg-gradient-to-br from-[#181c24] via-[#181c24] to-[#232946] flex flex-col items-center py-20 px-4 relative overflow-x-hidden">
+  <div className="min-h-screen bg-black flex flex-col items-center py-20 px-4 relative overflow-x-hidden">
     <motion.h1
       initial={{ opacity: 0, y: 40 }}
       animate={{ opacity: 1, y: 0 }}
@@ -131,8 +131,7 @@ const Experience = () => (
         );
       })}
     </div>
-    {/* Subtle animated vapor/noise effect (optional, can be enhanced) */}
-    <div className="pointer-events-none fixed inset-0 z-0 opacity-30" style={{background:'radial-gradient(circle at 70% 80%,rgba(34,211,238,0.08) 0%,transparent 70%)'}} />
+    {/* Removed blue vapor effect for a clean black background */}
     <Footer />
   </div>
 );
