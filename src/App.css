@@ -157,3 +157,192 @@
 		border-radius: 50%;
 	}
 }
+
+/* 3D Flip Card and Glassmorphism Utilities */
+.perspective {
+  perspective: 1200px;
+}
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+.backface-hidden {
+  backface-visibility: hidden;
+}
+.my-rotate-y-180 {
+  transform: rotateY(180deg);
+}
+.group:hover .preserve-3d {
+  transform: rotateY(180deg);
+}
+.glassmorphism {
+  backdrop-filter: blur(8px) saturate(180%);
+  background-color: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.2);
+}
+
+/* Star Constellation Styles */
+.star-glow {
+  fill: #a78bfa;
+  opacity: 0.7;
+  filter: blur(2px) drop-shadow(0 0 12px #a78bfa) drop-shadow(0 0 24px #818cf8);
+  animation: twinkle 2.5s infinite alternate;
+  transition: r 0.2s;
+}
+@keyframes twinkle {
+  0% { opacity: 0.7; }
+  100% { opacity: 1; }
+}
+.animate-fade-in {
+  animation: fadeIn 0.4s;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px);}
+  to { opacity: 1; transform: none; }
+}
+
+/* Book effect styles */
+.book-bg {
+  background: radial-gradient(ellipse at center, #18122B 60%, #232946 100%);
+}
+.book-page-shadow {
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37), 0 1.5px 8px 0 #a78bfa44;
+}
+@media (max-width: 640px) {
+  .book-page {
+    min-width: 100% !important;
+    max-width: 100% !important;
+    border-radius: 1.25rem;
+  }
+}
+
+/* Desk background: dark, techy, subtle grid */
+.desk-bg {
+  background: linear-gradient(135deg, #18122B 80%, #232946 100%);
+  position: relative;
+}
+.desk-bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: repeating-linear-gradient(0deg,rgba(255,255,255,0.04) 0 1px,transparent 1px 100%),repeating-linear-gradient(90deg,rgba(255,255,255,0.04) 0 1px,transparent 1px 100%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* DeskObject hover/active */
+.absolute:hover, .absolute.z-30 {
+  box-shadow: 0 8px 32px 0 #a78bfa55, 0 1.5px 8px 0 #818cf855;
+  filter: brightness(1.08) saturate(1.2);
+}
+
+/* CertificationNode glowing, pulsing node */
+.cert-node-glow {
+  fill: #a78bfa;
+  opacity: 0.7;
+  filter: blur(2px) drop-shadow(0 0 16px #a78bfa) drop-shadow(0 0 32px #818cf8);
+  animation: certTwinkle 2.5s infinite alternate;
+  transition: r 0.2s;
+}
+@keyframes certTwinkle {
+  0% { opacity: 0.7; }
+  100% { opacity: 1; }
+}
+
+/* Holographic Timeline 3D Background */
+.timeline3d-bg {
+  background: linear-gradient(120deg, #18122B 80%, #232946 100%);
+  position: relative;
+  overflow: visible;
+}
+
+/* Glowing animated timeline line */
+@keyframes timelineGlow {
+  0% { filter: blur(2px) brightness(1.1); }
+  50% { filter: blur(4px) brightness(1.3); }
+  100% { filter: blur(2px) brightness(1.1); }
+}
+.animate-timeline-glow {
+  animation: timelineGlow 2.5s infinite alternate;
+}
+
+/* TimelineNode styles (see TimelineNode.jsx for more) */
+.timeline-node {
+  position: absolute;
+  width: 64px; height: 64px;
+  transform-style: preserve-3d;
+  transition: transform 0.4s cubic-bezier(.4,2,.3,1), box-shadow 0.3s;
+  cursor: pointer;
+  z-index: 2;
+}
+.timeline-node .node-glow {
+  position: absolute; inset: 0;
+  border-radius: 50%;
+  background: radial-gradient(circle, #a78bfa 0%, #818cf8 60%, transparent 100%);
+  filter: blur(8px) brightness(1.2);
+  opacity: 0.7;
+  z-index: 1;
+  pointer-events: none;
+  animation: nodeGlow 2.5s infinite alternate;
+}
+.timeline-node .node-core {
+  position: relative;
+  width: 48px; height: 48px;
+  background: linear-gradient(135deg, #232946 60%, #a78bfa 100%);
+  border-radius: 50%;
+  border: 2.5px solid #fff3;
+  box-shadow: 0 0 24px #a78bfa88, 0 2px 8px #23294688;
+  z-index: 2;
+  transition: box-shadow 0.3s;
+}
+.timeline-node .node-shimmer {
+  position: absolute; left: 0; top: 0; width: 100%; height: 100%;
+  border-radius: 50%;
+  background: linear-gradient(120deg, transparent 60%, #fff8 100%);
+  opacity: 0.5;
+  pointer-events: none;
+  z-index: 3;
+  animation: shimmer 2.2s infinite linear;
+}
+.timeline-node.active .node-core {
+  box-shadow: 0 0 32px #f472b6cc, 0 2px 16px #232946cc;
+  border-color: #f472b6;
+}
+.timeline-node.active .node-glow {
+  background: radial-gradient(circle, #f472b6 0%, #a78bfa 60%, transparent 100%);
+  opacity: 1;
+}
+@keyframes nodeGlow {
+  0% { opacity: 0.7; }
+  100% { opacity: 1; }
+}
+@keyframes shimmer {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Glassy modal for details */
+.holographic-modal {
+  box-shadow: 0 8px 32px 0 #a78bfa55, 0 1.5px 8px 0 #818cf855;
+  border: 2px solid #a78bfa44;
+  backdrop-filter: blur(12px) saturate(180%);
+  background: linear-gradient(120deg, #232946cc 60%, #18122bcc 100%);
+  animation: fadeIn 0.4s;
+}
+@media (max-width: 640px) {
+  .timeline3d-bg { height: 320px !important; }
+  .timeline-node { width: 56px; height: 56px; }
+  .timeline-node .node-core { width: 40px; height: 40px; }
+}
+
+/* Subtle grey glow for certification cards */
+.card-glow {
+  box-shadow: 0 0 16px 2px rgba(180,180,200,0.18), 0 2px 8px 0 #23294644;
+}
+
+/* Lighter, more pronounced glow for certification cards with a soft cyan/blue shadow */
+.card-glow-light {
+  box-shadow:
+    0 0 18px 4px rgba(180,200,255,0.18), /* soft blue glow */
+    0 0 32px 2px rgba(80,220,255,0.10),   /* subtle cyan outer glow */
+    0 2px 8px 0 #23294622;                /* base shadow */
+}
