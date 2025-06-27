@@ -3,7 +3,7 @@ import { name } from '../constants';
 import { motion } from "framer-motion";
 import Background from './Background';
 import Footer from './Footer';
-import { FaHtml5, FaCss3Alt, FaJs, FaReact, FaNodeJs, FaPython, FaJava, FaGitAlt} from 'react-icons/fa';
+import { FaHtml5, FaCss3Alt, FaJs, FaReact, FaNodeJs, FaPython, FaGitAlt} from 'react-icons/fa';
 import { SiMongodb, SiMysql } from 'react-icons/si';
 
 const Home = () => {
@@ -102,7 +102,7 @@ const Home = () => {
             <span className="dock-icon"><FaReact className="text-2xl sm:text-3xl md:text-4xl text-cyan-400" /></span>
             <span className="dock-icon"><FaNodeJs className="text-2xl sm:text-3xl md:text-4xl text-green-500" /></span>
             <span className="dock-icon"><FaPython className="text-2xl sm:text-3xl md:text-4xl text-blue-300" /></span>
-            <span className="dock-icon"><FaJava className="text-2xl sm:text-3xl md:text-4xl text-orange-700" /></span>
+           
             <span className="dock-icon"><SiMysql className="text-2xl sm:text-3xl md:text-4xl text-blue-400" /></span>
             <span className="dock-icon"><SiMongodb className="text-2xl sm:text-3xl md:text-4xl text-green-600" /></span>
             <span className="dock-icon"><FaGitAlt className="text-2xl sm:text-3xl md:text-4xl text-orange-600" /></span>
