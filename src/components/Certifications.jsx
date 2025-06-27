@@ -39,7 +39,7 @@ const Certifications = () => {
             duration={22}
             className="hidden sm:flex -mt-24"
           />
-        </div>
+              </div>
       </div>
       <Footer />
     </>
