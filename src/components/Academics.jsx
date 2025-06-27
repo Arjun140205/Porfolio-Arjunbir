@@ -49,8 +49,8 @@ const getCardSpacing = () => {
 
 const CarouselPanel = ({ item, style, isActive, cardWidth }) => (
   <motion.div
-    className={`absolute top-1/2 left-1/2 w-[90vw] max-w-[${cardWidth}px] h-[220px] xs:h-[240px] sm:h-[300px] md:h-[340px] flex flex-col items-center justify-center px-3 xs:px-4 sm:px-8 md:px-12 py-4 xs:py-6 sm:py-10 select-none pointer-events-auto bg-neutral-900/95 border border-white/10 rounded-2xl transition-shadow duration-300 z-10 overflow-hidden
-      ${isActive ? 'shadow-[0_0_32px_8px_rgba(34,211,238,0.25),0_2px_16px_0_rgba(34,211,238,0.10)] ring-2 ring-cyan-400/60' : ''}`}
+    className={`absolute top-1/2 left-1/2 w-full max-w-[420px] sm:max-w-[520px] h-auto flex flex-col items-center justify-center px-5 sm:px-10 py-7 sm:py-12 select-none pointer-events-auto bg-neutral-900/95 border border-white/10 rounded-2xl transition-shadow duration-300 z-10 overflow-hidden
+      ${isActive ? 'shadow-[0_4px_32px_0_rgba(34,211,238,0.18)] ring-2 ring-cyan-400/60' : ''}`}
     style={style}
     initial={false}
   >
