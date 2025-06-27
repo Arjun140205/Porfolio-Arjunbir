@@ -70,68 +70,67 @@ const cardVariants = {
 };
 
 const Experience = () => (
-  <div className="min-h-screen bg-black flex flex-col items-center py-20 px-4 relative overflow-x-hidden">
-    <motion.h1
-      initial={{ opacity: 0, y: 40 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8, ease: 'easeOut' }}
-      className="text-4xl font-extrabold text-cyan-400 mb-14 text-center drop-shadow-lg"
-    >
-      Experience
-    </motion.h1>
-    <div className="w-full max-w-3xl flex flex-col gap-16 z-10">
-      {groups.map(group => {
-        const groupExps = experiences.filter(e => e.type === group.type);
-        if (groupExps.length === 0) return null;
-        return (
-          <div key={group.type}>
-            <motion.h2
-              variants={headingVariants}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.5 }}
-              className="text-2xl sm:text-3xl font-bold text-white mb-8 pl-2 tracking-tight relative"
-            >
-              <span className="inline-block bg-gradient-to-r from-cyan-400/80 via-white/10 to-cyan-400/80 px-4 py-1 rounded-full shadow-cyan-400/10 shadow-lg">
+  <div className="min-h-screen bg-black flex flex-col">
+    <div className="flex-1 flex flex-col items-center py-20 px-4 relative overflow-x-hidden">
+      <motion.h1
+        initial={{ opacity: 0, y: 40 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, ease: 'easeOut' }}
+        className="text-4xl font-extrabold text-cyan-400 mb-14 text-center drop-shadow-lg"
+      >
+        Experience
+      </motion.h1>
+      <div className="w-full max-w-3xl flex flex-col gap-16 z-10">
+        {groups.map(group => {
+          const groupExps = experiences.filter(e => e.type === group.type);
+          if (groupExps.length === 0) return null;
+          return (
+            <div key={group.type}>
+              <motion.h2
+                variants={headingVariants}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.5 }}
+                className="text-3xl sm:text-4xl font-extrabold text-white mb-8 pl-2 drop-shadow-lg text-left"
+              >
                 {group.heading}
-              </span>
-            </motion.h2>
-            <div className="flex flex-col gap-8">
-              {groupExps.map((exp, idx) => (
-                <motion.div
-                  key={idx}
-                  custom={idx}
-                  variants={cardVariants}
-                  initial="hidden"
-                  whileInView="visible"
-                  whileHover="hover"
-                  viewport={{ once: true, amount: 0.3 }}
-                  className="relative bg-white/5 backdrop-blur-lg border border-white/10 rounded-2xl p-7 shadow-xl transition-all duration-300 group overflow-hidden hover:border-cyan-400/60"
-                  style={{ boxShadow: '0 8px 32px 0 rgba(34,211,238,0.10), 0 1.5px 8px 0 #a78bfa44' }}
-                >
-                  {/* Glow effect */}
-                  <div className="absolute -inset-2 rounded-2xl bg-cyan-400/10 blur-2xl opacity-0 group-hover:opacity-60 transition-opacity duration-500 pointer-events-none z-0" />
-                  <div className="relative z-10">
-                    <div className="flex items-center gap-2 mb-1">
-                      <span className="text-xl font-bold text-white drop-shadow-lg">{exp.title}</span>
-                      {exp.org && <span className="text-base text-neutral-300 font-medium ml-2">{exp.org}</span>}
+              </motion.h2>
+              <div className="flex flex-col gap-8">
+                {groupExps.map((exp, idx) => (
+                  <motion.div
+                    key={idx}
+                    custom={idx}
+                    variants={cardVariants}
+                    initial="hidden"
+                    whileInView="visible"
+                    whileHover="hover"
+                    viewport={{ once: true, amount: 0.3 }}
+                    className="relative bg-white/5 backdrop-blur-lg border border-white/10 rounded-2xl p-7 shadow-xl transition-all duration-300 group overflow-hidden hover:border-cyan-400/60"
+                    style={{ boxShadow: '0 8px 32px 0 rgba(34,211,238,0.10), 0 1.5px 8px 0 #a78bfa44' }}
+                  >
+                    {/* Glow effect */}
+                    <div className="absolute -inset-2 rounded-2xl bg-cyan-400/10 blur-2xl opacity-0 group-hover:opacity-60 transition-opacity duration-500 pointer-events-none z-0" />
+                    <div className="relative z-10">
+                      <div className="flex items-center gap-2 mb-1">
+                        <span className="text-xl font-bold text-white drop-shadow-lg">{exp.title}</span>
+                        {exp.org && <span className="text-base text-neutral-300 font-medium ml-2">{exp.org}</span>}
+                      </div>
+                      <div className="flex items-center gap-2 text-sm text-neutral-400 mb-2">
+                        <FaRegCalendarAlt className="inline-block mr-1" />
+                        <span>{exp.duration}</span>
+                      </div>
+                      <div className="text-[15px] text-neutral-200 leading-relaxed">
+                        {exp.description}
+                      </div>
                     </div>
-                    <div className="flex items-center gap-2 text-sm text-neutral-400 mb-2">
-                      <FaRegCalendarAlt className="inline-block mr-1" />
-                      <span>{exp.duration}</span>
-                    </div>
-                    <div className="text-[15px] text-neutral-200 leading-relaxed">
-                      {exp.description}
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
+                  </motion.div>
+                ))}
+              </div>
             </div>
-          </div>
-        );
-      })}
+          );
+        })}
+      </div>
     </div>
-    {/* Removed blue vapor effect for a clean black background */}
     <Footer />
   </div>
 );
