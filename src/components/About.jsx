@@ -72,7 +72,7 @@ const About = () => {
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.7, ease: 'easeOut', delay: 0.2 }}
                     >
-                      What excites me most about web development is not just the ability to build, but the power to create experiences that resonate. I work at the intersection of technology and human emotion, crafting digital platforms that are not only functional but thoughtful, responsive, and deeply intentional.
+                      What captivates me about web development is not merely the act of building digital systems, but the privilege of crafting experiences that truly resonate with people. I see myself working at the crossroads of technology and human emotion, designing interfaces that are not only functional, but also deliberate, empathetic, and refined in their intent.
                     </motion.p>
                     <motion.p
                       className="text-gray-200"
@@ -80,7 +80,7 @@ const About = () => {
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.7, ease: 'easeOut', delay: 0.4 }}
                     >
-                      My expertise lies in the MERN stack, where I transform abstract ideas into intuitive, production-ready applications. I've always been drawn to projects that carry weight — tools that inform, uplift, or make someone feel understood, especially in the realms of mental health, education, and sustainability.
+                      My expertise lies within the MERN stack, where I translate abstract ideas into purposeful, production-grade applications. I am drawn to projects that carry significance, platforms that educate, uplift, or offer a sense of recognition, especially in areas like mental health, learning, and sustainability.
                     </motion.p>
                     <motion.p
                       className="text-gray-200"
