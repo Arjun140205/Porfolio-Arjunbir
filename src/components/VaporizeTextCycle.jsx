@@ -7,6 +7,28 @@ const Tag = {
   P: "p",
 };
 
+// Responsive font size hook
+function useResponsiveFontSize(baseFontSize = 70, mobileFontSize = 36, tabletFontSize = 48) {
+  const [fontSize, setFontSize] = useState(baseFontSize);
+
+  useEffect(() => {
+    function handleResize() {
+      if (window.innerWidth <= 640) {
+        setFontSize(mobileFontSize);
+      } else if (window.innerWidth <= 1024) {
+        setFontSize(tabletFontSize);
+      } else {
+        setFontSize(baseFontSize);
+      }
+    }
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, [baseFontSize, mobileFontSize, tabletFontSize]);
+
+  return fontSize;
+}
+
 export default function VaporizeTextCycle({
   texts = ["Welcome", "to", "My Portfolio"],
   font = {
@@ -71,9 +93,16 @@ export default function VaporizeTextCycle({
     WAIT_DURATION: (animation.waitDuration ?? 0.5) * 1000,
   }), [animation.vaporizeDuration, animation.fadeInDuration, animation.waitDuration]);
 
+  // Responsive font size
+  const responsiveFontSize = useResponsiveFontSize(
+    parseInt(font.fontSize?.replace("px", "") || "70"),
+    36, // mobile
+    48  // tablet
+  );
+
   // Font config
   const fontConfig = useMemo(() => {
-    const fontSize = parseInt(font.fontSize?.replace("px", "") || "50");
+    const fontSize = responsiveFontSize;
     const VAPORIZE_SPREAD = calculateVaporizeSpread(fontSize);
     const MULTIPLIED_VAPORIZE_SPREAD = VAPORIZE_SPREAD * spread;
     return {
@@ -82,7 +111,7 @@ export default function VaporizeTextCycle({
       MULTIPLIED_VAPORIZE_SPREAD,
       font: `${font.fontWeight ?? 400} ${fontSize * globalDpr}px ${font.fontFamily}`,
     };
-  }, [font.fontSize, font.fontWeight, font.fontFamily, spread, globalDpr]);
+  }, [font.fontWeight, font.fontFamily, spread, globalDpr, responsiveFontSize]);
 
   // Particle functions
   const memoizedUpdateParticles = useCallback((particles, vaporizeX, deltaTime) => {
@@ -236,7 +265,10 @@ export default function VaporizeTextCycle({
     renderCanvas({
       framerProps: {
         texts,
-        font,
+        font: {
+          ...font,
+          fontSize: `${responsiveFontSize}px`,
+        },
         color,
         alignment,
       },
@@ -245,7 +277,6 @@ export default function VaporizeTextCycle({
       particlesRef,
       globalDpr,
       currentTextIndex,
-      transformedDensity,
     });
 
     const currentFont = font.fontFamily || "sans-serif";
@@ -257,10 +288,12 @@ export default function VaporizeTextCycle({
       particlesRef,
       globalDpr,
       currentTextIndex,
-      transformedDensity,
       framerProps: {
         texts,
-        font,
+        font: {
+          ...font,
+          fontSize: `${responsiveFontSize}px`,
+        },
         color,
         alignment,
       },
@@ -273,7 +306,7 @@ export default function VaporizeTextCycle({
     wrapperSize,
     currentTextIndex,
     globalDpr,
-    transformedDensity
+    responsiveFontSize
   ]);
 
   // Handle resize
@@ -291,7 +324,10 @@ export default function VaporizeTextCycle({
         renderCanvas({
           framerProps: {
             texts,
-            font,
+            font: {
+              ...font,
+              fontSize: `${responsiveFontSize}px`,
+            },
             color,
             alignment,
           },
@@ -300,7 +336,6 @@ export default function VaporizeTextCycle({
           particlesRef,
           globalDpr,
           currentTextIndex,
-          transformedDensity,
         });
       }
     });
@@ -316,7 +351,7 @@ export default function VaporizeTextCycle({
     alignment,
     globalDpr,
     currentTextIndex,
-    transformedDensity
+    responsiveFontSize
   ]);
 
   // Initial size detection
@@ -427,7 +462,6 @@ function handleFontChange(params) {
     particlesRef,
     globalDpr,
     currentTextIndex,
-    transformedDensity,
     framerProps,
   } = params;
 
@@ -443,7 +477,6 @@ function handleFontChange(params) {
         particlesRef,
         globalDpr,
         currentTextIndex,
-        transformedDensity,
       });
     }, 1000);
     
@@ -638,7 +671,6 @@ function renderCanvas(params) {
     particlesRef,
     globalDpr,
     currentTextIndex,
-    transformedDensity,
   } = params;
 
   const canvas = canvasRef.current;
