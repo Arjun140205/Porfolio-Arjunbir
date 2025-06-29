@@ -19,6 +19,15 @@ const Navbar = () => {
     <nav className="fixed top-6 left-1/2 -translate-x-1/2 z-[100] w-full flex justify-center">
       <div className="flex items-center w-full max-w-5xl px-2">
         <div className="w-full flex justify-center items-center px-2 relative">
+          {/* Logo always visible, professional shadow, mobile responsive */}
+          <img
+            src="https://i.ibb.co/21hwZYtC/arjun1.png"
+            alt="Arjun"
+            className="fixed left-4 top-2 w-12 h-12 md:w-20 md:h-20 rounded-full border-2 border-white/20 shadow-xl bg-black/20 opacity-98 object-cover z-[101] transition-all duration-200"
+            style={{
+              filter: 'drop-shadow(0 4px 24px #23294655) brightness(1.10) contrast(1.10)',
+            }}
+          />
           {/* Desktop pill navbar */}
           <div className="hidden md:inline-flex items-center bg-[#18181b]/90 border border-white/10 shadow-xl rounded-full px-2 py-1 gap-1 md:gap-3 backdrop-blur-none min-h-[44px] w-auto mx-auto">
             {/* Minimal icon on the left */}
