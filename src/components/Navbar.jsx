@@ -21,7 +21,7 @@ const Navbar = () => {
         <div className="w-full flex justify-center items-center px-2 relative">
           {/* Logo always visible, professional shadow, mobile responsive */}
           <img
-            src="/Arjun.png"
+            src="/arjun1.png"
             alt="Arjun"
             className="fixed left-4 top-2 w-12 h-12 md:w-20 md:h-20 rounded-full border-2 border-white/20 shadow-xl bg-black/20 opacity-98 object-cover z-[101] transition-all duration-200"
             style={{
@@ -64,13 +64,13 @@ const Navbar = () => {
                   >
                     {link.text}
                   </Link>
-            ))}
+                ))}
               </div>
             </div>
           </div>
         </div>
       </div>
-            </nav>
+    </nav>
   );
 };
 
