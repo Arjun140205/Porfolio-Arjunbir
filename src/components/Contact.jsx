@@ -1,24 +1,12 @@
-import React, { useRef, useState, useEffect } from "react";
-import emailjs from "@emailjs/browser";
-import { ToastContainer, toast } from 'react-toastify';
+import React, { useEffect } from "react";
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { EMAIL_JS_SERVICE_ID, EMAIL_JS_TEMPLATE_ID, EMAIL_JS_PUBLIC_KEY } from "../constants";
 import { HighlightGroup, HighlighterItem, Particles } from "./ui/highlighter.jsx";
-import { Button } from "./ui/button.jsx";
 import { useAnimate } from "framer-motion";
-import { cn } from "../lib/utils";
 import Footer from "./Footer";
 
 const Contact = () => {
-  const formRef = useRef();
   const [scope, animate] = useAnimate();
-  const [form, setForm] = useState({
-    name: "",
-    email: "",
-    message: "",
-  });
-
-  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     animate(
@@ -58,68 +46,6 @@ const Contact = () => {
       },
     );
   }, [animate]);
-
-  const handleChange = (e) => {
-    const { target } = e;
-    const { name, value } = target;
-
-    setForm({
-      ...form,
-      [name]: value,
-    });
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setLoading(true);
-
-    // cleaning the form data
-    const username = form.name.trim();
-    const user_email = form.email.trim();
-    const user_message = form.message.trim();
-
-    if (username === '' || user_email === '' || user_message === '') {
-      setLoading(false);
-      toast.error("Please fill all the fields.", {
-        position: 'bottom-right',
-      });
-      return;
-    }
-
-    emailjs
-      .send(
-        EMAIL_JS_SERVICE_ID,
-        EMAIL_JS_TEMPLATE_ID,
-        {
-          from_name: username,
-          to_name: "Arjunbir Singh",
-          reply_to: user_email,
-          to_email: "arjunbirsingh1699@gmail.com",
-          message: user_message,
-        },
-        EMAIL_JS_PUBLIC_KEY
-      )
-      .then(
-        () => {
-          setLoading(false);
-          toast.success("Message sent successfully!", {
-            position: 'bottom-right',
-          });
-          setForm({
-            name: "",
-            email: "",
-            message: "",
-          });
-        },
-        (error) => {
-          setLoading(false);
-          console.error(error);
-          toast.error("Uh, oh! Something went wrong. Please try again later.", {
-            position: 'bottom-right',
-          });
-        }
-      );
-  };
 
   return (
     <>
@@ -198,44 +124,60 @@ const Contact = () => {
                             Contact.
                           </h2>
                         </div>
-                        <p className="mb-6 text-center text-gray-400">
-                          Let's discuss your ideas and make them reality!
+                        <p className="mb-6 text-center text-gray-400 text-lg font-medium">
+                          Let's connect and create something meaningful.
                         </p>
-                        <form ref={formRef} onSubmit={handleSubmit} className="space-y-4">
-                          <input
-                            type="text"
-                            name="name"
-                            value={form.name}
-                            onChange={handleChange}
-                            placeholder="Your Name"
-                            className="w-full rounded-lg border border-gray-800 bg-gray-900/50 px-4 py-3 text-white placeholder-gray-400 focus:border-cyan-400 focus:outline-none focus:ring-1 focus:ring-cyan-400"
-                          />
-                          <input
-                            type="email"
-                            name="email"
-                            value={form.email}
-                            onChange={handleChange}
-                            placeholder="Your Email"
-                            className="w-full rounded-lg border border-gray-800 bg-gray-900/50 px-4 py-3 text-white placeholder-gray-400 focus:border-cyan-400 focus:outline-none focus:ring-1 focus:ring-cyan-400"
-                          />
-                          <textarea
-                            name="message"
-                            rows="4"
-                            value={form.message}
-                            onChange={handleChange}
-                            placeholder="Your Message"
-                            className="w-full rounded-lg border border-gray-800 bg-gray-900/50 px-4 py-3 text-white placeholder-gray-400 focus:border-cyan-400 focus:outline-none focus:ring-1 focus:ring-cyan-400 resize-none"
-                          />
-                          <div className="flex gap-2">
-                            <Button
-                              type="submit"
-                              disabled={loading}
-                              className="w-full bg-gradient-to-r from-gray-500 to-cyan-400 hover:from-gray-600 hover:to-cyan-500 text-white font-medium py-3 rounded-lg transition-all duration-200 transform hover:scale-[1.02]"
-                            >
-                              {loading ? "Sending..." : "Send Message"}
-                            </Button>
-                          </div>
-                        </form>
+                        <div className="flex flex-col sm:flex-row flex-wrap gap-4 justify-center items-center mt-6">
+                          {/* Call Button */}
+                          <a
+                            href="tel:6005168257"
+                            className="flex items-center gap-3 px-8 py-4 rounded-full bg-gray-900/70 border border-gray-800 shadow-lg hover:shadow-cyan-400/30 hover:border-cyan-400 transition-all duration-200 text-white font-semibold text-lg backdrop-blur-md focus:outline-none focus:ring-2 focus:ring-cyan-400"
+                            title="Call Arjunbir Singh"
+                          >
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                              <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15l2.25-2.25a2.121 2.121 0 00-2.121-2.121c-.472 0-.933.074-1.372.215a12.042 12.042 0 01-5.357-5.357c.141-.439.215-.9.215-1.372A2.121 2.121 0 006.75 6.75L4.5 9z" />
+                            </svg>
+                            Call
+                          </a>
+                          {/* Email Button */}
+                          <a
+                            href="mailto:arjunbirsingh1699@gmail.com"
+                            className="flex items-center gap-3 px-8 py-4 rounded-full bg-gray-900/70 border border-gray-800 shadow-lg hover:shadow-cyan-400/30 hover:border-cyan-400 transition-all duration-200 text-white font-semibold text-lg backdrop-blur-md focus:outline-none focus:ring-2 focus:ring-cyan-400"
+                            title="Email Arjunbir Singh"
+                          >
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                              <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25H4.5a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5H4.5a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-.659 1.591l-7.5 7.5a2.25 2.25 0 01-3.182 0l-7.5-7.5A2.25 2.25 0 012.25 6.993V6.75" />
+                            </svg>
+                            Email
+                          </a>
+                          {/* WhatsApp Button */}
+                          <a
+                            href="https://wa.me/919103203635"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center gap-3 px-8 py-4 rounded-full bg-gray-900/70 border border-gray-800 shadow-lg hover:shadow-cyan-400/30 hover:border-cyan-400 transition-all duration-200 text-white font-semibold text-lg backdrop-blur-md focus:outline-none focus:ring-2 focus:ring-cyan-400"
+                            title="WhatsApp Arjunbir Singh"
+                          >
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6 text-green-400">
+                              <path strokeLinecap="round" strokeLinejoin="round" d="M16.862 14.487a6.75 6.75 0 10-2.375 2.375l2.122.53a.75.75 0 00.91-.91l-.53-2.122z" />
+                              <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 9.75h.008v.008H15.75V9.75z" />
+                            </svg>
+                            WhatsApp
+                          </a>
+                          {/* LinkedIn Button */}
+                          <a
+                            href="https://www.linkedin.com/in/arjunbir-singh/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center gap-3 px-8 py-4 rounded-full bg-gray-900/70 border border-gray-800 shadow-lg hover:shadow-cyan-400/30 hover:border-cyan-400 transition-all duration-200 text-white font-semibold text-lg backdrop-blur-md focus:outline-none focus:ring-2 focus:ring-cyan-400"
+                            title="LinkedIn Arjunbir Singh"
+                          >
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" className="w-6 h-6 text-blue-400">
+                              <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.268c-.966 0-1.75-.784-1.75-1.75s.784-1.75 1.75-1.75 1.75.784 1.75 1.75-.784 1.75-1.75 1.75zm15.5 11.268h-3v-5.604c0-1.337-.026-3.063-1.868-3.063-1.868 0-2.154 1.459-2.154 2.967v5.7h-3v-10h2.881v1.367h.041c.401-.761 1.379-1.563 2.841-1.563 3.039 0 3.6 2.001 3.6 4.601v5.595z" />
+                            </svg>
+                            LinkedIn
+                          </a>
+                        </div>
                       </div>
                     </div>
                   </div>
