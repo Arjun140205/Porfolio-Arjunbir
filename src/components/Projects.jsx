@@ -43,7 +43,7 @@ const project = [
     technologies: ["Next.js", "CSS", "JavaScript", "Tailwind", "API"]
   },
   {
-    title: "Recipe Finder",
+    title: "Recipedia",
     description:
       "Search recipes by ingredients with a user-friendly UI. Built with React and integrated external recipe APIs.",
     git: "https://github.com/Arjun140205/Recipe-Finder-Reactapp",
