@@ -68,7 +68,7 @@ const Contact = () => {
                         ref={scope}
                       >
                         <div className="absolute left-1/2 top-1/2 h-8 w-8 -translate-x-1/2 -translate-y-1/2 text-2xl">
-                          👨‍💻
+                          <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Telegram-Animated-Emojis/main/Objects/Laptop.webp" alt="Laptop" width="25" height="25" />
                         </div>
                         <div
                           id="webdev"
