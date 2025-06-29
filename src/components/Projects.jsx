@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Footer from "./Footer";
 
@@ -63,20 +63,70 @@ const project = [
     git: "https://github.com/Arjun140205/Gmail-genius",
     technologies: ["HTML", "CSS", "JavaScript", "React", "API","Google Cloud", "Node.js"]
   }
-
 ];
 
-const ProjectCard = ({ title, onClick }) => (
-  <motion.div
+const ProjectCard = ({ title, onClick, isSpotlit, cardRef, onTouchStart, onMouseDown }) => (
+  <motion.li
     layout
+    ref={cardRef}
     onClick={onClick}
-    className="relative w-full bg-white/10 backdrop-blur rounded-xl border border-neutral-700 shadow-md p-4 cursor-pointer hover:shadow-lg transition-all duration-300"
+    onTouchStart={onTouchStart}
+    onMouseDown={onMouseDown}
+    className={`relative w-full aspect-square md:aspect-auto h-36 md:h-44 lg:h-48 flex-shrink-0 list-none rounded-3xl group cursor-pointer transition-all duration-300 bg-black overflow-hidden ${isSpotlit ? 'z-10' : 'z-0'}`}
+    style={{
+      filter: isSpotlit ? 'brightness(1.15)' : 'brightness(0.85)',
+      transition: 'filter 0.3s',
+    }}
+    whileHover={{ scale: 1.03 }}
+    transition={{ type: "spring", stiffness: 300, damping: 30 }}
   >
-    <motion.div layout className="flex flex-col gap-2">
-      <h3 className="text-xl sm:text-2xl font-semibold text-white">{title}</h3>
-    </motion.div>
-  </motion.div>
+    {/* Glossy shine overlay */}
+    <span
+      className="pointer-events-none absolute inset-0 rounded-3xl"
+      style={{
+        background: 'linear-gradient(180deg, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0.06) 30%, rgba(0,0,0,0) 70%)',
+        zIndex: 2,
+        mixBlendMode: 'lighten',
+      }}
+    />
+    {/* Spotlight gradient overlay */}
+    <span
+      className={`pointer-events-none absolute inset-0 transition-opacity duration-300 ${isSpotlit ? 'opacity-100' : 'opacity-0'}`}
+      style={{
+        background: 'radial-gradient(circle at var(--spot-x, 50%) var(--spot-y, 50%), rgba(34,211,238,0.18) 0%, rgba(34,211,238,0.08) 60%, transparent 100%)',
+        zIndex: 1,
+      }}
+    />
+    <div className="relative flex h-full w-full flex-col justify-center items-center overflow-hidden rounded-3xl px-4 py-2 md:p-6 z-10">
+      <motion.h3
+        className={`text-lg md:text-xl font-semibold font-sans tracking-tight text-white text-center transition-all duration-300 ${isSpotlit ? 'text-cyan-300 translate-y-[-4px]' : ''}`}
+        animate={isSpotlit ? { y: -4, color: '#67e8f9' } : { y: 0, color: '#fff' }}
+        transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+      >
+        {title}
+      </motion.h3>
+    </div>
+  </motion.li>
 );
+
+// Add subtle cyan glow effect styles
+if (typeof window !== "undefined") {
+  const style = document.createElement('style');
+  style.innerHTML = `
+    .glowing-cyan-border {
+      border: 2px solid transparent;
+      background: radial-gradient(circle at 50% 50%, rgba(34,211,238,0.18) 0%, rgba(34,211,238,0.08) 60%, transparent 100%);
+      filter: blur(6px);
+      opacity: 0.7;
+      z-index: 0;
+      transition: opacity 0.3s;
+    }
+  `;
+  if (!document.head.querySelector('style[data-glow-cyan]')) {
+    style.setAttribute('data-glow-cyan', 'true');
+    document.head.appendChild(style);
+  }
+}
 
 const ExpandedProjectModal = ({ title, description, git, technologies, onClose }) => (
   <motion.div
@@ -155,6 +205,60 @@ const ExpandedProjectModal = ({ title, description, git, technologies, onClose }
 
 const Projects = () => {
   const [openIndex, setOpenIndex] = useState(null);
+  const [spotlitIndex, setSpotlitIndex] = useState(null);
+  const gridRef = useRef(null);
+  const cardRefs = useRef([]);
+
+  // Mouse/touch spotlight logic
+  useEffect(() => {
+    const grid = gridRef.current;
+    if (!grid) return;
+
+    const handleMove = (e) => {
+      let x, y;
+      if (e.touches && e.touches[0]) {
+        x = e.touches[0].clientX;
+        y = e.touches[0].clientY;
+      } else {
+        x = e.clientX;
+        y = e.clientY;
+      }
+      const rect = grid.getBoundingClientRect();
+      const relX = x - rect.left;
+      const relY = y - rect.top;
+      // Find closest card
+      let minDist = Infinity;
+      let closest = null;
+      cardRefs.current.forEach((ref, idx) => {
+        if (!ref) return;
+        const r = ref.getBoundingClientRect();
+        const cx = r.left - rect.left + r.width / 2;
+        const cy = r.top - rect.top + r.height / 2;
+        const dist = Math.hypot(cx - relX, cy - relY);
+        if (dist < minDist) {
+          minDist = dist;
+          closest = idx;
+        }
+        // Set CSS vars for spotlight position
+        if (ref) {
+          ref.style.setProperty('--spot-x', `${((relX - (r.left - rect.left)) / r.width) * 100}%`);
+          ref.style.setProperty('--spot-y', `${((relY - (r.top - rect.top)) / r.height) * 100}%`);
+        }
+      });
+      setSpotlitIndex(closest);
+    };
+    const handleLeave = () => setSpotlitIndex(null);
+    grid.addEventListener('mousemove', handleMove);
+    grid.addEventListener('touchmove', handleMove);
+    grid.addEventListener('mouseleave', handleLeave);
+    grid.addEventListener('touchend', handleLeave);
+    return () => {
+      grid.removeEventListener('mousemove', handleMove);
+      grid.removeEventListener('touchmove', handleMove);
+      grid.removeEventListener('mouseleave', handleLeave);
+      grid.removeEventListener('touchend', handleLeave);
+    };
+  }, []);
 
   return (
     <>
@@ -165,17 +269,23 @@ const Projects = () => {
           transition={{ duration: 0.6 }}
           className="container mx-auto py-6 px-2 sm:px-4 flex-grow"
         >
-          <h2 className="text-2xl xs:text-3xl sm:text-4xl font-bold text-white mb-6 sm:mb-10 text-center">Projects</h2>
+          <h2 className="text-2xl xs:text-3xl sm:text-4xl font-bold text-cyan-400 mb-6 sm:mb-10 text-center">Projects</h2>
           <h3 className="text-base xs:text-lg sm:text-xl text-white mb-6 sm:mb-10 text-center">Engineering empathy into every line of code. Building with purpose, not just logic. </h3>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 max-w-6xl mx-auto">
+          <ul
+            ref={gridRef}
+            className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 items-stretch bg-transparent rounded-3xl"
+            style={{ touchAction: 'pan-y', backgroundClip: 'padding-box' }}
+          >
             {project.map((item, index) => (
               <ProjectCard
                 key={index}
                 title={item.title}
                 onClick={() => setOpenIndex(index)}
+                isSpotlit={spotlitIndex === index}
+                cardRef={el => (cardRefs.current[index] = el)}
               />
             ))}
-          </div>
+          </ul>
         </motion.div>
         <AnimatePresence>
           {openIndex !== null && (
