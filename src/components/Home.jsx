@@ -60,11 +60,11 @@ const Home = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 1 }}
-              className='text-4xl xs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold mt-2 text-center break-words'
+              className='text-3xl xs:text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-extrabold mt-2 text-center break-words leading-tight sm:leading-tight md:leading-tight'
             >
               Hi, I'm&nbsp;<span className='text-cyan-400 font-extrabold'>{text}</span>
             </motion.h1>
-            <p className='mt-3 text-base xs:text-lg sm:text-xl text-center max-w-xl'>
+            <p className='mt-2 sm:mt-3 text-sm xs:text-base sm:text-xl text-center max-w-xs xs:max-w-xl'>
               I turn ideas into fast, responsive, and reliable full-stack web applications.
             </p>
           </div>      
@@ -75,7 +75,7 @@ const Home = () => {
             initial={{ y: 0 }}
             animate={{ y: [0, 16, 0] }}
             transition={{ duration: 1.2, repeat: Infinity, ease: 'easeInOut' }}
-            className="mx-auto mb-1 -mt-20 px-8 py-3 rounded-full bg-white text-black font-bold text-lg shadow-lg border-2 border-black/80 hover:bg-cyan-400 hover:text-white transition-colors duration-200 flex items-center justify-center"
+            className="mx-auto mb-2 -mt-16 px-6 py-2 xs:px-8 xs:py-3 rounded-full bg-white text-black font-bold text-base xs:text-lg shadow-lg border-2 border-black/80 hover:bg-cyan-400 hover:text-white transition-colors duration-200 flex items-center justify-center"
             style={{ position: 'relative', zIndex: 50, pointerEvents: 'auto' }}
             onClick={handleScrollToSection}
           >
