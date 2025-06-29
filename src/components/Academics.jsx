@@ -111,6 +111,15 @@ const Academics = () => {
   const [cardHeight, setCardHeight] = useState(getCardHeight());
   const [cardSpacing, setCardSpacing] = useState(getCardSpacing());
 
+  // Swipe state
+  const [touchStartX, setTouchStartX] = useState(null);
+  const [touchStartY, setTouchStartY] = useState(null);
+  const [touchMoved, setTouchMoved] = useState(false);
+  const [mouseDown, setMouseDown] = useState(false);
+  const [mouseStartX, setMouseStartX] = useState(null);
+  const [mouseStartY, setMouseStartY] = useState(null);
+  const [mouseMoved, setMouseMoved] = useState(false);
+
   // Responsive card height and spacing
   React.useEffect(() => {
     const handleResize = () => {
@@ -127,9 +136,94 @@ const Academics = () => {
     if (e.key === 'ArrowRight') setActive((prev) => (prev + 1) % N);
   };
 
+  // Touch/swipe handlers
+  const handleTouchStart = (e) => {
+    if (e.touches && e.touches.length === 1) {
+      setTouchStartX(e.touches[0].clientX);
+      setTouchStartY(e.touches[0].clientY);
+      setTouchMoved(false);
+    }
+  };
+  const handleTouchMove = (e) => {
+    if (!touchStartX || !touchStartY) return;
+    const dx = e.touches[0].clientX - touchStartX;
+    const dy = e.touches[0].clientY - touchStartY;
+    if (Math.abs(dx) > 10 && Math.abs(dx) > Math.abs(dy)) {
+      setTouchMoved(true);
+    }
+  };
+  const handleTouchEnd = (e) => {
+    if (!touchStartX || !touchMoved) return;
+    const touch = e.changedTouches[0];
+    const dx = touch.clientX - touchStartX;
+    if (Math.abs(dx) > 40) {
+      if (dx < 0) {
+        // Swipe left
+        setActive((prev) => (prev + 1) % N);
+      } else {
+        // Swipe right
+        setActive((prev) => (prev - 1 + N) % N);
+      }
+    }
+    setTouchStartX(null);
+    setTouchStartY(null);
+    setTouchMoved(false);
+  };
+
+  // Mouse drag handlers for desktop swipe
+  const handleMouseDown = (e) => {
+    if (e.button !== 0) return; // Only left click
+    setMouseDown(true);
+    setMouseStartX(e.clientX);
+    setMouseStartY(e.clientY);
+    setMouseMoved(false);
+  };
+  const handleMouseMove = (e) => {
+    if (!mouseDown || mouseStartX === null || mouseStartY === null) return;
+    const dx = e.clientX - mouseStartX;
+    const dy = e.clientY - mouseStartY;
+    if (Math.abs(dx) > 10 && Math.abs(dx) > Math.abs(dy)) {
+      setMouseMoved(true);
+    }
+  };
+  const handleMouseUp = (e) => {
+    if (!mouseDown || mouseStartX === null || !mouseMoved) return;
+    const dx = e.clientX - mouseStartX;
+    if (Math.abs(dx) > 40) {
+      if (dx < 0) {
+        // Drag left
+        setActive((prev) => (prev + 1) % N);
+      } else {
+        // Drag right
+        setActive((prev) => (prev - 1 + N) % N);
+      }
+    }
+    setMouseDown(false);
+    setMouseStartX(null);
+    setMouseStartY(null);
+    setMouseMoved(false);
+  };
+  // Prevent unwanted text selection while dragging
+  const handleDragStart = (e) => {
+    e.preventDefault();
+    return false;
+  };
+
   return (
     <div className="h-screen flex flex-col bg-black">
-      <div className="flex-1 flex flex-col items-center justify-start relative overflow-hidden pt-2 xs:pt-3 sm:pt-4 pb-4 xs:pb-6 sm:pb-8 select-none" tabIndex={0} onKeyDown={handleKeyDown}>
+      <div
+        className="flex-1 flex flex-col items-center justify-start relative overflow-hidden pt-2 xs:pt-3 sm:pt-4 pb-4 xs:pb-6 sm:pb-8 select-none"
+        tabIndex={0}
+        onKeyDown={handleKeyDown}
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
+        onMouseDown={handleMouseDown}
+        onMouseMove={handleMouseMove}
+        onMouseUp={handleMouseUp}
+        onMouseLeave={handleMouseUp}
+        onDragStart={handleDragStart}
+      >
         <AnimatedBackground />
         <div className="w-full flex flex-col items-center justify-start mt-16 xs:mt-24 sm:mt-20 mb-4 xs:mb-6 sm:mb-8">
           <h1 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl font-extrabold text-cyan-400 mb-2 text-center drop-shadow-lg px-4" style={{letterSpacing:'-0.02em'}}>Academics</h1>
@@ -179,8 +273,7 @@ const Academics = () => {
           </div>
           
           <div className="text-center text-gray-400 text-xs font-medium z-10 max-w-sm xs:max-w-lg mx-auto flex items-center justify-center gap-1 px-4">
-            <span className="text-xs xs:text-sm">&#8592;</span>
-            <span>Click the dots to navigate through my academic journey.</span>
+            <span>Click the dots or swipe/drag to navigate through my academic journey.</span>
           </div>
         </div>
       </div>
