@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import Footer from './Footer';
 
@@ -29,45 +29,45 @@ const academics = [
   },
 ];
 
-// Responsive card width and spacing
-const getCardWidth = () => {
+// Responsive card height and spacing for vertical layout
+const getCardHeight = () => {
   if (typeof window !== 'undefined') {
-    if (window.innerWidth < 400) return 260;
-    if (window.innerWidth < 640) return 300;
-    if (window.innerWidth < 900) return 380;
+    if (window.innerWidth < 400) return 180;
+    if (window.innerWidth < 640) return 200;
+    if (window.innerWidth < 900) return 220;
   }
-  return 520;
+  return 240;
 };
 const getCardSpacing = () => {
   if (typeof window !== 'undefined') {
-    if (window.innerWidth < 400) return 270;
-    if (window.innerWidth < 640) return 320;
-    if (window.innerWidth < 900) return 400;
+    if (window.innerWidth < 400) return 200;
+    if (window.innerWidth < 640) return 240;
+    if (window.innerWidth < 900) return 280;
   }
-  return 420;
+  return 320;
 };
 
-const CarouselPanel = ({ item, style, isActive, cardWidth }) => (
+const CarouselPanel = ({ item, style, isActive, cardHeight }) => (
   <motion.div
-    className={`absolute top-1/2 left-1/2 w-full max-w-[420px] sm:max-w-[520px] h-auto flex flex-col items-center justify-center px-5 sm:px-10 py-7 sm:py-12 select-none pointer-events-auto bg-neutral-900/95 border border-white/10 rounded-2xl transition-shadow duration-300 z-10 overflow-hidden
-      ${isActive ? 'shadow-[0_4px_32px_0_rgba(34,211,238,0.18)] ring-2 ring-cyan-400/60' : ''}`}
+    className={`absolute top-1/2 left-1/2 w-full max-w-[180px] xs:max-w-[200px] sm:max-w-[220px] md:max-w-[250px] h-auto flex flex-col items-center justify-center px-2 xs:px-3 sm:px-4 py-4 xs:py-5 sm:py-6 select-none pointer-events-auto bg-neutral-900/95 border border-white/10 rounded-lg xs:rounded-xl transition-all duration-300 z-10 overflow-hidden backdrop-blur-sm
+      ${isActive ? 'shadow-[0_6px_30px_0_rgba(34,211,238,0.25)] ring-2 ring-cyan-400/60 shadow-cyan-400/20' : 'shadow-[0_4px_20px_0_rgba(0,0,0,0.3)]'}`}
     style={style}
     initial={false}
   >
-    <div className="text-[1.1rem] xs:text-xl sm:text-2xl md:text-3xl lg:text-4xl font-extrabold tracking-tight text-white mb-2 leading-none text-center whitespace-pre-line relative w-full break-words">
+    <div className="text-xs xs:text-sm sm:text-base md:text-lg font-extrabold tracking-tight text-white mb-1 xs:mb-2 leading-none text-center whitespace-pre-line relative w-full break-words">
       <span className="relative z-10 block w-full break-words">
         {item.school}
       </span>
-      <span className="block mx-auto mt-2 h-1 w-16 rounded-full bg-gradient-to-r from-cyan-400 via-cyan-300 to-cyan-400 opacity-80" />
+      <span className="block mx-auto mt-1 xs:mt-2 h-0.5 w-6 xs:w-8 rounded-full bg-gradient-to-r from-cyan-400 via-cyan-300 to-cyan-400 opacity-80" />
     </div>
-    <div className="text-xs xs:text-sm sm:text-base md:text-xl font-semibold text-gray-200 mb-1 text-center w-full break-words">{item.title}</div>
-    <div className="text-xs sm:text-sm md:text-lg text-gray-400 mb-2 text-center w-full break-words">{item.domain}</div>
-    <div className="text-xs sm:text-base md:text-2xl font-mono font-bold text-gray-100 mb-4 text-center tracking-widest w-full break-words">{item.year}</div>
+    <div className="text-xs font-semibold text-gray-200 mb-1 text-center w-full break-words">{item.title}</div>
+    <div className="text-xs text-gray-400 mb-1 xs:mb-2 text-center w-full break-words">{item.domain}</div>
+    <div className="text-xs xs:text-sm font-mono font-bold text-gray-100 mb-2 xs:mb-3 text-center tracking-widest w-full break-words">{item.year}</div>
     <a
       href={item.link}
       target="_blank"
       rel="noopener noreferrer"
-      className="inline-block text-xs sm:text-sm font-medium text-gray-300 hover:text-white underline underline-offset-4 transition-colors duration-200 w-full break-words"
+      className="inline-block text-xs font-medium text-gray-300 hover:text-white underline underline-offset-2 transition-colors duration-200 w-full break-words"
     >
       {item.linkText} ↗
     </a>
@@ -108,98 +108,80 @@ const AnimatedBackground = () => (
 const Academics = () => {
   const [active, setActive] = useState(0); // Start at the first panel
   const N = academics.length;
-  const [cardWidth, setCardWidth] = useState(getCardWidth());
+  const [cardHeight, setCardHeight] = useState(getCardHeight());
   const [cardSpacing, setCardSpacing] = useState(getCardSpacing());
 
-  // Responsive card width and spacing
+  // Responsive card height and spacing
   React.useEffect(() => {
     const handleResize = () => {
-      setCardWidth(getCardWidth());
+      setCardHeight(getCardHeight());
       setCardSpacing(getCardSpacing());
     };
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  // Wheel navigation
-  const handleWheel = (e) => {
-    if (e.deltaY < 0) {
-      setActive((prev) => (prev - 1 + N) % N);
-    } else if (e.deltaY > 0) {
-      setActive((prev) => (prev + 1) % N);
-    }
-  };
-
-  // Drag navigation
-  const dragStartX = useRef(0);
-  const dragActive = useRef(false);
-
-  const handlePointerDown = (e) => {
-    dragStartX.current = e.clientX || (e.touches && e.touches[0].clientX);
-    dragActive.current = true;
-  };
-  const handlePointerMove = (e) => {
-    if (!dragActive.current) return;
-    const clientX = e.clientX || (e.touches && e.touches[0].clientX);
-    if (clientX - dragStartX.current > 40) {
-      setActive((prev) => (prev - 1 + N) % N);
-      dragActive.current = false;
-    } else if (clientX - dragStartX.current < -40) {
-      setActive((prev) => (prev + 1) % N);
-      dragActive.current = false;
-    }
-  };
-  const handlePointerUp = () => {
-    dragActive.current = false;
-  };
-
-  // Keyboard support
+  // Keyboard support (horizontal)
   const handleKeyDown = (e) => {
     if (e.key === 'ArrowLeft') setActive((prev) => (prev - 1 + N) % N);
     if (e.key === 'ArrowRight') setActive((prev) => (prev + 1) % N);
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-black">
-      <div className="flex-1 flex flex-col items-center justify-center relative overflow-hidden pt-24 pb-20 select-none" tabIndex={0} onKeyDown={handleKeyDown}>
+    <div className="h-screen flex flex-col bg-black">
+      <div className="flex-1 flex flex-col items-center justify-start relative overflow-hidden pt-2 xs:pt-3 sm:pt-4 pb-4 xs:pb-6 sm:pb-8 select-none" tabIndex={0} onKeyDown={handleKeyDown}>
         <AnimatedBackground />
-        <h1 className="text-4xl sm:text-5xl font-extrabold text-cyan-400 mb-2 text-center drop-shadow-lg" style={{letterSpacing:'-0.02em'}}>Academics</h1>
-        <p className="text-lg md:text-xl font-light text-neutral-200 text-center max-w-2xl mb-6">
-          My academic journey reflects a commitment to excellence and a passion for learning across diverse disciplines.
-        </p>
-        <div
-          className="relative w-full max-w-6xl h-[220px] xs:h-[240px] sm:h-[300px] md:h-[340px] flex items-center justify-center z-10 mb-8"
-          onWheel={handleWheel}
-          onPointerDown={handlePointerDown}
-          onPointerMove={handlePointerMove}
-          onPointerUp={handlePointerUp}
-          onTouchStart={handlePointerDown}
-          onTouchMove={handlePointerMove}
-          onTouchEnd={handlePointerUp}
-          style={{cursor:'grab'}}
-        >
-          {academics.map((item, i) => {
-            const offset = i - active;
-            return (
-              <CarouselPanel
-                key={i + '-' + item.school}
-                item={item}
-                isActive={offset === 0}
-                cardWidth={cardWidth}
-                style={{
-                  transform: `translate(-50%, -50%) translateX(${offset * cardSpacing}px)`,
-                  opacity: Math.abs(offset) > 2 ? 0 : 1,
-                  zIndex: 100 - Math.abs(offset),
-                  pointerEvents: offset === 0 ? 'auto' : 'none',
-                  transition: 'transform 0.18s cubic-bezier(.7,.2,.2,1), opacity 0.18s',
-                }}
-              />
-            );
-          })}
+        <div className="w-full flex flex-col items-center justify-start mt-16 xs:mt-24 sm:mt-20 mb-4 xs:mb-6 sm:mb-8">
+          <h1 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl font-extrabold text-cyan-400 mb-2 text-center drop-shadow-lg px-4" style={{letterSpacing:'-0.02em'}}>Academics</h1>
+          <p className="text-sm xs:text-base md:text-lg font-light text-neutral-200 text-center max-w-lg xs:max-w-xl mb-2 xs:mb-3 px-4">
+            My academic journey reflects a commitment to excellence and a passion for learning across diverse disciplines.
+          </p>
         </div>
-        <div className="mt-2 text-center text-gray-400 text-base font-medium z-10 max-w-xl mx-auto flex items-center justify-center gap-2">
-          <span className="text-lg">&#8592;</span>
-          <span>Swipe left to go through my academic journey.</span>
+        <div className="flex-1 flex flex-col items-center justify-center">
+          <div
+            className="relative w-full max-w-4xl xs:max-w-5xl h-[220px] xs:h-[240px] sm:h-[260px] md:h-[280px] flex items-center justify-center z-10 mb-3 xs:mb-4"
+          >
+            {academics.map((item, i) => {
+              const offset = i - active;
+              const opacity = Math.abs(offset) > 1 ? 0 : Math.max(0.5, 1 - Math.abs(offset) * 0.5);
+              return (
+                <CarouselPanel
+                  key={i + '-' + item.school}
+                  item={item}
+                  isActive={offset === 0}
+                  cardHeight={cardHeight}
+                  style={{
+                    transform: `translate(-50%, -50%) translateX(${offset * cardSpacing}px)`,
+                    opacity: opacity,
+                    zIndex: 100 - Math.abs(offset),
+                    pointerEvents: offset === 0 ? 'auto' : 'none',
+                    transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                  }}
+                />
+              );
+            })}
+          </div>
+          
+          {/* Three dots navigation */}
+          <div className="flex items-center justify-center gap-1.5 xs:gap-2 mb-2 z-10">
+            {academics.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => setActive(i)}
+                className={`w-2 xs:w-2.5 h-2 xs:h-2.5 rounded-full transition-all duration-300 cursor-pointer ${
+                  i === active 
+                    ? 'bg-cyan-400 shadow-[0_0_6px_rgba(34,211,238,0.5)] xs:shadow-[0_0_8px_rgba(34,211,238,0.5)]' 
+                    : 'bg-gray-500 hover:bg-gray-400'
+                }`}
+                aria-label={`Go to card ${i + 1}`}
+              />
+            ))}
+          </div>
+          
+          <div className="text-center text-gray-400 text-xs font-medium z-10 max-w-sm xs:max-w-lg mx-auto flex items-center justify-center gap-1 px-4">
+            <span className="text-xs xs:text-sm">&#8592;</span>
+            <span>Click the dots to navigate through my academic journey.</span>
+          </div>
         </div>
       </div>
       <Footer />
