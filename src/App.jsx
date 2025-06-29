@@ -46,7 +46,6 @@ function App() {
               texts={["My Portfolio"]}
               font={{
                 fontFamily: "Inter, sans-serif",
-                fontSize: "70px",
                 fontWeight: 600
               }}
               color="rgb(255, 255, 255)"
