@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import Footer from './Footer';
+import { BackgroundPaths } from './ui/BackgroundPaths';
 
 const academics = [
   {
@@ -224,12 +225,49 @@ const Academics = () => {
         onMouseLeave={handleMouseUp}
         onDragStart={handleDragStart}
       >
-        <AnimatedBackground />
+        {/* Add the BackgroundPaths component behind AnimatedBackground */}
+        <div className="absolute inset-0 w-full h-full z-0">
+          <BackgroundPaths />
+        </div>
+        <div className="opacity-40">
+          <AnimatedBackground />
+        </div>
         <div className="w-full flex flex-col items-center justify-start mt-16 xs:mt-24 sm:mt-20 mb-4 xs:mb-6 sm:mb-8">
-          <h1 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl font-extrabold text-cyan-400 mb-2 text-center drop-shadow-lg px-4" style={{letterSpacing:'-0.02em'}}>Academics</h1>
-          <p className="text-sm xs:text-base md:text-lg font-light text-neutral-200 text-center max-w-lg xs:max-w-xl mb-2 xs:mb-3 px-4">
-            My academic journey reflects a commitment to excellence and a passion for learning across diverse disciplines.
-          </p>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 2 }}
+            className="max-w-4xl mx-auto"
+          >
+            <h1 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4 text-center tracking-tighter">
+              {"Academics".split("").map((letter, letterIndex) => (
+                <motion.span
+                  key={letterIndex}
+                  initial={{ y: 100, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  transition={{
+                    delay: letterIndex * 0.08,
+                    type: "spring",
+                    stiffness: 150,
+                    damping: 25,
+                  }}
+                  className="inline-block text-transparent bg-clip-text 
+                  bg-gradient-to-r from-cyan-400 to-cyan-200 
+                  drop-shadow-lg"
+                >
+                  {letter}
+                </motion.span>
+              ))}
+            </h1>
+            <motion.p 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 1.2, duration: 0.8 }}
+              className="text-sm xs:text-base md:text-lg font-light text-neutral-200 text-center max-w-lg xs:max-w-xl mb-2 xs:mb-3 px-4"
+            >
+              My academic journey reflects a commitment to excellence and a passion for learning across diverse disciplines.
+            </motion.p>
+          </motion.div>
         </div>
         <div className="flex-1 flex flex-col items-center justify-center">
           <div
