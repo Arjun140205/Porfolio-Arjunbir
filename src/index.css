@@ -298,3 +298,13 @@ html, body {
   animation: progressBar 3s ease-in-out forwards;
   transform-origin: left;
 }
+
+/* Hide scrollbar utility */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
