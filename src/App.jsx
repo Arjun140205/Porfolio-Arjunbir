@@ -9,19 +9,17 @@ import Experience from './components/Experience';
 import About from './components/About';
 import Projects from './components/Projects';
 import Contact from './components/Contact';
-import SpiralAnimation from './components/SpiralAnimation';
+import MacBookHelloAnimation from './components/MacBookHelloAnimation';
 import './index.css';
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
-  
-  // Skip directly to the spiral animation without showing "Welcome" and "to" steps
 
   return (
     <>
       {isLoading ? (
         <div className="fixed inset-0 bg-black z-[9999] flex flex-col items-center justify-center">
-          <SpiralAnimation
+          <MacBookHelloAnimation
             onComplete={() => setIsLoading(false)}
           />
         </div>
