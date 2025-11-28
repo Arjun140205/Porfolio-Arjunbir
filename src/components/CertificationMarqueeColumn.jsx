@@ -6,19 +6,11 @@ const CertificationCard = ({ cert }) => (
     <div className="font-bold text-lg text-purple-200 mb-1 tracking-tight leading-5">{cert.role}</div>
     <div className="text-blue-200 text-sm mb-2 leading-5">{cert.company}</div>
     <div className="text-xs text-gray-400 mb-3 leading-5">{cert.duration}</div>
-    <ul className="list-disc pl-4 text-xs text-white/90 mb-3">
+    <ul className="list-disc pl-4 text-xs text-white/90">
       {cert.points.map((point, idx) => (
         <li key={idx}>{point}</li>
       ))}
     </ul>
-    <a
-      href={cert.url}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="inline-block mt-2 px-4 py-2 bg-gradient-to-r from-cyan-400 to-cyan-600 text-black font-semibold rounded-full shadow hover:scale-105 transition-transform text-xs"
-    >
-      View Certificate
-    </a>
   </div>
 );
 
