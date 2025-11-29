@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Home from './components/Home';
 import Certifications from './components/Certifications';
@@ -9,6 +8,10 @@ import Experience from './components/Experience';
 import About from './components/About';
 import Projects from './components/Projects';
 import Contact from './components/Contact';
+import Footer from './components/Footer';
+import SectionDivider from './components/SectionDivider';
+import ScrollProgress from './components/ScrollProgress';
+import TopProgressBar from './components/TopProgressBar';
 import MacBookHelloAnimation from './components/MacBookHelloAnimation';
 import './index.css';
 
@@ -24,23 +27,60 @@ function App() {
           />
         </div>
       ) : (
-        <Router>
-          <div className="flex flex-col min-h-screen">
-            <Navbar />
-            <main className="flex-grow">
-              <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/about" element={<About />} />
-                <Route path="/academics" element={<Academics />} />
-                <Route path="/certifications" element={<Certifications />} />
-                <Route path="/projects" element={<Projects />} />
-                <Route path="/experience" element={<Experience />} />
-                <Route path="/skills" element={<Skills />} />
-                <Route path="/contact" element={<Contact />} />
-              </Routes>
-            </main>
-          </div>
-        </Router>
+        <div className="flex flex-col min-h-screen scroll-smooth">
+          <TopProgressBar />
+          <Navbar />
+          <ScrollProgress />
+          <main className="flex-grow">
+            {/* Single scrolling page with all sections */}
+            <section id="home">
+              <Home />
+            </section>
+
+            <SectionDivider />
+
+            <section id="about">
+              <About />
+            </section>
+
+            <SectionDivider />
+
+            <section id="academics">
+              <Academics />
+            </section>
+
+            <SectionDivider />
+
+            <section id="certifications">
+              <Certifications />
+            </section>
+
+            <SectionDivider />
+
+            <section id="projects">
+              <Projects />
+            </section>
+
+            <SectionDivider />
+
+            <section id="experience">
+              <Experience />
+            </section>
+
+            <SectionDivider />
+
+            <section id="skills">
+              <Skills />
+            </section>
+
+            <SectionDivider />
+
+            <section id="contact">
+              <Contact />
+            </section>
+          </main>
+          <Footer />
+        </div>
       )}
     </>
   );
