@@ -4,7 +4,6 @@ import { motion } from 'framer-motion';
 const sections = [
   { id: 'home', label: 'Home', icon: '🏠' },
   { id: 'about', label: 'About', icon: '👤' },
-  { id: 'academics', label: 'Academics', icon: '🎓' },
   { id: 'certifications', label: 'Certifications', icon: '📜' },
   { id: 'projects', label: 'Projects', icon: '💻' },
   { id: 'experience', label: 'Experience', icon: '💼' },
