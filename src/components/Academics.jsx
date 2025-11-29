@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { BackgroundPaths } from './ui/BackgroundPaths';
 
 const academics = [
   {
@@ -224,10 +223,6 @@ const Academics = () => {
         onMouseLeave={handleMouseUp}
         onDragStart={handleDragStart}
       >
-        {/* Add the BackgroundPaths component behind AnimatedBackground */}
-        <div className="absolute inset-0 w-full h-full z-0">
-          <BackgroundPaths />
-        </div>
         <div className="opacity-40">
           <AnimatedBackground />
         </div>
