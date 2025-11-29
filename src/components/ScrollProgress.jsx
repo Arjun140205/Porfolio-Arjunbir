@@ -4,10 +4,10 @@ import { motion } from 'framer-motion';
 const sections = [
   { id: 'home', label: 'Home', icon: '🏠' },
   { id: 'about', label: 'About', icon: '👤' },
-  { id: 'certifications', label: 'Certifications', icon: '📜' },
   { id: 'projects', label: 'Projects', icon: '💻' },
-  { id: 'experience', label: 'Experience', icon: '💼' },
   { id: 'skills', label: 'Skills', icon: '⚡' },
+  { id: 'certifications', label: 'Certifications', icon: '📜' },
+  { id: 'experience', label: 'Experience', icon: '💼' },
   { id: 'contact', label: 'Contact', icon: '📧' },
 ];
 
