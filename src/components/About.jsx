@@ -59,12 +59,11 @@ const About = () => {
                   <div className="absolute inset-0 rounded-full bg-black/10 z-20 pointer-events-none" />
                 </div>
                 <h1 className="text-3xl font-bold text-white mt-2">Arjunbir Singh</h1>
-                <div className="text-lg text-neutral-400 mb-1">Arjun140205 · he/him</div>
                 <div className="text-center lg:text-left text-neutral-300 mb-4">Your attitude is a product of your belief system.</div>
                 <div className="flex flex-col items-center lg:items-start gap-2 text-neutral-400">
                   <div className="flex items-center gap-2">
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 12.414a4 4 0 10-5.657 5.657l4.243 4.243a8 8 0 1011.314-11.314l-4.243 4.243z" /></svg>
-                    Chandigarh,Punjab
+                    India
                   </div>
                   <div className="flex items-center gap-2">
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 12v1m0 4v.01M8 12v1m0 4v.01M12 8v.01M12 16v.01M12 12v.01M12 20v.01M12 4v.01" /></svg>
