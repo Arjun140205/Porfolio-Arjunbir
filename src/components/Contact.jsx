@@ -3,6 +3,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { HighlightGroup, HighlighterItem, Particles } from "./ui/highlighter.jsx";
 import { useAnimate } from "framer-motion";
+import soundManager from '../utils/soundEffects';
 
 const Contact = () => {
   const [scope, animate] = useAnimate();
@@ -130,6 +131,8 @@ const Contact = () => {
                           {/* Call Button */}
                           <a
                             href="tel:6005168257"
+                            onClick={() => soundManager.play('buttonClick')}
+                            onMouseEnter={() => soundManager.play('hover')}
                             className="flex items-center gap-3 px-8 py-4 rounded-full bg-gray-900/70 border border-gray-800 shadow-lg hover:shadow-cyan-400/30 hover:border-cyan-400 transition-all duration-200 text-white font-semibold text-lg backdrop-blur-md focus:outline-none focus:ring-2 focus:ring-cyan-400"
                             title="Call Arjunbir Singh"
                           >
@@ -141,6 +144,8 @@ const Contact = () => {
                           {/* Email Button */}
                           <a
                             href="mailto:arjunbirsingh1699@gmail.com"
+                            onClick={() => soundManager.play('buttonClick')}
+                            onMouseEnter={() => soundManager.play('hover')}
                             className="flex items-center gap-3 px-8 py-4 rounded-full bg-gray-900/70 border border-gray-800 shadow-lg hover:shadow-cyan-400/30 hover:border-cyan-400 transition-all duration-200 text-white font-semibold text-lg backdrop-blur-md focus:outline-none focus:ring-2 focus:ring-cyan-400"
                             title="Email Arjunbir Singh"
                           >
@@ -154,6 +159,8 @@ const Contact = () => {
                             href="https://wa.me/919103203635"
                             target="_blank"
                             rel="noopener noreferrer"
+                            onClick={() => soundManager.play('buttonClick')}
+                            onMouseEnter={() => soundManager.play('hover')}
                             className="flex items-center gap-3 px-8 py-4 rounded-full bg-gray-900/70 border border-gray-800 shadow-lg hover:shadow-cyan-400/30 hover:border-cyan-400 transition-all duration-200 text-white font-semibold text-lg backdrop-blur-md focus:outline-none focus:ring-2 focus:ring-cyan-400"
                             title="WhatsApp Arjunbir Singh"
                           >
@@ -168,6 +175,8 @@ const Contact = () => {
                             href="https://www.linkedin.com/in/arjunbir-singh/"
                             target="_blank"
                             rel="noopener noreferrer"
+                            onClick={() => soundManager.play('buttonClick')}
+                            onMouseEnter={() => soundManager.play('hover')}
                             className="flex items-center gap-3 px-8 py-4 rounded-full bg-gray-900/70 border border-gray-800 shadow-lg hover:shadow-cyan-400/30 hover:border-cyan-400 transition-all duration-200 text-white font-semibold text-lg backdrop-blur-md focus:outline-none focus:ring-2 focus:ring-cyan-400"
                             title="LinkedIn Arjunbir Singh"
                           >
