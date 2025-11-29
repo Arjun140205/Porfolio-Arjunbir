@@ -1,5 +1,17 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import {
+  ContainerScroll,
+  ContainerSticky,
+  GalleryContainer,
+  GalleryCol,
+} from "./blocks/animated-gallery";
+import jordanFitnessImg from "../assets/projects/jordanfitnessclub.png";
+import recipediaImg from "../assets/projects/recipedia.png";
+import unheardVoicesImg from "../assets/projects/unheardvoices.png";
+import cropifyPlaceholder from "../assets/projects/placeholder-cropify.svg";
+import voicelessPlaceholder from "../assets/projects/placeholder-voiceless.svg";
+import gmailPlaceholder from "../assets/projects/placeholder-gmail.svg";
 
 const techIcons = {
   HTML: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg",
@@ -25,107 +37,50 @@ const project = [
     description:
       "Jordan Fitness Club is a modern fitness application built using React, Node.js, and MongoDB. Users can track their workouts, nutrition, and progress.",
     git: "https://github.com/Arjun140205/Jordan-Fitness-Club",
-    technologies: ["HTML", "CSS", "JavaScript","Mongo", "React", "Rest API","Express","Node.js", ]
+    technologies: ["HTML", "CSS", "JavaScript","Mongo", "React", "Rest API","Express","Node.js"],
+    image: jordanFitnessImg
   },
   {
     title: "Cropify",
     description:
       "Cropify allows users to upload images and use cropping/editing tools. Built with React and Node.js for seamless image manipulation.",
     git: "https://github.com/Arjun140205/Crop-Yield-Predictor-",
-    technologies: ["HTML", "CSS", "JavaScript", "API"]
+    technologies: ["HTML", "CSS", "JavaScript", "API"],
+    image: cropifyPlaceholder
   },
   {
     title: "Voiceless-Boundaries",
     description:
       "A web application that helps professionals talk beyond their language boundaries by providing a platform for real-time translation ",
     git: "https://github.com/Arjun140205/Voiceless-Boundaries",
-    technologies: ["Next.js", "CSS", "JavaScript", "Tailwind", "API"]
+    technologies: ["Next.js", "CSS", "JavaScript", "Tailwind", "API"],
+    image: voicelessPlaceholder
   },
   {
     title: "Recipedia",
     description:
       "Search recipes by ingredients with a user-friendly UI. Built with React and integrated external recipe APIs.",
     git: "https://github.com/Arjun140205/Recipe-Finder-Reactapp",
-    technologies: ["HTML", "CSS", "JavaScript","Mongo", "React", "Rest API","Express","Node.js"]
+    technologies: ["HTML", "CSS", "JavaScript","Mongo", "React", "Rest API","Express","Node.js"],
+    image: recipediaImg
   },
   {
     title: "Unheard Voices",
     description:
       "A platform for sharing untold stories and experiences, fostering empathy and understanding.",
     git: "https://github.com/Arjun140205/Unheard-Voices",
-    technologies: ["HTML", "CSS", "JavaScript","Mongo", "React", "Rest API","Express","Node.js"]
+    technologies: ["HTML", "CSS", "JavaScript","Mongo", "React", "Rest API","Express","Node.js"],
+    image: unheardVoicesImg
   },
   {
     title: "Gmail genius",
     description:
       "An intelligent email management system that categorizes and prioritizes emails using AI and advanced Data Analytics.",
     git: "https://github.com/Arjun140205/Gmail-genius",
-    technologies: ["HTML", "CSS", "JavaScript", "React", "API","Google Cloud", "Node.js"]
+    technologies: ["HTML", "CSS", "JavaScript", "React", "API","Google Cloud", "Node.js"],
+    image: gmailPlaceholder
   }
 ];
-
-const ProjectCard = ({ title, onClick, isSpotlit, cardRef, onTouchStart, onMouseDown }) => (
-  <motion.li
-    layout
-    ref={cardRef}
-    onClick={onClick}
-    onTouchStart={onTouchStart}
-    onMouseDown={onMouseDown}
-    className={`relative w-full aspect-square md:aspect-auto h-36 md:h-44 lg:h-48 flex-shrink-0 list-none rounded-3xl group cursor-pointer transition-all duration-300 bg-black overflow-hidden ${isSpotlit ? 'z-10' : 'z-0'}`}
-    style={{
-      filter: isSpotlit ? 'brightness(1.15)' : 'brightness(0.85)',
-      transition: 'filter 0.3s',
-    }}
-    whileHover={{ scale: 1.03 }}
-    transition={{ type: "spring", stiffness: 300, damping: 30 }}
-  >
-    {/* Glossy shine overlay */}
-    <span
-      className="pointer-events-none absolute inset-0 rounded-3xl"
-      style={{
-        background: 'linear-gradient(180deg, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0.06) 30%, rgba(0,0,0,0) 70%)',
-        zIndex: 2,
-        mixBlendMode: 'lighten',
-      }}
-    />
-    {/* Spotlight gradient overlay */}
-    <span
-      className={`pointer-events-none absolute inset-0 transition-opacity duration-300 ${isSpotlit ? 'opacity-100' : 'opacity-0'}`}
-      style={{
-        background: 'radial-gradient(circle at var(--spot-x, 50%) var(--spot-y, 50%), rgba(34,211,238,0.18) 0%, rgba(34,211,238,0.08) 60%, transparent 100%)',
-        zIndex: 1,
-      }}
-    />
-    <div className="relative flex h-full w-full flex-col justify-center items-center overflow-hidden rounded-3xl px-4 py-2 md:p-6 z-10">
-      <motion.h3
-        className={`text-lg md:text-xl font-semibold font-sans tracking-tight text-white text-center transition-all duration-300 ${isSpotlit ? 'text-cyan-300 translate-y-[-4px]' : ''}`}
-        animate={isSpotlit ? { y: -4, color: '#67e8f9' } : { y: 0, color: '#fff' }}
-        transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-      >
-        {title}
-      </motion.h3>
-    </div>
-  </motion.li>
-);
-
-// Add subtle cyan glow effect styles
-if (typeof window !== "undefined") {
-  const style = document.createElement('style');
-  style.innerHTML = `
-    .glowing-cyan-border {
-      border: 2px solid transparent;
-      background: radial-gradient(circle at 50% 50%, rgba(34,211,238,0.18) 0%, rgba(34,211,238,0.08) 60%, transparent 100%);
-      filter: blur(6px);
-      opacity: 0.7;
-      z-index: 0;
-      transition: opacity 0.3s;
-    }
-  `;
-  if (!document.head.querySelector('style[data-glow-cyan]')) {
-    style.setAttribute('data-glow-cyan', 'true');
-    document.head.appendChild(style);
-  }
-}
 
 const ExpandedProjectModal = ({ title, description, git, technologies, onClose }) => (
   <motion.div
@@ -202,90 +157,119 @@ const ExpandedProjectModal = ({ title, description, git, technologies, onClose }
   </motion.div>
 );
 
+const ProjectCard = ({ project, onClick }) => (
+  <motion.div
+    onClick={onClick}
+    className="relative group cursor-pointer overflow-hidden rounded-2xl border border-neutral-800 hover:border-cyan-400/50 transition-all duration-300 aspect-[4/3]"
+    whileHover={{ scale: 1.02, y: -5 }}
+    transition={{ type: "spring", stiffness: 300, damping: 20 }}
+  >
+    {/* Project Image */}
+    <img
+      src={project.image}
+      alt={project.title}
+      className="w-full h-full object-cover"
+    />
+    
+    {/* Dark overlay on hover */}
+    <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+    
+    {/* Title overlay - always visible at bottom */}
+    <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 via-black/70 to-transparent p-4">
+      <h3 className="text-lg font-bold text-white group-hover:text-cyan-400 transition-colors">
+        {project.title}
+      </h3>
+    </div>
+    
+    {/* Hover content - centered */}
+    <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-6">
+      <div className="text-center">
+        <p className="text-white text-sm mb-4 line-clamp-3">
+          {project.description}
+        </p>
+        <div className="flex flex-wrap gap-2 justify-center">
+          {project.technologies.slice(0, 5).map((tech, idx) => (
+            <img
+              key={idx}
+              src={techIcons[tech] || techIcons.API}
+              alt={tech}
+              title={tech}
+              className="w-6 h-6 object-contain"
+            />
+          ))}
+        </div>
+      </div>
+    </div>
+  </motion.div>
+);
+
 const Projects = () => {
   const [openIndex, setOpenIndex] = useState(null);
-  const [spotlitIndex, setSpotlitIndex] = useState(null);
-  const gridRef = useRef(null);
-  const cardRefs = useRef([]);
 
-  // Mouse/touch spotlight logic
-  useEffect(() => {
-    const grid = gridRef.current;
-    if (!grid) return;
-
-    const handleMove = (e) => {
-      let x, y;
-      if (e.touches && e.touches[0]) {
-        x = e.touches[0].clientX;
-        y = e.touches[0].clientY;
-      } else {
-        x = e.clientX;
-        y = e.clientY;
-      }
-      const rect = grid.getBoundingClientRect();
-      const relX = x - rect.left;
-      const relY = y - rect.top;
-      // Find closest card
-      let minDist = Infinity;
-      let closest = null;
-      cardRefs.current.forEach((ref, idx) => {
-        if (!ref) return;
-        const r = ref.getBoundingClientRect();
-        const cx = r.left - rect.left + r.width / 2;
-        const cy = r.top - rect.top + r.height / 2;
-        const dist = Math.hypot(cx - relX, cy - relY);
-        if (dist < minDist) {
-          minDist = dist;
-          closest = idx;
-        }
-        // Set CSS vars for spotlight position
-        if (ref) {
-          ref.style.setProperty('--spot-x', `${((relX - (r.left - rect.left)) / r.width) * 100}%`);
-          ref.style.setProperty('--spot-y', `${((relY - (r.top - rect.top)) / r.height) * 100}%`);
-        }
-      });
-      setSpotlitIndex(closest);
-    };
-    const handleLeave = () => setSpotlitIndex(null);
-    grid.addEventListener('mousemove', handleMove);
-    grid.addEventListener('touchmove', handleMove);
-    grid.addEventListener('mouseleave', handleLeave);
-    grid.addEventListener('touchend', handleLeave);
-    return () => {
-      grid.removeEventListener('mousemove', handleMove);
-      grid.removeEventListener('touchmove', handleMove);
-      grid.removeEventListener('mouseleave', handleLeave);
-      grid.removeEventListener('touchend', handleLeave);
-    };
-  }, []);
+  // Split projects into 3 columns for the gallery
+  const col1 = project.filter((_, i) => i % 3 === 0);
+  const col2 = project.filter((_, i) => i % 3 === 1);
+  const col3 = project.filter((_, i) => i % 3 === 2);
 
   return (
     <>
-      <div className="min-h-screen bg-black pt-16">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="container mx-auto py-6 px-2 sm:px-4 flex-grow"
-        >
-          <h2 className="text-2xl xs:text-3xl sm:text-4xl font-bold text-cyan-400 mb-6 sm:mb-10 text-center">Projects</h2>
-          <h3 className="text-base xs:text-lg sm:text-xl text-white mb-6 sm:mb-10 text-center">Engineering empathy into every line of code. Building with purpose, not just logic. </h3>
-          <ul
-            ref={gridRef}
-            className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 items-stretch bg-transparent rounded-3xl"
-            style={{ touchAction: 'pan-y', backgroundClip: 'padding-box' }}
+      <div className="min-h-screen bg-black pt-16 pb-20">
+        <div className="container mx-auto px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-12"
           >
-            {project.map((item, index) => (
-              <ProjectCard
-                key={index}
-                title={item.title}
-                onClick={() => setOpenIndex(index)}
-                isSpotlit={spotlitIndex === index}
-                cardRef={el => (cardRefs.current[index] = el)}
-              />
-            ))}
-          </ul>
-        </motion.div>
+            <h2 className="text-4xl sm:text-5xl font-bold text-cyan-400 mb-4">
+              Projects
+            </h2>
+            <p className="text-lg sm:text-xl text-gray-300 max-w-3xl mx-auto">
+              Engineering empathy into every line of code. Building with purpose, not just logic.
+            </p>
+          </motion.div>
+
+          <ContainerScroll>
+            <ContainerSticky>
+              <GalleryContainer className="p-4">
+                {/* Column 1 */}
+                <GalleryCol yRange={["0%", "-15%"]}>
+                  {col1.map((proj, idx) => (
+                    <ProjectCard
+                      key={idx}
+                      project={proj}
+                      onClick={() => setOpenIndex(project.indexOf(proj))}
+                    />
+                  ))}
+                </GalleryCol>
+
+                {/* Column 2 */}
+                <GalleryCol yRange={["0%", "-25%"]}>
+                  {col2.map((proj, idx) => (
+                    <ProjectCard
+                      key={idx}
+                      project={proj}
+                      onClick={() => setOpenIndex(project.indexOf(proj))}
+                    />
+                  ))}
+                </GalleryCol>
+
+                {/* Column 3 */}
+                <GalleryCol yRange={["0%", "-10%"]}>
+                  {col3.map((proj, idx) => (
+                    <ProjectCard
+                      key={idx}
+                      project={proj}
+                      onClick={() => setOpenIndex(project.indexOf(proj))}
+                    />
+                  ))}
+                </GalleryCol>
+              </GalleryContainer>
+            </ContainerSticky>
+          </ContainerScroll>
+        </div>
+
         <AnimatePresence>
           {openIndex !== null && (
             <ExpandedProjectModal
