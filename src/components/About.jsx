@@ -2,7 +2,6 @@ import React from 'react';
 import { motion } from "framer-motion";
 import '../App.css';
 import ButtonLink from './ButtonLink';
-import Footer from './Footer';
 
 const About = () => {
   return (
@@ -123,7 +122,6 @@ const About = () => {
           </div>
         </section>
       </motion.div>
-      <Footer />
     </>
   );
 };
