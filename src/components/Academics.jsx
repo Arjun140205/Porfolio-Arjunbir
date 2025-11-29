@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import Footer from './Footer';
 import { BackgroundPaths } from './ui/BackgroundPaths';
 
 const academics = [
@@ -315,7 +314,6 @@ const Academics = () => {
           </div>
         </div>
       </div>
-      <Footer />
     </div>
   );
 };
