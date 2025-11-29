@@ -1,6 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import Footer from "./Footer";
 
 const techIcons = {
   HTML: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg",
@@ -296,7 +295,6 @@ const Projects = () => {
           )}
         </AnimatePresence>
       </div>
-      <Footer />
     </>
   );
 };
