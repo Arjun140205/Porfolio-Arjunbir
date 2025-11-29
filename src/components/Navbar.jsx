@@ -1,21 +1,52 @@
-import React, { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const navLinks = [
-  { text: "Home", to: "/" },
-  { text: "About", to: "/about" },
-  { text: "Academics", to: "/academics" },
-  { text: "Certifications", to: "/certifications" },
-  { text: "Projects", to: "/projects" },
-  { text: "Experience", to: "/experience" },
-  { text: "Skills", to: "/skills" },
-  { text: "Contact", to: "/contact" },
+  { text: "Home", to: "home" },
+  { text: "About", to: "about" },
+  { text: "Academics", to: "academics" },
+  { text: "Certifications", to: "certifications" },
+  { text: "Projects", to: "projects" },
+  { text: "Experience", to: "experience" },
+  { text: "Skills", to: "skills" },
+  { text: "Contact", to: "contact" },
 ];
 
 const Navbar = () => {
-  const location = useLocation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState('home');
+
+  // Smooth scroll function
+  const scrollToSection = (sectionId) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      setIsMenuOpen(false);
+    }
+  };
+
+  // Scroll spy to detect active section
+  useEffect(() => {
+    const handleScroll = () => {
+      const sections = navLinks.map(link => link.to);
+      const scrollPosition = window.scrollY + 100;
+
+      for (const sectionId of sections) {
+        const element = document.getElementById(sectionId);
+        if (element) {
+          const { offsetTop, offsetHeight } = element;
+          if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
+            setActiveSection(sectionId);
+            break;
+          }
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Initial check
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   return (
     <>
@@ -30,13 +61,13 @@ const Navbar = () => {
           </div>
           <div className="flex gap-2 lg:gap-4">
             {navLinks.map(link => (
-              <Link
+              <button
                 key={link.to}
-                to={link.to}
-                className={`px-3 py-1.5 text-white font-medium rounded-full transition-all duration-30 ease-in-out focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 text-sm whitespace-nowrap relative hover:bg-white/10 ${location.pathname === link.to ? 'bg-white/10' : ''}`}
+                onClick={() => scrollToSection(link.to)}
+                className={`px-3 py-1.5 text-white font-medium rounded-full transition-all duration-30 ease-in-out focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 text-sm whitespace-nowrap relative hover:bg-white/10 ${activeSection === link.to ? 'bg-white/10' : ''}`}
               >
                 {link.text}
-              </Link>
+              </button>
             ))}
           </div>
         </div>
@@ -91,14 +122,13 @@ const Navbar = () => {
               >
                 <div className="flex flex-col gap-2">
                   {navLinks.map(link => (
-                    <Link
+                    <button
                       key={link.to}
-                      to={link.to}
-                      onClick={() => setIsMenuOpen(false)}
-                      className={`px-5 py-3.5 text-white font-medium rounded-2xl transition-all duration-200 text-center hover:bg-white/10 ${location.pathname === link.to ? 'bg-cyan-500/20 border border-cyan-400/30' : ''}`}
+                      onClick={() => scrollToSection(link.to)}
+                      className={`px-5 py-3.5 text-white font-medium rounded-2xl transition-all duration-200 text-center hover:bg-white/10 w-full ${activeSection === link.to ? 'bg-cyan-500/20 border border-cyan-400/30' : ''}`}
                     >
                       {link.text}
-                    </Link>
+                    </button>
                   ))}
                 </div>
               </motion.div>
