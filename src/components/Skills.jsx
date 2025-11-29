@@ -6,7 +6,6 @@ import { SiExpress, SiTailwindcss, SiCplusplus } from "react-icons/si";
 import { BsCloudFill } from "react-icons/bs";
 import { TbBrain } from "react-icons/tb";
 import { AiOutlineTeam } from "react-icons/ai";
-import Footer from "./Footer";
 
 const skillCategories = [
   { id: "all", label: "All" },
@@ -195,7 +194,6 @@ const Skills = () => {
         </div>
       </div>
     </div>
-    <Footer />
     </>
   );
 };
