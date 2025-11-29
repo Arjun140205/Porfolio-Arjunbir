@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef } from 'react';
 import { name } from '../constants';
 import { motion } from "framer-motion";
 import Background from './Background';
-import Footer from './Footer';
 import { FaHtml5, FaCss3Alt, FaJs, FaReact, FaNodeJs, FaPython, FaGitAlt} from 'react-icons/fa';
 import { SiMongodb, SiMysql } from 'react-icons/si';
 
@@ -114,8 +113,6 @@ const Home = () => {
             <li>Integration of third party services such as Firebase/ MongoDB</li>
           </ul>
         </div>
-        {/* Footer at the end of the page */}
-        <Footer />
       </div>
     </>
   );
