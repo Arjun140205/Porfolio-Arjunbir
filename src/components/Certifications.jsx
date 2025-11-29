@@ -1,6 +1,5 @@
 import React from 'react';
 import { certifications } from '../constants';
-import Footer from './Footer';
 import CertificationMarqueeColumn from './CertificationMarqueeColumn';
 
 const splitCerts = (certs, n) => {
@@ -41,7 +40,6 @@ const Certifications = () => {
           />
               </div>
       </div>
-      <Footer />
     </>
   );
 };
