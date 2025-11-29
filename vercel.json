@@ -2,6 +2,7 @@
   "builds": [
     { "src": "package.json", "use": "@vercel/static-build" }
   ],
+  "installCommand": "npm ci --omit=dev",
   "routes": [
     { "src": "/(.*)", "dest": "/index.html" }
   ]
