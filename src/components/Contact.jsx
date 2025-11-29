@@ -3,7 +3,6 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { HighlightGroup, HighlighterItem, Particles } from "./ui/highlighter.jsx";
 import { useAnimate } from "framer-motion";
-import Footer from "./Footer";
 
 const Contact = () => {
   const [scope, animate] = useAnimate();
@@ -188,7 +187,6 @@ const Contact = () => {
         </div>
         <ToastContainer />
       </section>
-      <Footer />
     </>
   );
 };
