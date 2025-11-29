@@ -3,7 +3,6 @@
 import React from 'react';
 import { FaRegCalendarAlt } from 'react-icons/fa';
 import { motion } from 'framer-motion';
-import Footer from './Footer';
 
 const experiences = [
   {
@@ -131,7 +130,6 @@ const Experience = () => (
         })}
       </div>
     </div>
-    <Footer />
   </div>
 );
 
