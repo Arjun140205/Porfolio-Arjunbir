@@ -11,16 +11,17 @@ import Footer from './components/Footer';
 import SectionDivider from './components/SectionDivider';
 import ScrollProgress from './components/ScrollProgress';
 import TopProgressBar from './components/TopProgressBar';
+import SoundToggle from './components/SoundToggle';
 import MacBookHelloAnimation from './components/MacBookHelloAnimation';
 import './index.css';
 
 const menuItems = [
   { label: 'Home', ariaLabel: 'Navigate to Home', link: 'home' },
   { label: 'About', ariaLabel: 'Navigate to About', link: 'about' },
-  { label: 'Certifications', ariaLabel: 'Navigate to Certifications', link: 'certifications' },
   { label: 'Projects', ariaLabel: 'Navigate to Projects', link: 'projects' },
-  { label: 'Experience', ariaLabel: 'Navigate to Experience', link: 'experience' },
   { label: 'Skills', ariaLabel: 'Navigate to Skills', link: 'skills' },
+  { label: 'Certifications', ariaLabel: 'Navigate to Certifications', link: 'certifications' },
+  { label: 'Experience', ariaLabel: 'Navigate to Experience', link: 'experience' },
   { label: 'Contact', ariaLabel: 'Navigate to Contact', link: 'contact' },
 ];
 
@@ -62,6 +63,7 @@ function App() {
             }}
           />
           <ScrollProgress />
+          <SoundToggle />
           <main className="flex-grow">
             {/* Single scrolling page with all sections */}
             <section id="home">
@@ -76,26 +78,26 @@ function App() {
 
             <SectionDivider />
 
-            <section id="certifications">
-              <Certifications />
-            </section>
-
-            <SectionDivider />
-
             <section id="projects">
               <Projects />
             </section>
 
             <SectionDivider />
 
-            <section id="experience">
-              <Experience />
+            <section id="skills">
+              <Skills />
             </section>
 
             <SectionDivider />
 
-            <section id="skills">
-              <Skills />
+            <section id="certifications">
+              <Certifications />
+            </section>
+
+            <SectionDivider />
+
+            <section id="experience">
+              <Experience />
             </section>
 
             <SectionDivider />
