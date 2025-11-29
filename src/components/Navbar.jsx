@@ -21,15 +21,7 @@ const Navbar = () => {
     <>
       {/* Desktop Navigation */}
       <nav className="hidden md:block fixed top-6 left-1/2 -translate-x-1/2 z-[100]">
-        {/* Logo */}
-        <img
-          src="https://i.ibb.co/21hwZYtC/arjun1.png"
-          alt="Arjun"
-          className="fixed left-4 top-2 w-20 h-20 rounded-full border-2 border-white/20 shadow-xl bg-black/20 opacity-98 object-cover z-[101] transition-all duration-200"
-          style={{
-            filter: 'drop-shadow(0 4px 24px #23294655) brightness(1.10) contrast(1.10)',
-          }}
-        />
+        {/* Logo removed per request */}
         
         {/* Desktop pill navbar */}
         <div className="inline-flex items-center bg-[#18181b]/90 border border-white/10 shadow-xl rounded-full px-2 py-1 gap-3 backdrop-blur-none min-h-[44px]">
