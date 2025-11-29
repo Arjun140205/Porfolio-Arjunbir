@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import soundManager from '../utils/soundEffects';
 
 const navLinks = [
   { text: "Home", to: "home" },
@@ -16,7 +17,11 @@ const Navbar = () => {
   const [activeSection, setActiveSection] = useState('home');
 
   // Smooth scroll function
-  const scrollToSection = (sectionId) => {
+  const scrollToSection = (sectionId, fromMobile = false) => {
+    // Only play click sound if not from mobile (mobile plays it separately)
+    if (!fromMobile) {
+      soundManager.play('click');
+    }
     const element = document.getElementById(sectionId);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -63,6 +68,7 @@ const Navbar = () => {
               <button
                 key={link.to}
                 onClick={() => scrollToSection(link.to)}
+                onMouseEnter={() => soundManager.play('hover')}
                 className={`px-3 py-1.5 text-white font-medium rounded-full transition-all duration-30 ease-in-out focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 text-sm whitespace-nowrap relative hover:bg-white/10 ${activeSection === link.to ? 'bg-white/10' : ''}`}
               >
                 {link.text}
@@ -76,7 +82,11 @@ const Navbar = () => {
       <div className="md:hidden">
         {/* Hamburger menu button - fixed in top right */}
         <button
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          onClick={() => {
+            soundManager.play('pop');
+            setIsMenuOpen(!isMenuOpen);
+          }}
+          onMouseEnter={() => soundManager.play('hover')}
           className="fixed right-4 top-6 z-[101] flex items-center gap-2 bg-[#18181b]/90 border border-white/10 shadow-xl rounded-full px-4 py-2.5 backdrop-blur-md"
           aria-label="Toggle menu"
         >
@@ -123,7 +133,10 @@ const Navbar = () => {
                   {navLinks.map(link => (
                     <button
                       key={link.to}
-                      onClick={() => scrollToSection(link.to)}
+                      onClick={() => {
+                        soundManager.play('click');
+                        scrollToSection(link.to, true);
+                      }}
                       className={`px-5 py-3.5 text-white font-medium rounded-2xl transition-all duration-200 text-center hover:bg-white/10 w-full ${activeSection === link.to ? 'bg-cyan-500/20 border border-cyan-400/30' : ''}`}
                     >
                       {link.text}
