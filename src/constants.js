@@ -50,7 +50,7 @@ export const services = [
       url: 'https://ethnus.com/products/',
     },
     {
-      company: 'ETHNUS',
+      company: 'AWS',
       role: 'AWS Architect Certification',
       duration: 'JAN 2025 - APR 2025',
       points: [
