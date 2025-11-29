@@ -1,5 +1,6 @@
 import React, { useCallback, useLayoutEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
+import soundManager from '../utils/soundEffects';
 
 export const StaggeredMenu = ({
   position = 'right',
@@ -302,6 +303,7 @@ export const StaggeredMenu = ({
   }, []);
 
   const toggleMenu = useCallback(() => {
+    soundManager.play('pop');
     const target = !openRef.current;
     openRef.current = target;
     setOpen(target);
@@ -347,6 +349,7 @@ export const StaggeredMenu = ({
   }, [closeOnClickAway, open, closeMenu]);
 
   const handleItemClick = (item) => {
+    soundManager.play('click');
     if (onItemClick) {
       onItemClick(item);
     }
@@ -462,6 +465,7 @@ export const StaggeredMenu = ({
                     <button
                       className="sm-panel-item relative text-black font-semibold text-[4rem] cursor-pointer leading-none tracking-[-2px] uppercase transition-[background,color] duration-150 ease-linear inline-block no-underline pr-[1.4em] bg-transparent border-0 p-0"
                       onClick={() => handleItemClick(it)}
+                      onMouseEnter={() => soundManager.play('hover')}
                       aria-label={it.ariaLabel}
                       data-index={idx + 1}
                     >
@@ -494,6 +498,8 @@ export const StaggeredMenu = ({
                         href={s.link}
                         target="_blank"
                         rel="noopener noreferrer"
+                        onMouseEnter={() => soundManager.play('hover')}
+                        onClick={() => soundManager.play('click')}
                         className="sm-socials-link text-[1.2rem] font-medium text-[#111] no-underline relative inline-block py-[2px] transition-[color,opacity] duration-300 ease-linear"
                       >
                         {s.label}
