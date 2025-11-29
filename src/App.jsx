@@ -3,7 +3,6 @@ import Navbar from './components/Navbar';
 import Home from './components/Home';
 import Certifications from './components/Certifications';
 import Skills from './components/Skills';
-import Academics from './components/Academics';
 import Experience from './components/Experience';
 import About from './components/About';
 import Projects from './components/Projects';
@@ -41,12 +40,6 @@ function App() {
 
             <section id="about">
               <About />
-            </section>
-
-            <SectionDivider />
-
-            <section id="academics">
-              <Academics />
             </section>
 
             <SectionDivider />
