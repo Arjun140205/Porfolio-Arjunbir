@@ -1,0 +1,7 @@
+<svg width="800" height="600" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="600" fill="#1a1a1a"/>
+  <circle cx="400" cy="300" r="80" fill="#dc2626" opacity="0.2"/>
+  <path d="M400 240 L420 280 L460 280 L428 304 L440 344 L400 320 L360 344 L372 304 L340 280 L380 280 Z" fill="#ef4444"/>
+  <text x="400" y="420" font-family="Arial, sans-serif" font-size="32" fill="#ef4444" text-anchor="middle" font-weight="bold">Bleed for a Cause</text>
+  <text x="400" y="460" font-family="Arial, sans-serif" font-size="18" fill="#9ca3af" text-anchor="middle">Blood Donation Platform</text>
+</svg>
