@@ -82,8 +82,6 @@ function App() {
               <Projects />
             </section>
 
-            <SectionDivider />
-
             <section id="skills">
               <Skills />
             </section>
