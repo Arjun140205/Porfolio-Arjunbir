@@ -8,7 +8,7 @@ import cropifyPlaceholder from "../assets/projects/placeholder-cropify.svg";
 import voicelessPlaceholder from "../assets/projects/placeholder-voiceless.svg";
 import gmailPlaceholder from "../assets/projects/placeholder-gmail.svg";
 import bleedImg from "../assets/projects/bleedforacause.png";
-import sleepPlaceholder from "../assets/projects/placeholder-sleep.svg";
+import sleepTrackerImg from "../assets/projects/sleeptracker.png";
 import fiftyShadesImg from "../assets/projects/fiftyshades.png";
 import kanbanPlaceholder from "../assets/projects/placeholder-kanban.svg";
 import noBrokerPlaceholder from "../assets/projects/placeholder-nobroker.svg";
@@ -21,7 +21,7 @@ const projects = [
     title: "Sleep Tracker",
     description: "A personal wellness tool that helps users monitor and improve their sleep habits by logging routines, visualizing patterns, and generating insights for better sleep quality.",
     link: "#",
-    thumbnail: sleepPlaceholder,
+    thumbnail: sleepTrackerImg,
     technologies: ["React", "JavaScript", "Firebase", "Chart.js", "Tailwind CSS"],
   },
   {
