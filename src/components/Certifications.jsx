@@ -15,9 +15,15 @@ const Certifications = () => {
   return (
     <>
       <div className="certifications bg-black w-screen text-white pt-16 min-h-screen overflow-x-hidden flex flex-col items-center" id="certifications">
-        <div className="pt-12 sm:px-16 px-6 w-full max-w-5xl">
-          <p className="font-light text-sm sm:text-base">MY JOURNEY SO FAR.</p>
-          <h2 className="text-4xl sm:text-5xl font-extrabold mt-2 mb-8">Certifications</h2>
+        <div className="pt-12 sm:px-16 px-6 w-full max-w-7xl text-center mb-16">
+          <h2 className="text-5xl md:text-6xl lg:text-7xl font-black mb-6">
+            <span className="bg-gradient-to-r from-white via-cyan-400 to-white bg-clip-text text-transparent">
+              Certifications
+            </span>
+          </h2>
+          <p className="text-lg md:text-xl text-neutral-400 max-w-2xl mx-auto">
+            My journey of continuous learning and professional development
+          </p>
         </div>
         <div className="w-full flex flex-col sm:flex-row justify-center items-center gap-0 sm:gap-8">
           <CertificationMarqueeColumn
