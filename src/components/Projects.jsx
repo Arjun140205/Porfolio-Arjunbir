@@ -1,5 +1,4 @@
 import React from "react";
-import { motion } from "framer-motion";
 import { HeroParallax } from "./blocks/hero-parallax-custom";
 import jordanFitnessImg from "../assets/projects/jordanfitnessclub.png";
 import recipediaImg from "../assets/projects/recipedia.png";

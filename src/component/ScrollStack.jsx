@@ -213,12 +213,11 @@ const ScrollStack = ({
       lenisRef.current = lenis;
       return lenis;
     } else {
-      const scroller = scrollerRef.current;
-      if (!scroller) return;
+      if (!scrollerRef.current) return;
 
       const lenis = new Lenis({
-        wrapper: scroller,
-        content: scroller.querySelector('.scroll-stack-inner'),
+        wrapper: scrollerRef.current,
+        content: scrollerRef.current.querySelector('.scroll-stack-inner'),
         duration: 1.2,
         easing: t => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
         smoothWheel: true,
@@ -254,7 +253,6 @@ const ScrollStack = ({
     );
 
     cardsRef.current = cards;
-    const transformsCache = lastTransformsRef.current;
 
     cards.forEach((card, i) => {
       if (i < cards.length - 1) {
@@ -282,7 +280,7 @@ const ScrollStack = ({
       }
       stackCompletedRef.current = false;
       cardsRef.current = [];
-      transformsCache.clear();
+      lastTransformsRef.current.clear();
       isUpdatingRef.current = false;
     };
   }, [
