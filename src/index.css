@@ -327,3 +327,18 @@ html, body {
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
 }
+
+
+
+@layer base {}
+
+
+
+@layer base {
+  * {
+    @apply border-neutral-800;
+  }
+  body {
+    @apply bg-background text-white;
+  }
+}
