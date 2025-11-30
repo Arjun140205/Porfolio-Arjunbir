@@ -1,0 +1,12 @@
+<svg width="800" height="600" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="600" fill="#1e1b4b"/>
+  <circle cx="300" cy="280" r="40" fill="#6366f1" stroke="#818cf8" stroke-width="3"/>
+  <circle cx="400" cy="280" r="40" fill="#6366f1" stroke="#818cf8" stroke-width="3"/>
+  <circle cx="500" cy="280" r="40" fill="#6366f1" stroke="#818cf8" stroke-width="3"/>
+  <line x1="340" y1="280" x2="360" y2="280" stroke="#818cf8" stroke-width="4"/>
+  <line x1="440" y1="280" x2="460" y2="280" stroke="#818cf8" stroke-width="4"/>
+  <polygon points="360,280 355,275 355,285" fill="#818cf8"/>
+  <polygon points="460,280 455,275 455,285" fill="#818cf8"/>
+  <text x="400" y="400" font-family="Arial, sans-serif" font-size="32" fill="#818cf8" text-anchor="middle" font-weight="bold">Referral Chain</text>
+  <text x="400" y="440" font-family="Arial, sans-serif" font-size="18" fill="#9ca3af" text-anchor="middle">Student Referral Network</text>
+</svg>
