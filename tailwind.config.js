@@ -6,6 +6,16 @@ module.exports = {
     extend: {
       colors: {
         background: "rgb(17 24 39)",
+        foreground: "rgb(255 255 255)",
+        border: "rgb(38 38 38)",
+        card: {
+          DEFAULT: "rgb(23 23 23)",
+          foreground: "rgb(255 255 255)",
+        },
+        muted: {
+          DEFAULT: "rgb(38 38 38)",
+          foreground: "rgb(163 163 163)",
+        },
         primary: {
           DEFAULT: "#4CAF50",
           foreground: "#ffffff",
