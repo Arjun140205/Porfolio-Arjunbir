@@ -268,9 +268,9 @@ const skillsTimelineData = [
 
 const Skills = () => {
   return (
-    <div className="relative bg-black">
+    <div className="relative bg-black -mt-32 md:-mt-12 lg:mt-0 xl:mt-4">
       {/* Header Section */}
-      <div className="relative z-20 max-w-7xl mx-auto px-4 pt-20 pb-16">
+      <div className="relative z-20 max-w-7xl mx-auto px-4 pt-0 pb-16">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
