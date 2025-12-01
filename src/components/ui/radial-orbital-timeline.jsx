@@ -17,6 +17,7 @@ export default function RadialOrbitalTimeline({
   const containerRef = useRef(null);
   const orbitRef = useRef(null);
   const nodeRefs = useRef({});
+  const [isHighPerformance, setIsHighPerformance] = useState(true);
 
   const handleContainerClick = (e) => {
     if (e.target === containerRef.current || e.target === orbitRef.current) {
@@ -60,24 +61,59 @@ export default function RadialOrbitalTimeline({
     });
   };
 
+  // Check device performance on mount
   useEffect(() => {
-    let rotationTimer;
+    const checkPerformance = () => {
+      // Check for mobile devices
+      const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+      
+      // Check for low-end devices
+      const isLowEndDevice = navigator.hardwareConcurrency && navigator.hardwareConcurrency <= 4;
+      
+      // Check for reduced motion preference
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      
+      // Set performance level (but don't disable rotation, just optimize it)
+      if (prefersReducedMotion) {
+        setIsHighPerformance(false);
+        setAutoRotate(false); // Only disable for accessibility preference
+      } else if (isMobile || isLowEndDevice) {
+        setIsHighPerformance(false); // Lower performance mode but keep rotation
+      }
+    };
+
+    checkPerformance();
+  }, []);
+
+  useEffect(() => {
+    let animationFrameId;
+    let lastTime = 0;
 
     if (autoRotate && viewMode === "orbital") {
-      rotationTimer = setInterval(() => {
-        setRotationAngle((prev) => {
-          const newAngle = (prev + 0.3) % 360;
-          return Number(newAngle.toFixed(3));
-        });
-      }, 50);
+      // Use different update intervals based on performance
+      const updateInterval = isHighPerformance ? 16 : 50; // 60fps vs ~20fps
+      const rotationSpeed = isHighPerformance ? 0.3 : 0.15; // Slower on low-end devices
+
+      const animate = (currentTime) => {
+        if (currentTime - lastTime >= updateInterval) {
+          setRotationAngle((prev) => {
+            const newAngle = (prev + rotationSpeed) % 360;
+            return Number(newAngle.toFixed(3));
+          });
+          lastTime = currentTime;
+        }
+        animationFrameId = requestAnimationFrame(animate);
+      };
+
+      animationFrameId = requestAnimationFrame(animate);
     }
 
     return () => {
-      if (rotationTimer) {
-        clearInterval(rotationTimer);
+      if (animationFrameId) {
+        cancelAnimationFrame(animationFrameId);
       }
     };
-  }, [autoRotate, viewMode]);
+  }, [autoRotate, viewMode, isHighPerformance]);
 
   const centerViewOnNode = (nodeId) => {
     if (viewMode !== "orbital" || !nodeRefs.current[nodeId]) return;
