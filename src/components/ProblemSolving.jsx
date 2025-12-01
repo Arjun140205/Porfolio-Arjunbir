@@ -5,12 +5,11 @@ import { FaCode, FaGithub } from 'react-icons/fa';
 import { TbRefresh } from 'react-icons/tb';
 import { 
   fetchGitHubContributions, 
-  fetchGitHubStats, 
   fetchLeetCodeStats,
   transformGitHubContributions,
   generateLeetCodeContributions 
 } from '../utils/platformAPI';
-import { PLATFORM_CONFIG, PLATFORM_TOTALS } from '../config/platformConfig';
+import { PLATFORM_CONFIG } from '../config/platformConfig';
 import { cacheManager } from '../utils/cacheManager';
 import AnimatedCounter from './ui/AnimatedCounter';
 
