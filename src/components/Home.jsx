@@ -47,9 +47,10 @@ const Home = () => {
             <motion.h1
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ duration: 1, delay: 0.2 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
               className='text-5xl xs:text-6xl sm:text-6xl md:text-7xl lg:text-8xl font-black text-center leading-tight'
               itemProp="name"
+              style={{ willChange: 'opacity' }}
             >
               Hi, I'm{' '}
               <span className='block sm:inline mt-3 sm:mt-0'>
@@ -63,8 +64,9 @@ const Home = () => {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.5 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
               className='text-center space-y-4'
+              style={{ willChange: 'transform, opacity' }}
             >
               <h2 className='text-xl xs:text-2xl sm:text-xl md:text-2xl font-semibold text-white px-4' itemProp="jobTitle">
                 <span className='sm:hidden'>Aspiring Software Developer</span>
@@ -84,9 +86,10 @@ const Home = () => {
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.7 }}
+              transition={{ duration: 0.5, delay: 0.5 }}
               className='text-lg leading-relaxed sm:text-lg md:text-xl text-center max-w-3xl text-neutral-300 sm:leading-relaxed font-light px-4'
               itemProp="description"
+              style={{ willChange: 'transform, opacity' }}
             >
               Transforming innovative ideas into scalable, high-performance web applications with modern technologies and data-driven solutions
             </motion.p>
