@@ -1,0 +1,10 @@
+<svg width="800" height="600" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="600" fill="#0f172a"/>
+  <circle cx="400" cy="280" r="60" fill="#6366f1" opacity="0.3"/>
+  <path d="M380 260 Q400 240 420 260 Q440 280 420 300 Q400 320 380 300 Q360 280 380 260" fill="#818cf8"/>
+  <text x="350" y="340" font-family="Arial, sans-serif" font-size="40" fill="#c7d2fe" opacity="0.6">Z</text>
+  <text x="390" y="360" font-family="Arial, sans-serif" font-size="48" fill="#a5b4fc" opacity="0.8">Z</text>
+  <text x="430" y="380" font-family="Arial, sans-serif" font-size="56" fill="#818cf8">Z</text>
+  <text x="400" y="450" font-family="Arial, sans-serif" font-size="32" fill="#818cf8" text-anchor="middle" font-weight="bold">Sleep Tracker</text>
+  <text x="400" y="490" font-family="Arial, sans-serif" font-size="18" fill="#9ca3af" text-anchor="middle">Wellness & Sleep Monitoring</text>
+</svg>

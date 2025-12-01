@@ -1,0 +1,11 @@
+<svg width="800" height="600" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="600" fill="#0a0a0a"/>
+  <rect x="250" y="180" width="300" height="240" rx="8" fill="#171717" stroke="#22c55e" stroke-width="2"/>
+  <text x="280" y="230" font-family="monospace" font-size="20" fill="#22c55e">✓ test_case_1()</text>
+  <text x="280" y="270" font-family="monospace" font-size="20" fill="#22c55e">✓ test_case_2()</text>
+  <text x="280" y="310" font-family="monospace" font-size="20" fill="#22c55e">✓ test_case_3()</text>
+  <text x="280" y="350" font-family="monospace" font-size="20" fill="#22c55e">✓ test_case_4()</text>
+  <text x="280" y="390" font-family="monospace" font-size="20" fill="#4ade80">AI Generated ✨</text>
+  <text x="400" y="470" font-family="Arial, sans-serif" font-size="32" fill="#22c55e" text-anchor="middle" font-weight="bold">AI Test Case Generator</text>
+  <text x="400" y="510" font-family="Arial, sans-serif" font-size="18" fill="#9ca3af" text-anchor="middle">Automated Testing Tool</text>
+</svg>
