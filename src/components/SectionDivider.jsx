@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 
 const SectionDivider = ({ sectionName }) => {
   return (
-    <div className="relative py-12 flex items-center justify-center">
+    <div className="relative py-12 flex items-center justify-center bg-black">
       {/* Animated gradient line */}
       <motion.div
         initial={{ width: 0, opacity: 0 }}
