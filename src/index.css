@@ -1,15 +1,28 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Apply modern font globally - Plus Jakarta Sans for body */
+/* Performance Optimizations */
 * {
-  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-family: 'Inter', 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   font-weight: 400;
-  cursor: none !important; /* Hide default cursor */
+  cursor: none !important;
+}
+
+/* GPU Acceleration for animations */
+@media (prefers-reduced-motion: no-preference) {
+  * {
+    will-change: auto;
+  }
+  
+  /* Only accelerate elements that animate */
+  [class*="animate-"],
+  [class*="transition-"],
+  .motion-safe\:animate-* {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+  }
 }
 
 /* Show default cursor on inputs and textareas for usability */
@@ -73,12 +86,14 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .area {
-	background: #d7e240;
-	background: -webkit-linear-gradient(to left, #84a738, #cbec39);
+	background: #000000;
 	width: 100%;
 	height: 100vh;
 	position: absolute;
 	z-index: -1;
+	/* GPU acceleration */
+	transform: translateZ(0);
+	will-change: transform;
 }
 
 .circles {
@@ -288,13 +303,25 @@ html {
   scrollbar-color: rgba(68,73,80,0.35) rgba(24,24,27,0.12);
 }
 
+/* Smooth scrolling with GPU acceleration */
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 80px; /* Offset for fixed navbar */
+  scroll-padding-top: 80px;
+  /* Enable hardware acceleration for scrolling */
+  -webkit-overflow-scrolling: touch;
 }
 
 html, body {
   overflow-y: scroll !important;
+  /* Optimize rendering */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Optimize paint performance */
+body {
+  contain: layout style paint;
 }
 
 /* Vapor effect animations */
