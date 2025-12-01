@@ -13,7 +13,7 @@ export const services = [
     },
   ];
   
-  export const name = 'Arjun';
+  export const name = 'Arjunbir ';
   
   export const certifications = [
     {
