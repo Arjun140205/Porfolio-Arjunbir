@@ -1,8 +1,8 @@
 import React from 'react';
 import { motion } from "framer-motion";
 import '../App.css';
-import LogoLoop from './LogoLoop';
 import { AnimatedTiles } from './ui/animated-tiles';
+import { MarqueeAnimation } from './ui/marquee-effect';
 
 // Animated Tiles Profile Component
 const AnimatedTilesProfile = () => {
@@ -66,23 +66,7 @@ const AnimatedTilesProfile = () => {
   );
 };
 
-// Tech stack logos - Faded monochrome style
-const techLogos = [
-  { src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg', alt: 'React' },
-  { src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg', alt: 'Node.js' },
-  { src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongodb/mongodb-original.svg', alt: 'MongoDB' },
-  { src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/express/express-original.svg', alt: 'Express' },
-  { src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg', alt: 'JavaScript' },
-  { src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg', alt: 'TypeScript' },
-  { src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nextjs/nextjs-original.svg', alt: 'Next.js' },
-  { src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg', alt: 'Git' },
-  { src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg', alt: 'Python' },
-  { src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg', alt: 'PostgreSQL' },
-  { src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-original-wordmark.svg', alt: 'AWS' },
-  { src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/firebase/firebase-plain.svg', alt: 'Firebase' },
-  { src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vercel/vercel-original.svg', alt: 'Vercel' },
-  { src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/cplusplus/cplusplus-original.svg', alt: 'C++' },
-];
+
 
 const About = () => {
   return (
@@ -241,27 +225,21 @@ const About = () => {
             </div>
           </div>
 
-          {/* Tech Stack Logo Loop - Inside About Section */}
-          <div className="max-w-7xl mx-auto px-4 mt-12 pb-12">
+          {/* Marquee Text - Inside About Section */}
+          <div className="max-w-7xl mx-auto px-4 mt-16 pb-12">
             <motion.div
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 1, ease: [0.22, 1, 0.36, 1], delay: 0.3 }}
             >
-              <div className="w-full overflow-hidden">
-                <LogoLoop
-                  logos={techLogos}
-                  speed={60}
-                  direction="left"
-                  logoHeight={64}
-                  gap={48}
-                  pauseOnHover={false}
-                  fadeOut={true}
-                  fadeOutColor="#000000"
-                  scaleOnHover={false}
-                />
-              </div>
+              <MarqueeAnimation 
+                direction="left" 
+                baseVelocity={2}
+                className="text-4xl md:text-5xl lg:text-6xl font-bold text-white/10 hover:text-white/20 transition-colors duration-500"
+              >
+                Web Systems • Databases • Cloud • Product Thinking • Problem Solver • MERN Stack • Tech Enthusiast • 
+              </MarqueeAnimation>
             </motion.div>
           </div>
         </section>
