@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { HelmetProvider } from 'react-helmet-async';
 import StaggeredMenu from './components/StaggeredMenu';
 import Home from './components/Home';
 import Certifications from './components/Certifications';
@@ -15,6 +16,8 @@ import SoundToggle from './components/SoundToggle';
 import MacBookHelloAnimation from './components/MacBookHelloAnimation';
 import MagneticCursor from './components/MagneticCursor';
 import TextMarqueeSection from './components/TextMarqueeSection';
+import SEO from './components/SEO';
+import { personSchema, websiteSchema, profilePageSchema } from './utils/structuredData';
 import './index.css';
 
 const menuItems = [
@@ -36,8 +39,17 @@ const socialItems = [
 function App() {
   const [isLoading, setIsLoading] = useState(true);
 
+  // Combine structured data schemas
+  const combinedStructuredData = {
+    "@context": "https://schema.org",
+    "@graph": [personSchema, websiteSchema, profilePageSchema]
+  };
+
   return (
-    <>
+    <HelmetProvider>
+      <SEO 
+        structuredData={combinedStructuredData}
+      />
       {isLoading ? (
         <div className="fixed inset-0 bg-black z-[9999] flex flex-col items-center justify-center">
           <MacBookHelloAnimation
@@ -110,7 +122,7 @@ function App() {
           <Footer />
         </div>
       )}
-    </>
+    </HelmetProvider>
   );
 }
 
