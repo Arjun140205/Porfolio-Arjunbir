@@ -19,14 +19,14 @@ const projects = [
   {
     title: "Sleep Tracker",
     description: "A personal wellness tool that helps users monitor and improve their sleep habits by logging routines, visualizing patterns, and generating insights for better sleep quality.",
-    link: "#",
+    link: "https://github.com/Arjun140205/Sleep-tracker",
     thumbnail: sleepTrackerImg,
     technologies: ["React", "JavaScript", "Firebase", "Chart.js", "Tailwind CSS"],
   },
   {
     title: "Bleed for a Cause",
     description: "A blood donation platform connecting hospitals, donors, and patients. Helps hospitals manage blood inventory, donors track donation history, and patients request blood efficiently.",
-    link: "#",
+    link: "https://bleed-for-a-cause.vercel.app/",
     thumbnail: bleedImg,
     technologies: ["Node.js", "React.js", "Express.js", "OpenAI", "Tailwind CSS", "LLM"],
   },
@@ -54,7 +54,7 @@ const projects = [
   {
     title: "50 Shades of Hue",
     description: "A Next.js application generating pixel-perfect color palettes with curated themes. Features dynamic previews for websites and presentations with real-time palette generation, improving design workflow efficiency by 3.2×.",
-    link: "#",
+    link: "https://fifty-shades-of-hue.vercel.app/",
     thumbnail: fiftyShadesImg,
     technologies: ["Next.js", "TypeScript", "Tailwind CSS", "React"],
   },
