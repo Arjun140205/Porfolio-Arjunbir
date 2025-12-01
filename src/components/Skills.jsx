@@ -268,7 +268,7 @@ const skillsTimelineData = [
 
 const Skills = () => {
   return (
-    <div className="relative bg-black -mt-32 md:-mt-24 lg:-mt-32 xl:-mt-24">
+    <section className="relative bg-black -mt-32 md:-mt-24 lg:-mt-32 xl:-mt-24" id="skills" aria-label="Technical skills and expertise">
       {/* Header Section */}
       <div className="relative z-20 max-w-7xl mx-auto px-4 pt-0 pb-16">
         <motion.div
@@ -291,7 +291,7 @@ const Skills = () => {
 
       {/* Radial Orbital Timeline */}
       <RadialOrbitalTimeline timelineData={skillsTimelineData} />
-    </div>
+    </section>
   );
 };
 
