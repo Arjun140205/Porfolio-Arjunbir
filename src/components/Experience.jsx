@@ -44,23 +44,16 @@ const experiences = [
   },
 ];
 
-const Card = ({ exp, index, progress, range, targetScale }) => {
-  const cardRef = useRef(null);
-  
-  const scale = useTransform(progress, range, [1, targetScale]);
-
+const ExperienceCard = ({ exp, scale, index }) => {
   return (
-    <div 
-      ref={cardRef}
-      className="sticky top-[100px] h-screen flex items-center justify-center"
+    <motion.div
+      style={{ 
+        scale,
+        transformOrigin: 'top center',
+      }}
+      className="absolute top-0 flex h-full w-full items-center justify-center"
     >
-      <motion.div
-        style={{ 
-          scale,
-          transformOrigin: 'top center',
-        }}
-        className="w-full max-w-5xl mx-4 h-[500px] rounded-[40px] bg-gradient-to-br from-neutral-900 via-black to-neutral-950 border border-white/10 shadow-2xl overflow-hidden relative"
-      >
+      <div className="w-full max-w-5xl mx-4 h-[500px] rounded-[40px] bg-gradient-to-br from-neutral-900 via-black to-neutral-950 border border-white/10 shadow-2xl overflow-hidden relative">
         {/* Glossy overlay */}
         <div className="absolute inset-0 bg-gradient-to-br from-white/[0.07] via-transparent to-transparent pointer-events-none" />
         
@@ -123,8 +116,8 @@ const Card = ({ exp, index, progress, range, targetScale }) => {
 
         {/* Shine effect on hover */}
         <div className="absolute inset-0 bg-gradient-to-br from-cyan-400/0 via-cyan-400/5 to-cyan-400/0 opacity-0 hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
-      </motion.div>
-    </div>
+      </div>
+    </motion.div>
   );
 };
 
@@ -134,6 +127,14 @@ const Experience = () => {
     target: containerRef,
     offset: ['start start', 'end end']
   });
+
+  const scale4 = useTransform(scrollYProgress, [0, 1], [1, 4]);
+  const scale5 = useTransform(scrollYProgress, [0, 1], [1, 5]);
+  const scale6 = useTransform(scrollYProgress, [0, 1], [1, 6]);
+  const scale8 = useTransform(scrollYProgress, [0, 1], [1, 8]);
+  const scale9 = useTransform(scrollYProgress, [0, 1], [1, 9]);
+
+  const scales = [scale4, scale5, scale6, scale8, scale9];
 
   return (
     <section className="relative bg-black">
@@ -176,21 +177,21 @@ const Experience = () => {
         </motion.div>
       </div>
 
-      {/* Cards Container */}
-      <div ref={containerRef} className="relative" style={{ height: `${experiences.length * 100}vh` }}>
-        {experiences.map((exp, i) => {
-          const targetScale = 1 - ((experiences.length - i) * 0.05);
-          return (
-            <Card
-              key={i}
-              exp={exp}
-              index={i}
-              progress={scrollYProgress}
-              range={[i * 0.25, 1]}
-              targetScale={targetScale}
-            />
-          );
-        })}
+      {/* Zoom Parallax Cards Container */}
+      <div ref={containerRef} className="relative h-[300vh]">
+        <div className="sticky top-0 h-screen overflow-hidden">
+          {experiences.map((exp, index) => {
+            const scale = scales[index % scales.length];
+            return (
+              <ExperienceCard
+                key={index}
+                exp={exp}
+                scale={scale}
+                index={index}
+              />
+            );
+          })}
+        </div>
       </div>
     </section>
   );
