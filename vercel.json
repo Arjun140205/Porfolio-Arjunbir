@@ -2,5 +2,5 @@
   "builds": [
     { "src": "package.json", "use": "@vercel/static-build", "config": { "distDir": "build" } }
   ],
-  "installCommand": "npm ci --omit=dev"
+  "installCommand": "npm install --legacy-peer-deps"
 }
