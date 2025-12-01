@@ -67,7 +67,7 @@ const Home = () => {
             >
               <h2 className='text-xl xs:text-2xl sm:text-xl md:text-2xl font-semibold text-white px-4'>
                 <span className='sm:hidden'>Aspiring Software Developer</span>
-                <span className='hidden sm:inline'>Aspiring Full-Stack Developer | Cloud, Databases & Data Analytics Enthusiast</span>
+                <span className='hidden sm:inline'>Aspiring Software Developer | Cloud • Databases & Data Analytics Enthusiast</span>
               </h2>
               <div className='flex items-center justify-center hidden sm:flex'>
                 <span className='px-5 py-2 border-2 border-white/20 text-neutral-300 text-sm font-medium rounded-full flex items-center gap-2 backdrop-blur-sm hover:border-cyan-400/50 hover:text-cyan-400 transition-all duration-300'>
