@@ -6,6 +6,11 @@
 * {
   font-family: 'Inter', 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   font-weight: 400;
+}
+
+/* Hide cursor only in home section for magnetic cursor effect */
+#home,
+#home * {
   cursor: none !important;
 }
 
