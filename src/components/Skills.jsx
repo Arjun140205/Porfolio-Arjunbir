@@ -284,7 +284,7 @@ const Skills = () => {
             </span>
           </h2>
           <p className="text-lg md:text-xl text-neutral-400 max-w-2xl mx-auto">
-            Interactive skill constellation - Click on any node to explore connections
+            Click on any node to view my skill proficiency.
           </p>
         </motion.div>
       </div>
