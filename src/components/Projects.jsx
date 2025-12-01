@@ -31,6 +31,7 @@ const projects = [
     link: "https://github.com/Arjun140205/Sleep-tracker",
     thumbnail: sleepTrackerImg,
     technologies: ["React", "JavaScript", "Firebase", "Chart.js", "Tailwind CSS"],
+    alt: "Sleep Tracker application screenshot showing sleep pattern visualization",
   },
   {
     title: "Bleed for a Cause",
@@ -38,6 +39,7 @@ const projects = [
     link: "https://bleed-for-a-cause.vercel.app/",
     thumbnail: bleedImg,
     technologies: ["Node.js", "React.js", "Express.js", "OpenAI", "Tailwind CSS", "LLM"],
+    alt: "Bleed for a Cause blood donation platform interface",
   },
   {
     title: "Unheard Voices",
@@ -45,6 +47,7 @@ const projects = [
     link: "https://github.com/Arjun140205/Unheard-Voices",
     thumbnail: unheardVoicesImg,
     technologies: ["React", "Node.js", "MongoDB", "Express"],
+    alt: "Unheard Voices platform interface for sharing stories",
   },
   {
     title: "Jordan Fitness Club",
@@ -52,6 +55,7 @@ const projects = [
     link: "https://github.com/Arjun140205/Jordan-Fitness-Club",
     thumbnail: jordanFitnessImg,
     technologies: ["React", "Node.js", "MongoDB", "Express"],
+    alt: "Jordan Fitness Club workout tracking application",
   },
   {
     title: "Recipedia",
@@ -59,6 +63,7 @@ const projects = [
     link: "https://github.com/Arjun140205/Recipe-Finder-Reactapp",
     thumbnail: recipediaImg,
     technologies: ["React", "Node.js", "MongoDB", "Express"],
+    alt: "Recipedia recipe finder application interface",
   },
   {
     title: "50 Shades of Hue",
@@ -66,6 +71,7 @@ const projects = [
     link: "https://fifty-shades-of-hue.vercel.app/",
     thumbnail: fiftyShadesImg,
     technologies: ["Next.js", "TypeScript", "Tailwind CSS", "React"],
+    alt: "50 Shades of Hue color palette generator",
   },
   // Additional projects
   {
@@ -74,6 +80,7 @@ const projects = [
     link: "#",
     thumbnail: noBrokerPlaceholder,
     technologies: ["React", "Node.js", "MongoDB", "Socket.io", "Express"],
+    alt: "No-Broker Property marketplace platform",
   },
   {
     title: "Realtime Kanban Board",
@@ -81,6 +88,7 @@ const projects = [
     link: "#",
     thumbnail: kanbanPlaceholder,
     technologies: ["Node.js", "React.js", "Socket.io", "Express.js", "MongoDB", "JWT"],
+    alt: "Realtime Kanban Board project management tool",
   },
   {
     title: "Referral Chain",
@@ -88,6 +96,7 @@ const projects = [
     link: "#",
     thumbnail: referralPlaceholder,
     technologies: ["React", "Node.js", "MongoDB", "Express", "Tailwind CSS"],
+    alt: "Referral Chain job referral networking platform",
   },
   {
     title: "AI Test Case Generator",
@@ -95,6 +104,7 @@ const projects = [
     link: "#",
     thumbnail: testGenPlaceholder,
     technologies: ["Python", "OpenAI", "React", "Node.js", "GitHub API"],
+    alt: "AI Test Case Generator automated testing tool",
   },
   {
     title: "Cropify",
@@ -102,6 +112,7 @@ const projects = [
     link: "https://github.com/Arjun140205/Crop-Yield-Predictor-",
     thumbnail: cropifyPlaceholder,
     technologies: ["React", "JavaScript", "API"],
+    alt: "Cropify image cropping and editing tool",
   },
   {
     title: "Voiceless Boundaries",
@@ -109,6 +120,7 @@ const projects = [
     link: "https://github.com/Arjun140205/Voiceless-Boundaries",
     thumbnail: voicelessPlaceholder,
     technologies: ["Next.js", "Tailwind", "API"],
+    alt: "Voiceless Boundaries real-time translation platform",
   },
   {
     title: "Gmail Genius",
@@ -116,14 +128,16 @@ const projects = [
     link: "https://github.com/Arjun140205/Gmail-genius",
     thumbnail: gmailPlaceholder,
     technologies: ["React", "Google Cloud", "Node.js", "API"],
+    alt: "Gmail Genius AI-powered email management system",
   },
 ];
 
 const Projects = () => {
   return (
-    <div className="relative bg-black">
+    <section className="relative bg-black" id="projects" aria-label="Projects showcase">
+      <h2 className="sr-only">Projects by Arjunbir Singh</h2>
       <HeroParallax products={projects} />
-    </div>
+    </section>
   );
 };
 
