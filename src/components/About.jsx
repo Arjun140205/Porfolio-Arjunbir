@@ -2,7 +2,69 @@ import React from 'react';
 import { motion } from "framer-motion";
 import '../App.css';
 import LogoLoop from './LogoLoop';
-import soundManager from '../utils/soundEffects';
+import { AnimatedTiles } from './ui/animated-tiles';
+
+// Animated Tiles Profile Component
+const AnimatedTilesProfile = () => {
+  return (
+    <motion.div 
+      className="w-full"
+      initial={{ opacity: 0, scale: 0.95 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ duration: 0.8 }}
+    >
+      {/* Animated Tiles Container */}
+      <div className="relative w-full max-w-[400px] mx-auto mb-6 rounded-2xl overflow-hidden border border-white/10 bg-black shadow-2xl shadow-black/50">
+        {/* Tiles wrapper - exact dimensions for 8 cols x 12 rows of 50px tiles */}
+        <div className="relative w-[400px] h-[600px] mx-auto">
+          <AnimatedTiles
+            rows={12}
+            cols={8}
+            tileSize={50}
+            imageUrl={`${process.env.PUBLIC_URL}/arjun2.png`}
+            backgroundColor="black"
+            offsetX={-40}
+            offsetY={-60}
+          />
+        </div>
+        
+        {/* Gradient overlay at bottom for text readability */}
+        <div className="absolute bottom-0 left-0 right-0 h-64 bg-gradient-to-t from-black via-black/95 to-transparent pointer-events-none z-[5]" />
+        
+        {/* Profile Info Overlay */}
+        <div className="absolute bottom-0 left-0 right-0 p-6 z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.5 }}
+          >
+            <h1 className="text-3xl font-bold text-white mb-2 drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)]">
+              Arjunbir Singh
+            </h1>
+            <p className="text-neutral-300 text-sm mb-6 italic drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">
+              "On the path to engineering a version of myself that outperforms yesterday, exactly what my goals require."
+            </p>
+            
+            {/* Subtle Resume Button */}
+            <a
+              href="https://drive.google.com/file/d/19fccecE7QFaHMwweGXZSdh3Vr7OIcmqU/view?usp=sharing"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-5 py-2.5 text-sm text-neutral-300 hover:text-white border-2 border-white/20 hover:border-white/60 rounded-lg transition-all duration-300 backdrop-blur-sm bg-black/40 hover:bg-black/60 hover:shadow-lg hover:shadow-white/10"
+            >
+              <span className="font-medium">Resume</span>
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2.5}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+              </svg>
+            </a>
+          </motion.div>
+        </div>
+        
+
+      </div>
+    </motion.div>
+  );
+};
 
 // Tech stack logos - Faded monochrome style
 const techLogos = [
@@ -33,43 +95,10 @@ const About = () => {
         <section className='text-white container mx-auto px-4 md:px-8' id='about'>
           {/* Main content wrapper */}
           <div className="max-w-7xl mx-auto px-4 pt-0 pb-12">
-            <div className="flex flex-col lg:flex-row gap-12 items-start">
-              {/* Left: Profile Section */}
-              <div className="flex flex-col items-center w-full max-w-xs mx-auto lg:mx-0 lg:items-start mt-0 lg:mt-0 lg:flex-[1]">
-                <div className="relative w-56 h-56 mb-4 flex items-center justify-center">
-                  {/* Glassmorphism/blurred background */}
-                  <div className="absolute inset-0 rounded-full bg-white/5 backdrop-blur-lg shadow-xl shadow-cyan-400/10 border border-white/20" />
-                  {/* Softer ambient glow */}
-                  <div className="absolute -inset-2 rounded-full bg-cyan-400/5 blur-3xl" />
-                  {/* Profile image with enhanced effects */}
-                  <div className="relative w-56 h-56 rounded-full overflow-hidden z-10">
-                    <img
-                      src={process.env.PUBLIC_URL + '/arjunbir-profile.jpg'}
-                      alt="Profile"
-                      className="w-56 h-56 rounded-full object-cover"
-                      style={{ filter: 'contrast(1.08)' }}
-                      loading="lazy"
-                    />
-                    {/* Vignette overlay */}
-                    <div className="pointer-events-none absolute inset-0 rounded-full" style={{
-                      background: 'radial-gradient(circle, transparent 60%, rgba(0,0,0,0.35) 100%)'
-                    }} />
-                  </div>
-                  {/* Subtle overlay for exposure */}
-                  <div className="absolute inset-0 rounded-full bg-black/10 z-20 pointer-events-none" />
-                </div>
-                <h1 className="text-3xl font-bold text-white mt-2">Arjunbir Singh</h1>
-                <div className="text-center lg:text-left text-neutral-300 mb-4">Your attitude is a product of your belief system.</div>
-                <div className="flex flex-col items-center lg:items-start gap-2 text-neutral-400">
-                  <div className="flex items-center gap-2">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 12.414a4 4 0 10-5.657 5.657l4.243 4.243a8 8 0 1011.314-11.314l-4.243 4.243z" /></svg>
-                    India
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 12v1m0 4v.01M8 12v1m0 4v.01M12 8v.01M12 16v.01M12 12v.01M12 20v.01M12 4v.01" /></svg>
-                    arjunbirsingh1699@gmail.com
-                  </div>
-                </div>
+            <div className="flex flex-col lg:flex-row gap-12 items-center lg:items-start">
+              {/* Left: Profile Section with Animated Tiles */}
+              <div className="flex flex-col items-center justify-center w-full max-w-xs mx-auto lg:mx-0 lg:flex-[1] -mt-12 lg:-mt-16">
+                <AnimatedTilesProfile />
               </div>
               {/* Right: Introduction Section */}
               <div className="w-full -mt-6 lg:-mt-8 max-w-none lg:flex-[3]">
@@ -205,34 +234,7 @@ const About = () => {
                       </motion.p>
                     </motion.div>
 
-                    {/* Resume Button - Redesigned */}
-                    <motion.div
-                      initial={{ opacity: 0, y: 30 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true, amount: 0.3 }}
-                      transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.3 }}
-                      className="mt-8"
-                    >
-                      <a
-                        href="https://drive.google.com/file/d/19fccecE7QFaHMwweGXZSdh3Vr7OIcmqU/view?usp=sharing"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        onClick={() => soundManager.play('buttonClick')}
-                        onMouseEnter={() => soundManager.play('hover')}
-                        className="group relative inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-medium rounded-full overflow-hidden transition-all duration-300 hover:shadow-[0_0_30px_rgba(34,211,238,0.5)] hover:scale-105"
-                      >
-                        <span className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-blue-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
-                        <span className="relative z-10 flex items-center gap-2">
-                          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                          </svg>
-                          View Resume
-                        </span>
-                        <svg className="relative z-10 w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                        </svg>
-                      </a>
-                    </motion.div>
+
                   </div>
                 </div>
               </div>
