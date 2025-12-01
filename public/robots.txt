@@ -1,0 +1,11 @@
+# https://www.robotstxt.org/robotstxt.html
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /*.json$
+
+# Sitemap
+Sitemap: https://arjunbirsingh.vercel.app/sitemap.xml
+
+# Crawl-delay
+Crawl-delay: 1
