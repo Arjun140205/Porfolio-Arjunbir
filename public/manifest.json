@@ -1,20 +1,28 @@
 {
-  "short_name": "Portfolio",
-  "name": "Arjunbir Singh Portfolio",
+  "short_name": "Arjunbir Singh",
+  "name": "Arjunbir Singh - Full Stack Developer Portfolio",
+  "description": "Portfolio showcasing web development projects, skills, and certifications of Arjunbir Singh, a Full Stack Developer specializing in MERN stack",
   "icons": [
     {
       "src": "https://i.ibb.co/j9b0TFGV/android-chrome-192x192.png",
       "sizes": "192x192",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any maskable"
     },
     {
       "src": "https://i.ibb.co/j9b0TFGV/android-chrome-192x192.png",
       "sizes": "512x512",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any maskable"
     }
   ],
-  "start_url": ".",
+  "start_url": "/",
+  "scope": "/",
   "display": "standalone",
-  "theme_color": "#18181b",
-  "background_color": "#18181b"
+  "orientation": "portrait-primary",
+  "theme_color": "#000000",
+  "background_color": "#000000",
+  "categories": ["portfolio", "developer", "technology"],
+  "lang": "en-US",
+  "dir": "ltr"
 }
