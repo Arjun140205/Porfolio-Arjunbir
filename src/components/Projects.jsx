@@ -1,20 +1,27 @@
 import React from "react";
 import { HeroParallax } from "./blocks/hero-parallax-custom";
 
-// Use absolute paths from public folder for deployment
-const jordanFitnessImg = "/projects/jordanfitnessclub.png";
-const recipediaImg = "/projects/recipedia.png";
-const unheardVoicesImg = "/projects/unheardvoices.png";
-const cropifyPlaceholder = "/projects/placeholder-cropify.svg";
-const voicelessPlaceholder = "/projects/placeholder-voiceless.svg";
-const gmailPlaceholder = "/projects/placeholder-gmail.svg";
-const bleedImg = "/projects/bleedforacause.png";
-const sleepTrackerImg = "/projects/sleeptracker.png";
-const fiftyShadesImg = "/projects/fiftyshades.png";
-const kanbanPlaceholder = "/projects/placeholder-kanban.svg";
-const noBrokerPlaceholder = "/projects/placeholder-nobroker.svg";
-const referralPlaceholder = "/projects/placeholder-referral.svg";
-const testGenPlaceholder = "/projects/placeholder-testgen.svg";
+// Use images from public folder with full URLs for deployment
+// This ensures they work on Vercel and other platforms
+const getImageUrl = (filename) => {
+  // In production, use absolute path from root
+  // In development, this also works
+  return `${window.location.origin}/projects/${filename}`;
+};
+
+const jordanFitnessImg = getImageUrl("jordanfitnessclub.png");
+const recipediaImg = getImageUrl("recipedia.png");
+const unheardVoicesImg = getImageUrl("unheardvoices.png");
+const cropifyPlaceholder = getImageUrl("placeholder-cropify.svg");
+const voicelessPlaceholder = getImageUrl("placeholder-voiceless.svg");
+const gmailPlaceholder = getImageUrl("placeholder-gmail.svg");
+const bleedImg = getImageUrl("bleedforacause.png");
+const sleepTrackerImg = getImageUrl("sleeptracker.png");
+const fiftyShadesImg = getImageUrl("fiftyshades.png");
+const kanbanPlaceholder = getImageUrl("placeholder-kanban.svg");
+const noBrokerPlaceholder = getImageUrl("placeholder-nobroker.svg");
+const referralPlaceholder = getImageUrl("placeholder-referral.svg");
+const testGenPlaceholder = getImageUrl("placeholder-testgen.svg");
 
 const projects = [
   // Front row projects (visible first)
