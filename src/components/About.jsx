@@ -47,7 +47,7 @@ const AnimatedTilesProfile = () => {
             
             {/* Subtle Resume Button */}
             <a
-              href="https://drive.google.com/file/d/19fccecE7QFaHMwweGXZSdh3Vr7OIcmqU/view?usp=sharing"
+              href="https://drive.google.com/file/d/109mkC5wu03F0S2q2m6ukpNTSOFJAmOPb/view?usp=sharing"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-5 py-2.5 text-sm text-neutral-300 hover:text-white border-2 border-white/20 hover:border-white/60 rounded-lg transition-all duration-300 backdrop-blur-sm bg-black/40 hover:bg-black/60 hover:shadow-lg hover:shadow-white/10"
@@ -79,28 +79,42 @@ const About = () => {
         <section className='text-white container mx-auto px-4 md:px-8' id='about'>
           {/* Main content wrapper */}
           <div className="max-w-7xl mx-auto px-4 pt-0 pb-12">
-            <div className="flex flex-col lg:flex-row gap-12 items-center lg:items-start">
+            {/* Mobile: Heading First */}
+            <motion.h2
+              className="text-5xl sm:text-6xl lg:hidden font-medium mb-8 text-center tracking-tight"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+            >
+              <span className="bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400 bg-clip-text text-transparent">
+                The story behind my work 
+              </span>
+            </motion.h2>
+
+            <div className="flex flex-col lg:flex-row gap-12 items-start">
               {/* Left: Profile Section with Animated Tiles */}
-              <div className="flex flex-col items-center justify-center w-full max-w-xs mx-auto lg:mx-0 lg:flex-[1] -mt-12 lg:-mt-16">
+              <div className="flex flex-col items-center justify-start w-full max-w-xs mx-auto lg:mx-0 lg:flex-[1] lg:sticky lg:top-24">
                 <AnimatedTilesProfile />
               </div>
               {/* Right: Introduction Section */}
-              <div className="w-full -mt-6 lg:-mt-8 max-w-none lg:flex-[3]">
-                <div className="w-full py-4 sm:py-6">
+              <div className="w-full max-w-none lg:flex-[3]">
+                <div className="w-full">
+                  {/* Desktop: Heading with content */}
                   <motion.h2
-                    className="text-5xl sm:text-6xl lg:text-7xl font-medium mb-12 text-left tracking-tight"
+                    className="hidden lg:block text-5xl sm:text-6xl lg:text-7xl font-medium mb-12 text-left tracking-tight"
                     initial={{ opacity: 0, x: -30 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true, amount: 0.3 }}
                     transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
                   >
                     <span className="bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400 bg-clip-text text-transparent">
-                      Who I Am
+                      Beyond the Resume
                     </span>
                   </motion.h2>
                   
-                  <div className="space-y-10 text-lg sm:text-xl leading-relaxed">
-                    {/* Paragraph 1 with staggered word animation */}
+                  <div className="space-y-8 text-base sm:text-lg leading-relaxed">
+                    {/* Paragraph 1 - Concise version */}
                     <motion.div
                       initial="hidden"
                       whileInView="visible"
@@ -110,7 +124,7 @@ const About = () => {
                     >
                       <motion.p 
                         className="text-gray-300 text-left sm:text-justify font-light" 
-                        style={{ lineHeight: '1.8' }}
+                        style={{ lineHeight: '1.75' }}
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true, amount: 0.3 }}
@@ -119,30 +133,30 @@ const About = () => {
                         What captivates me about{' '}
                         <span className="relative inline-block">
                           <span className="relative z-10 text-white font-medium group-hover:text-cyan-400 transition-colors duration-300">
-                            web development
+                            software development
                           </span>
                           <span className="absolute bottom-0 left-0 w-full h-[2px] bg-gradient-to-r from-cyan-400 to-blue-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
                         </span>{' '}
-                        is not merely the act of building digital systems, but the privilege of{' '}
+                        is not just building digital systems, but{' '}
                         <span className="text-white font-medium hover:text-cyan-300 transition-colors duration-200 cursor-default">
                           crafting experiences
                         </span>{' '}
-                        that truly resonate with people. I see myself working at the{' '}
+                        that genuinely resonate with people. I see myself at the{' '}
                         <span className="relative inline-block group/cross">
                           <span className="text-white font-medium group-hover/cross:text-purple-400 transition-colors duration-200">
                             crossroads of technology and human emotion
                           </span>
                           <span className="absolute -bottom-1 left-0 w-full h-[1px] bg-gradient-to-r from-purple-400 to-pink-400 opacity-0 group-hover/cross:opacity-100 transition-opacity duration-300"></span>
                         </span>
-                        , designing interfaces that are not only functional, but also{' '}
+                        , creating solutions that are{' '}
                         <span className="text-cyan-300 font-medium hover:text-cyan-100 hover:drop-shadow-[0_0_8px_rgba(34,211,238,0.5)] transition-all duration-200 cursor-default">
-                          deliberate, empathetic, and refined
+                          functional, deliberate, and empathetic
                         </span>{' '}
                         in their intent.
                       </motion.p>
                     </motion.div>
 
-                    {/* Paragraph 2 with slide-in animation */}
+                    {/* Paragraph 2 - Engineering fundamentals */}
                     <motion.div
                       initial={{ opacity: 0, x: -20 }}
                       whileInView={{ opacity: 1, x: 0 }}
@@ -152,43 +166,75 @@ const About = () => {
                     >
                       <motion.p 
                         className="text-gray-300 text-left sm:text-justify font-light" 
-                        style={{ lineHeight: '1.8' }}
+                        style={{ lineHeight: '1.75' }}
                       >
-                        My expertise lies within the{' '}
+                        Alongside this human-centered outlook, I bring{' '}
+                        <span className="text-white font-medium hover:text-cyan-300 transition-colors duration-200 cursor-default">
+                          strong engineering fundamentals
+                        </span>{' '}
+                        across the{' '}
                         <span className="relative inline-block group/mern">
                           <span className="text-white font-bold group-hover/mern:text-transparent group-hover/mern:bg-gradient-to-r group-hover/mern:from-green-400 group-hover/mern:via-cyan-400 group-hover/mern:to-blue-400 group-hover/mern:bg-clip-text transition-all duration-300">
                             MERN stack
                           </span>
                           <span className="absolute -bottom-1 left-0 w-full h-[2px] bg-gradient-to-r from-green-400 via-cyan-400 to-blue-400 transform scale-x-0 group-hover/mern:scale-x-100 transition-transform duration-300"></span>
                         </span>
-                        , where I translate{' '}
+                        ,{' '}
                         <span className="text-white font-medium hover:text-blue-300 transition-colors duration-200 cursor-default">
-                          abstract ideas
-                        </span>{' '}
-                        into purposeful,{' '}
+                          Next.js, system design, databases, and cloud-native deployments
+                        </span>
+                        , allowing me to build{' '}
                         <span className="text-cyan-300 font-medium hover:text-cyan-100 hover:drop-shadow-[0_0_8px_rgba(34,211,238,0.4)] transition-all duration-200 cursor-default">
-                          production-grade applications
-                        </span>
-                        . I am drawn to projects that carry{' '}
-                        <span className="relative inline-block group/sig">
-                          <span className="text-white font-semibold group-hover/sig:text-yellow-300 transition-colors duration-200">
-                            significance
-                          </span>
-                          <span className="absolute -bottom-1 left-0 w-full h-[1px] bg-yellow-400 opacity-0 group-hover/sig:opacity-100 transition-opacity duration-300"></span>
-                        </span>
-                        , platforms that{' '}
-                        <span className="text-white font-medium hover:text-green-300 transition-colors duration-200 cursor-default">
-                          educate, uplift, or offer a sense of recognition
-                        </span>
-                        , especially in areas like{' '}
-                        <span className="text-purple-300 font-medium hover:text-purple-100 hover:drop-shadow-[0_0_8px_rgba(192,132,252,0.4)] transition-all duration-200 cursor-default">
-                          mental health, learning, and sustainability
+                          scalable, resilient, and data-driven applications
                         </span>
                         .
                       </motion.p>
                     </motion.div>
 
-                    {/* Paragraph 3 - Bold statement with scale animation */}
+                    {/* Paragraph 3 - Career goals */}
+                    <motion.div
+                      initial={{ opacity: 0, x: -20 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true, amount: 0.3 }}
+                      transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.15 }}
+                      className="group"
+                    >
+                      <motion.p 
+                        className="text-gray-300 text-left sm:text-justify font-light" 
+                        style={{ lineHeight: '1.75' }}
+                      >
+                        I am seeking an{' '}
+                        <span className="relative inline-block group/entry">
+                          <span className="text-white font-semibold group-hover/entry:text-cyan-400 transition-colors duration-200">
+                            entry-level opportunity
+                          </span>
+                          <span className="absolute -bottom-1 left-0 w-full h-[2px] bg-cyan-400 opacity-0 group-hover/entry:opacity-100 transition-opacity duration-300"></span>
+                        </span>{' '}
+                        where I can apply my skills and contribute to{' '}
+                        <span className="text-white font-medium hover:text-purple-300 transition-colors duration-200 cursor-default">
+                          forward-thinking teams
+                        </span>{' '}
+                        in{' '}
+                        <span className="text-cyan-300 font-medium hover:text-cyan-100 hover:drop-shadow-[0_0_8px_rgba(34,211,238,0.4)] transition-all duration-200 cursor-default">
+                          fast-paced, impactful environments
+                        </span>
+                        . I'm{' '}
+                        <span className="text-white font-medium hover:text-green-300 transition-colors duration-200 cursor-default">
+                          working on myself every day
+                        </span>
+                        , turning{' '}
+                        <span className="text-purple-300 font-medium hover:text-purple-100 transition-colors duration-200 cursor-default">
+                          potential into performance
+                        </span>{' '}
+                        and building with the same{' '}
+                        <span className="text-white font-medium hover:text-yellow-300 transition-colors duration-200 cursor-default">
+                          consistency and intent
+                        </span>{' '}
+                        I bring to my work.
+                      </motion.p>
+                    </motion.div>
+
+                    {/* Paragraph 4 - Bold statement */}
                     <motion.div
                       initial={{ opacity: 0, scale: 0.95 }}
                       whileInView={{ opacity: 1, scale: 1 }}
@@ -197,7 +243,7 @@ const About = () => {
                       className="relative pl-6 border-l-2 border-cyan-400/30 hover:border-cyan-400 transition-colors duration-500"
                     >
                       <motion.p 
-                        className="text-xl sm:text-2xl lg:text-3xl font-light text-left"
+                        className="text-lg sm:text-xl lg:text-2xl font-light text-left"
                         style={{ lineHeight: '1.6' }}
                       >
                         <span className="text-gray-400 font-light">I'm not here just to </span>
@@ -217,8 +263,6 @@ const About = () => {
                         <span className="text-white font-medium">.</span>
                       </motion.p>
                     </motion.div>
-
-
                   </div>
                 </div>
               </div>
