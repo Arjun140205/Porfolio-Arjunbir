@@ -39,7 +39,7 @@ const Footer = () => {
 	];
 
 	return (
-		<footer className='relative bg-black border-t border-white/5 overflow-hidden'>
+		<footer className='relative bg-black border-t border-white/5 overflow-hidden' role="contentinfo" aria-label="Site footer">
 			{/* Subtle gradient background */}
 			<div className='absolute inset-0 bg-gradient-to-t from-cyan-950/5 via-transparent to-transparent pointer-events-none' />
 			
@@ -64,12 +64,13 @@ const Footer = () => {
 				{/* Main content */}
 				<div className='flex flex-col items-center space-y-8'>
 					{/* Social links */}
-					<motion.div
+					<motion.nav
 						initial={{ opacity: 0, y: 20 }}
 						whileInView={{ opacity: 1, y: 0 }}
 						transition={{ duration: 0.6 }}
 						viewport={{ once: true }}
 						className='flex items-center gap-6'
+						aria-label="Social media links"
 					>
 						{socialLinks.map((social, index) => (
 							<motion.a
@@ -86,10 +87,10 @@ const Footer = () => {
 								whileTap={{ scale: 0.9 }}
 								className={`text-neutral-400 ${social.color} transition-colors duration-300`}
 							>
-								<social.icon className='w-6 h-6' />
+								<social.icon className='w-6 h-6' aria-hidden="true" />
 							</motion.a>
 						))}
-					</motion.div>
+					</motion.nav>
 
 					{/* Divider */}
 					<motion.div
