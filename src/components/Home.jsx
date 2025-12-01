@@ -29,7 +29,7 @@ const Home = () => {
       {/* Main content above background */}
       <div className='relative z-10 w-screen min-h-screen flex flex-col'>
         {/* HERO SECTION - FULL SCREEN */}
-        <div className='hero flex justify-center items-center text-white min-h-screen px-6 py-12 sm:px-6' id='hero'>
+        <section className='hero flex justify-center items-center text-white min-h-screen px-6 py-12 sm:px-6' id='home' aria-label='Hero section'>
           <div className='flex flex-col justify-center items-center w-full max-w-5xl space-y-8 sm:space-y-8 h-full'>
             {/* Greeting - Hidden on mobile */}
             <motion.div
@@ -49,6 +49,7 @@ const Home = () => {
               animate={{ opacity: 1 }}
               transition={{ duration: 1, delay: 0.2 }}
               className='text-5xl xs:text-6xl sm:text-6xl md:text-7xl lg:text-8xl font-black text-center leading-tight'
+              itemProp="name"
             >
               Hi, I'm{' '}
               <span className='block sm:inline mt-3 sm:mt-0'>
@@ -65,7 +66,7 @@ const Home = () => {
               transition={{ duration: 0.8, delay: 0.5 }}
               className='text-center space-y-4'
             >
-              <h2 className='text-xl xs:text-2xl sm:text-xl md:text-2xl font-semibold text-white px-4'>
+              <h2 className='text-xl xs:text-2xl sm:text-xl md:text-2xl font-semibold text-white px-4' itemProp="jobTitle">
                 <span className='sm:hidden'>Aspiring Software Developer</span>
                 <span className='hidden sm:inline'>Aspiring Software Developer | Cloud • Databases & Data Analytics Enthusiast</span>
               </h2>
@@ -85,6 +86,7 @@ const Home = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.7 }}
               className='text-lg leading-relaxed sm:text-lg md:text-xl text-center max-w-3xl text-neutral-300 sm:leading-relaxed font-light px-4'
+              itemProp="description"
             >
               Transforming innovative ideas into scalable, high-performance web applications with modern technologies and data-driven solutions
             </motion.p>
@@ -100,6 +102,7 @@ const Home = () => {
             <a
               href='#about'
               className='group flex flex-col items-center gap-3'
+              aria-label='Scroll down to About section'
             >
               {/* Animated chevrons */}
               <div className='flex flex-col gap-1'>
@@ -133,7 +136,7 @@ const Home = () => {
               />
             </a>
           </motion.div>
-        </div>
+        </section>
       </div>
     </>
   );
