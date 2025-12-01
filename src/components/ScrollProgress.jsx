@@ -7,7 +7,7 @@ const sections = [
   { id: 'projects', label: 'Projects', icon: '💻' },
   { id: 'skills', label: 'Skills', icon: '⚡' },
   { id: 'certifications', label: 'Certifications', icon: '📜' },
-  { id: 'experience', label: 'Experience', icon: '💼' },
+  { id: 'problemsolving', label: 'Problem Solving', icon: '🧩' },
   { id: 'contact', label: 'Contact', icon: '📧' },
 ];
 
