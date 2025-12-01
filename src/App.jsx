@@ -3,7 +3,7 @@ import StaggeredMenu from './components/StaggeredMenu';
 import Home from './components/Home';
 import Certifications from './components/Certifications';
 import Skills from './components/Skills';
-import Experience from './components/Experience';
+import ProblemSolving from './components/ProblemSolving';
 import About from './components/About';
 import Projects from './components/Projects';
 import Contact from './components/Contact';
@@ -13,6 +13,7 @@ import ScrollProgress from './components/ScrollProgress';
 import TopProgressBar from './components/TopProgressBar';
 import SoundToggle from './components/SoundToggle';
 import MacBookHelloAnimation from './components/MacBookHelloAnimation';
+import MagneticCursor from './components/MagneticCursor';
 import './index.css';
 
 const menuItems = [
@@ -21,7 +22,7 @@ const menuItems = [
   { label: 'Projects', ariaLabel: 'Navigate to Projects', link: 'projects' },
   { label: 'Skills', ariaLabel: 'Navigate to Skills', link: 'skills' },
   { label: 'Certifications', ariaLabel: 'Navigate to Certifications', link: 'certifications' },
-  { label: 'Experience', ariaLabel: 'Navigate to Experience', link: 'experience' },
+  { label: 'Problem Solving', ariaLabel: 'Navigate to Problem Solving', link: 'problemsolving' },
   { label: 'Contact', ariaLabel: 'Navigate to Contact', link: 'contact' },
 ];
 
@@ -44,6 +45,7 @@ function App() {
         </div>
       ) : (
         <div className="flex flex-col min-h-screen scroll-smooth">
+          <MagneticCursor />
           <TopProgressBar />
           <StaggeredMenu
             position="right"
@@ -94,8 +96,8 @@ function App() {
 
             <SectionDivider />
 
-            <section id="experience">
-              <Experience />
+            <section id="problemsolving">
+              <ProblemSolving />
             </section>
 
             <SectionDivider />
