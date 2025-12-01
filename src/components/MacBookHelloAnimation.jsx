@@ -12,10 +12,11 @@ export default function MacBookHelloAnimation({ onComplete }) {
   const [isComplete, setIsComplete] = useState(false);
 
   useEffect(() => {
+    // Faster transitions for better UX
     if (currentIndex < greetings.length - 1) {
       const timer = setTimeout(() => {
         setCurrentIndex(prev => prev + 1);
-      }, 1800);
+      }, 1200); // Reduced from 1800ms
       return () => clearTimeout(timer);
     } else {
       const finalTimer = setTimeout(() => {
@@ -23,7 +24,7 @@ export default function MacBookHelloAnimation({ onComplete }) {
         if (onComplete) {
           onComplete();
         }
-      }, 1800);
+      }, 1200); // Reduced from 1800ms
       return () => clearTimeout(finalTimer);
     }
   }, [currentIndex, onComplete]);
@@ -39,6 +40,7 @@ export default function MacBookHelloAnimation({ onComplete }) {
     <div 
       className="relative w-full h-screen flex flex-col justify-center items-center bg-black cursor-pointer overflow-hidden"
       onClick={handleSkip}
+      style={{ willChange: 'opacity' }} // GPU acceleration
     >
       <AnimatePresence mode="wait">
         {!isComplete && (
@@ -48,10 +50,11 @@ export default function MacBookHelloAnimation({ onComplete }) {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ 
-              duration: 0.8,
+              duration: 0.5, // Faster animation
               ease: 'easeInOut'
             }}
             className="text-center"
+            style={{ willChange: 'opacity' }}
           >
             <h1 className="text-white text-5xl sm:text-6xl md:text-8xl font-light tracking-wide">
               {greetings[currentIndex].text}
@@ -62,11 +65,12 @@ export default function MacBookHelloAnimation({ onComplete }) {
       
       <motion.p 
         initial={{ opacity: 0 }}
-        animate={{ opacity: 0.5 }}
-        transition={{ delay: 1 }}
-        className="absolute bottom-8 text-white text-sm opacity-60"
+        animate={{ opacity: 0.6 }}
+        transition={{ delay: 0.5 }}
+        className="absolute bottom-8 text-white text-sm"
+        style={{ willChange: 'opacity' }}
       >
-        Click anywhere to continue
+        Click anywhere to skip
       </motion.p>
     </div>
   );
