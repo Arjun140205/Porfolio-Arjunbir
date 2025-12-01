@@ -1,18 +1,20 @@
 import React from "react";
 import { HeroParallax } from "./blocks/hero-parallax-custom";
-import jordanFitnessImg from "../assets/projects/jordanfitnessclub.png";
-import recipediaImg from "../assets/projects/recipedia.png";
-import unheardVoicesImg from "../assets/projects/unheardvoices.png";
-import cropifyPlaceholder from "../assets/projects/placeholder-cropify.svg";
-import voicelessPlaceholder from "../assets/projects/placeholder-voiceless.svg";
-import gmailPlaceholder from "../assets/projects/placeholder-gmail.svg";
-import bleedImg from "../assets/projects/bleedforacause.png";
-import sleepTrackerImg from "../assets/projects/sleeptracker.png";
-import fiftyShadesImg from "../assets/projects/fiftyshades.png";
-import kanbanPlaceholder from "../assets/projects/placeholder-kanban.svg";
-import noBrokerPlaceholder from "../assets/projects/placeholder-nobroker.svg";
-import referralPlaceholder from "../assets/projects/placeholder-referral.svg";
-import testGenPlaceholder from "../assets/projects/placeholder-testgen.svg";
+
+// Use public folder for images to ensure they work in deployment
+const jordanFitnessImg = `${process.env.PUBLIC_URL}/projects/jordanfitnessclub.png`;
+const recipediaImg = `${process.env.PUBLIC_URL}/projects/recipedia.png`;
+const unheardVoicesImg = `${process.env.PUBLIC_URL}/projects/unheardvoices.png`;
+const cropifyPlaceholder = `${process.env.PUBLIC_URL}/projects/placeholder-cropify.svg`;
+const voicelessPlaceholder = `${process.env.PUBLIC_URL}/projects/placeholder-voiceless.svg`;
+const gmailPlaceholder = `${process.env.PUBLIC_URL}/projects/placeholder-gmail.svg`;
+const bleedImg = `${process.env.PUBLIC_URL}/projects/bleedforacause.png`;
+const sleepTrackerImg = `${process.env.PUBLIC_URL}/projects/sleeptracker.png`;
+const fiftyShadesImg = `${process.env.PUBLIC_URL}/projects/fiftyshades.png`;
+const kanbanPlaceholder = `${process.env.PUBLIC_URL}/projects/placeholder-kanban.svg`;
+const noBrokerPlaceholder = `${process.env.PUBLIC_URL}/projects/placeholder-nobroker.svg`;
+const referralPlaceholder = `${process.env.PUBLIC_URL}/projects/placeholder-referral.svg`;
+const testGenPlaceholder = `${process.env.PUBLIC_URL}/projects/placeholder-testgen.svg`;
 
 const projects = [
   // Front row projects (visible first)
