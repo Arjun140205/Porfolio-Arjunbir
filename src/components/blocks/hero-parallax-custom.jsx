@@ -95,8 +95,10 @@ export const ProductCard = ({ product, translate }) => {
       >
         <img
           src={product.thumbnail}
-          className="object-cover object-center absolute h-full w-full inset-0 rounded-2xl"
+          className="object-cover object-center absolute h-full w-full inset-0 rounded-2xl bg-neutral-900"
           alt={product.title}
+          loading="eager"
+          crossOrigin="anonymous"
         />
       </a>
       <div className="absolute inset-0 h-full w-full opacity-0 group-hover/product:opacity-80 bg-black pointer-events-none rounded-2xl transition-opacity duration-300"></div>
