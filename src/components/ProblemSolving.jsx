@@ -329,7 +329,7 @@ const ProblemSolving = () => {
   };
 
   return (
-    <section className="relative bg-black py-20">
+    <section className="relative bg-black py-20" id="problemsolving" aria-label="Problem solving statistics and coding activity">
       {/* Background effects */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <motion.div
