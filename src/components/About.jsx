@@ -89,7 +89,7 @@ const About = () => {
               transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
             >
               <span className="bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400 bg-clip-text text-transparent">
-                The story behind my work 
+                The story behind my journey
               </span>
             </motion.h2>
 
