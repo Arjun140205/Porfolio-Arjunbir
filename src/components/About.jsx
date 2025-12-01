@@ -38,7 +38,7 @@ const AnimatedTilesProfile = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.5 }}
           >
-            <h1 className="text-3xl font-bold text-white mb-2 drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)]">
+            <h1 className="text-3xl font-bold text-white mb-2 drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)]" itemProp="name">
               Arjunbir Singh
             </h1>
             <p className="text-neutral-300 text-sm mb-6 italic drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">
@@ -51,9 +51,10 @@ const AnimatedTilesProfile = () => {
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-5 py-2.5 text-sm text-neutral-300 hover:text-white border-2 border-white/20 hover:border-white/60 rounded-lg transition-all duration-300 backdrop-blur-sm bg-black/40 hover:bg-black/60 hover:shadow-lg hover:shadow-white/10"
+              aria-label="Download Arjunbir Singh's Resume"
             >
               <span className="font-medium">Resume</span>
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2.5}>
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2.5} aria-hidden="true">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
               </svg>
             </a>
@@ -76,7 +77,7 @@ const About = () => {
         animate={{ opacity: 1 }}
         className='min-h-screen bg-black pt-36 pb-24' // was pt-24
       >
-        <section className='text-white container mx-auto px-4 md:px-8' id='about'>
+        <section className='text-white container mx-auto px-4 md:px-8' id='about' aria-label='About Arjunbir Singh'>
           {/* Main content wrapper */}
           <div className="max-w-7xl mx-auto px-4 pt-0 pb-12">
             {/* Mobile: Heading First */}
