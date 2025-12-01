@@ -9,6 +9,12 @@
 * {
   font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   font-weight: 400;
+  cursor: none !important; /* Hide default cursor */
+}
+
+/* Show default cursor on inputs and textareas for usability */
+input, textarea, select {
+  cursor: text !important;
 }
 
 /* Outfit for headings - modern designer font */
