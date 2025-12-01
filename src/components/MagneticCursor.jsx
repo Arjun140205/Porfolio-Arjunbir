@@ -5,6 +5,7 @@ const MagneticCursor = () => {
   const [isHovering, setIsHovering] = useState(false);
   const [isClicking, setIsClicking] = useState(false);
   const [cursorText, setCursorText] = useState('');
+  const [isMobile, setIsMobile] = useState(false);
 
   const cursorX = useSpring(0, { stiffness: 500, damping: 28 });
   const cursorY = useSpring(0, { stiffness: 500, damping: 28 });
@@ -12,6 +13,24 @@ const MagneticCursor = () => {
   const cursorYDelayed = useSpring(0, { stiffness: 150, damping: 20 });
 
   useEffect(() => {
+    // Check if device is mobile or has touch screen
+    const checkMobile = () => {
+      const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+      const isSmallScreen = window.innerWidth < 1024; // lg breakpoint
+      setIsMobile(isTouchDevice || isSmallScreen);
+    };
+
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+
+    return () => {
+      window.removeEventListener('resize', checkMobile);
+    };
+  }, []);
+
+  useEffect(() => {
+    // Don't add event listeners on mobile
+    if (isMobile) return;
     const updateMousePosition = (e) => {
       cursorX.set(e.clientX);
       cursorY.set(e.clientY);
@@ -58,7 +77,10 @@ const MagneticCursor = () => {
       window.removeEventListener('mousedown', handleMouseDown);
       window.removeEventListener('mouseup', handleMouseUp);
     };
-  }, [cursorX, cursorY, cursorXDelayed, cursorYDelayed]);
+  }, [cursorX, cursorY, cursorXDelayed, cursorYDelayed, isMobile]);
+
+  // Don't render cursor on mobile
+  if (isMobile) return null;
 
   return (
     <>
