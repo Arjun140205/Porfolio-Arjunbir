@@ -1,24 +1,26 @@
-import React, { useState } from 'react';
+import React, { useState, lazy, Suspense } from 'react';
 import { HelmetProvider } from 'react-helmet-async';
 import StaggeredMenu from './components/StaggeredMenu';
 import Home from './components/Home';
-import Certifications from './components/Certifications';
-import Skills from './components/Skills';
-import ProblemSolving from './components/ProblemSolving';
-import About from './components/About';
-import Projects from './components/Projects';
-import Contact from './components/Contact';
-import Footer from './components/Footer';
-import SectionDivider from './components/SectionDivider';
+import MagneticCursor from './components/MagneticCursor';
 import ScrollProgress from './components/ScrollProgress';
 import TopProgressBar from './components/TopProgressBar';
 import SoundToggle from './components/SoundToggle';
 import MacBookHelloAnimation from './components/MacBookHelloAnimation';
-import MagneticCursor from './components/MagneticCursor';
-import TextMarqueeSection from './components/TextMarqueeSection';
 import SEO from './components/SEO';
 import { personSchema, websiteSchema, profilePageSchema } from './utils/structuredData';
 import './index.css';
+
+// Lazy load below-fold components
+const About = lazy(() => import('./components/About'));
+const Projects = lazy(() => import('./components/Projects'));
+const Skills = lazy(() => import('./components/Skills'));
+const Certifications = lazy(() => import('./components/Certifications'));
+const ProblemSolving = lazy(() => import('./components/ProblemSolving'));
+const Contact = lazy(() => import('./components/Contact'));
+const Footer = lazy(() => import('./components/Footer'));
+const SectionDivider = lazy(() => import('./components/SectionDivider'));
+const TextMarqueeSection = lazy(() => import('./components/TextMarqueeSection'));
 
 const menuItems = [
   { label: 'Home', ariaLabel: 'Navigate to Home', link: 'home' },
@@ -85,41 +87,45 @@ function App() {
               <Home />
             </section>
 
-            <SectionDivider />
+            <Suspense fallback={<div className="h-20" />}>
+              <SectionDivider />
 
-            <section id="about">
-              <About />
-            </section>
+              <section id="about">
+                <About />
+              </section>
 
-            <SectionDivider />
+              <SectionDivider />
 
-            <section id="projects">
-              <Projects />
-            </section>
+              <section id="projects">
+                <Projects />
+              </section>
 
-            <section id="skills">
-              <Skills />
-            </section>
+              <section id="skills">
+                <Skills />
+              </section>
 
-            <SectionDivider />
+              <SectionDivider />
 
-            <section id="certifications">
-              <Certifications />
-            </section>
+              <section id="certifications">
+                <Certifications />
+              </section>
 
-            <TextMarqueeSection />
+              <TextMarqueeSection />
 
-            <section id="problemsolving">
-              <ProblemSolving />
-            </section>
+              <section id="problemsolving">
+                <ProblemSolving />
+              </section>
 
-            <SectionDivider />
+              <SectionDivider />
 
-            <section id="contact">
-              <Contact />
-            </section>
+              <section id="contact">
+                <Contact />
+              </section>
+            </Suspense>
           </main>
-          <Footer />
+          <Suspense fallback={null}>
+            <Footer />
+          </Suspense>
         </div>
       )}
     </HelmetProvider>
