@@ -6,6 +6,7 @@ const MagneticCursor = () => {
   const [isClicking, setIsClicking] = useState(false);
   const [cursorText, setCursorText] = useState('');
   const [isMobile, setIsMobile] = useState(false);
+  const [isInHomeSection, setIsInHomeSection] = useState(true);
 
   const cursorX = useSpring(0, { stiffness: 500, damping: 28 });
   const cursorY = useSpring(0, { stiffness: 500, damping: 28 });
@@ -25,6 +26,27 @@ const MagneticCursor = () => {
 
     return () => {
       window.removeEventListener('resize', checkMobile);
+    };
+  }, []);
+
+  useEffect(() => {
+    // Observe home section to enable/disable magnetic cursor
+    const homeSection = document.getElementById('home');
+    if (!homeSection) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          setIsInHomeSection(entry.isIntersecting);
+        });
+      },
+      { threshold: 0.1 } // Trigger when 10% of home section is visible
+    );
+
+    observer.observe(homeSection);
+
+    return () => {
+      observer.disconnect();
     };
   }, []);
 
@@ -79,8 +101,8 @@ const MagneticCursor = () => {
     };
   }, [cursorX, cursorY, cursorXDelayed, cursorYDelayed, isMobile]);
 
-  // Don't render cursor on mobile
-  if (isMobile) return null;
+  // Don't render cursor on mobile or outside home section
+  if (isMobile || !isInHomeSection) return null;
 
   return (
     <>
