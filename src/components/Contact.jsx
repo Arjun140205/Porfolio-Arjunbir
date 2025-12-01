@@ -49,7 +49,7 @@ const Contact = () => {
 
   return (
     <>
-      <section className="relative z-0 bg-black w-full min-h-screen">
+      <section className="relative z-0 bg-black w-full min-h-screen" id="contact" aria-label="Contact information">
         <div className="w-full max-w-7xl px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
           <HighlightGroup className="group h-full">
             <div className="group/item h-full" data-aos="fade-down">
@@ -119,24 +119,24 @@ const Contact = () => {
 
                       <div className="-mt-20 flex h-full flex-col justify-center p-2 md:mt-0 md:ml-10 lg:ml-16 md:w-[450px] lg:w-[500px]">
                         <div className="flex flex-col items-center">
-                          <p className="font-light text-gray-400 mb-2 tracking-wider">GET IN TOUCH</p>
-                          <h2                        className="text-4xl md:text-5xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-gray-500 to-cyan-400 mb-4">
+                          <p className="font-light text-gray-400 mb-2 tracking-wider" aria-label="Section heading">GET IN TOUCH</p>
+                          <h2 className="text-4xl md:text-5xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-gray-500 to-cyan-400 mb-4">
                             Contact.
                           </h2>
                         </div>
                         <p className="mb-6 text-center text-gray-400 text-lg font-medium">
                           Let's connect and create something meaningful.
                         </p>
-                        <div className="flex flex-col sm:flex-row flex-wrap gap-4 justify-center items-center mt-6">
+                        <nav className="flex flex-col sm:flex-row flex-wrap gap-4 justify-center items-center mt-6" aria-label="Contact methods">
                           {/* Call Button */}
                           <a
                             href="tel:+919103203635"
                             onClick={() => soundManager.play('buttonClick')}
                             onMouseEnter={() => soundManager.play('hover')}
                             className="flex items-center gap-3 px-8 py-4 rounded-full bg-gray-900/70 border border-gray-800 shadow-lg hover:shadow-cyan-400/30 hover:border-cyan-400 transition-all duration-200 text-white font-semibold text-lg backdrop-blur-md focus:outline-none focus:ring-2 focus:ring-cyan-400"
-                            title="Call Arjunbir Singh"
+                            aria-label="Call Arjunbir Singh at +91-9103203635"
                           >
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6" aria-hidden="true">
                               <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15l2.25-2.25a2.121 2.121 0 00-2.121-2.121c-.472 0-.933.074-1.372.215a12.042 12.042 0 01-5.357-5.357c.141-.439.215-.9.215-1.372A2.121 2.121 0 006.75 6.75L4.5 9z" />
                             </svg>
                             Call
@@ -147,9 +147,9 @@ const Contact = () => {
                             onClick={() => soundManager.play('buttonClick')}
                             onMouseEnter={() => soundManager.play('hover')}
                             className="flex items-center gap-3 px-8 py-4 rounded-full bg-gray-900/70 border border-gray-800 shadow-lg hover:shadow-cyan-400/30 hover:border-cyan-400 transition-all duration-200 text-white font-semibold text-lg backdrop-blur-md focus:outline-none focus:ring-2 focus:ring-cyan-400"
-                            title="Email Arjunbir Singh"
+                            aria-label="Email Arjunbir Singh at arjunbirsingh1699@gmail.com"
                           >
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6" aria-hidden="true">
                               <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25H4.5a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5H4.5a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-.659 1.591l-7.5 7.5a2.25 2.25 0 01-3.182 0l-7.5-7.5A2.25 2.25 0 012.25 6.993V6.75" />
                             </svg>
                             Email
@@ -162,9 +162,9 @@ const Contact = () => {
                             onClick={() => soundManager.play('buttonClick')}
                             onMouseEnter={() => soundManager.play('hover')}
                             className="flex items-center gap-3 px-8 py-4 rounded-full bg-gray-900/70 border border-gray-800 shadow-lg hover:shadow-cyan-400/30 hover:border-cyan-400 transition-all duration-200 text-white font-semibold text-lg backdrop-blur-md focus:outline-none focus:ring-2 focus:ring-cyan-400"
-                            title="WhatsApp Arjunbir Singh"
+                            aria-label="Contact Arjunbir Singh on WhatsApp"
                           >
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6 text-green-400">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6 text-green-400" aria-hidden="true">
                               <path strokeLinecap="round" strokeLinejoin="round" d="M16.862 14.487a6.75 6.75 0 10-2.375 2.375l2.122.53a.75.75 0 00.91-.91l-.53-2.122z" />
                               <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 9.75h.008v.008H15.75V9.75z" />
                             </svg>
@@ -178,14 +178,14 @@ const Contact = () => {
                             onClick={() => soundManager.play('buttonClick')}
                             onMouseEnter={() => soundManager.play('hover')}
                             className="flex items-center gap-3 px-8 py-4 rounded-full bg-gray-900/70 border border-gray-800 shadow-lg hover:shadow-cyan-400/30 hover:border-cyan-400 transition-all duration-200 text-white font-semibold text-lg backdrop-blur-md focus:outline-none focus:ring-2 focus:ring-cyan-400"
-                            title="LinkedIn Arjunbir Singh"
+                            aria-label="Connect with Arjunbir Singh on LinkedIn"
                           >
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" className="w-6 h-6 text-blue-400">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" className="w-6 h-6 text-blue-400" aria-hidden="true">
                               <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.268c-.966 0-1.75-.784-1.75-1.75s.784-1.75 1.75-1.75 1.75.784 1.75 1.75-.784 1.75-1.75 1.75zm15.5 11.268h-3v-5.604c0-1.337-.026-3.063-1.868-3.063-1.868 0-2.154 1.459-2.154 2.967v5.7h-3v-10h2.881v1.367h.041c.401-.761 1.379-1.563 2.841-1.563 3.039 0 3.6 2.001 3.6 4.601v5.595z" />
                             </svg>
                             LinkedIn
                           </a>
-                        </div>
+                        </nav>
                       </div>
                     </div>
                   </div>
