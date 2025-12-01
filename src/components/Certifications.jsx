@@ -14,7 +14,7 @@ const [leftCerts, middleCerts, rightCerts] = splitCerts(certifications, 3);
 const Certifications = () => {
   return (
     <>
-      <div className="certifications bg-black w-screen text-white pt-16 min-h-screen overflow-x-hidden flex flex-col items-center" id="certifications">
+      <section className="certifications bg-black w-screen text-white pt-16 min-h-screen overflow-x-hidden flex flex-col items-center" id="certifications" aria-label="Professional certifications and courses">
         <div className="pt-12 sm:px-16 px-6 w-full max-w-7xl text-center mb-16">
           <h2 className="text-5xl md:text-6xl lg:text-7xl font-black mb-6">
             <span className="bg-gradient-to-r from-white via-cyan-400 to-white bg-clip-text text-transparent">
@@ -45,7 +45,7 @@ const Certifications = () => {
             className="hidden sm:flex -mt-24"
           />
               </div>
-      </div>
+      </section>
     </>
   );
 };
