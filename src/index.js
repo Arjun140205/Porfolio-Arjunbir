@@ -2,7 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
-import reportWebVitals from './reportWebVitals';
+import { initPerformanceMonitoring } from './utils/performanceMonitor';
+
+// Mark app start
+if (window.performance && window.performance.mark) {
+  window.performance.mark('app-start');
+}
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -11,7 +16,10 @@ root.render(
   </React.StrictMode>
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+// Mark app rendered
+if (window.performance && window.performance.mark) {
+  window.performance.mark('app-rendered');
+}
+
+// Initialize performance monitoring
+initPerformanceMonitoring();
