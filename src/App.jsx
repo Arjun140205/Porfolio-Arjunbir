@@ -14,6 +14,7 @@ import TopProgressBar from './components/TopProgressBar';
 import SoundToggle from './components/SoundToggle';
 import MacBookHelloAnimation from './components/MacBookHelloAnimation';
 import MagneticCursor from './components/MagneticCursor';
+import TextMarqueeSection from './components/TextMarqueeSection';
 import './index.css';
 
 const menuItems = [
@@ -27,7 +28,7 @@ const menuItems = [
 ];
 
 const socialItems = [
-  { label: 'LinkedIn', link: 'https://www.linkedin.com/in/arjunbir-singh-736620280/' },
+  { label: 'LinkedIn', link: 'https://www.linkedin.com/in/arjunbir-singh/' },
   { label: 'GitHub', link: 'https://github.com/Arjun140205' },
   { label: 'Instagram', link: 'https://www.instagram.com/arjunbir_singhh' },
 ];
@@ -94,7 +95,7 @@ function App() {
               <Certifications />
             </section>
 
-            <SectionDivider />
+            <TextMarqueeSection />
 
             <section id="problemsolving">
               <ProblemSolving />
