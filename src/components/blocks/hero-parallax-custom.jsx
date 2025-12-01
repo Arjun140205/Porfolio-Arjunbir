@@ -80,10 +80,12 @@ export const ProductCard = ({ product, translate }) => {
     <motion.div
       style={{
         x: translate,
+        willChange: 'transform',
       }}
       whileHover={{
         y: -20,
       }}
+      transition={{ type: 'spring', stiffness: 300, damping: 20 }}
       key={product.title}
       className="group/product h-96 w-[30rem] relative flex-shrink-0"
     >
@@ -97,12 +99,20 @@ export const ProductCard = ({ product, translate }) => {
           src={product.thumbnail}
           className="object-cover object-center absolute h-full w-full inset-0 rounded-2xl bg-neutral-900"
           alt={product.title}
-          loading="eager"
+          loading="lazy"
+          decoding="async"
           crossOrigin="anonymous"
+          style={{ contentVisibility: 'auto' }}
         />
       </a>
-      <div className="absolute inset-0 h-full w-full opacity-0 group-hover/product:opacity-80 bg-black pointer-events-none rounded-2xl transition-opacity duration-300"></div>
-      <div className="absolute bottom-4 left-4 opacity-0 group-hover/product:opacity-100 transition-opacity duration-300">
+      <div 
+        className="absolute inset-0 h-full w-full opacity-0 group-hover/product:opacity-80 bg-black pointer-events-none rounded-2xl transition-opacity duration-300"
+        style={{ willChange: 'opacity' }}
+      ></div>
+      <div 
+        className="absolute bottom-4 left-4 opacity-0 group-hover/product:opacity-100 transition-opacity duration-300"
+        style={{ willChange: 'opacity' }}
+      >
         <h2 className="text-white text-xl font-bold mb-2">{product.title}</h2>
         <p className="text-neutral-300 text-sm line-clamp-2">{product.description}</p>
       </div>
