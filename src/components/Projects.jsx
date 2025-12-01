@@ -1,20 +1,20 @@
 import React from "react";
 import { HeroParallax } from "./blocks/hero-parallax-custom";
 
-// Use public folder for images to ensure they work in deployment
-const jordanFitnessImg = `${process.env.PUBLIC_URL}/projects/jordanfitnessclub.png`;
-const recipediaImg = `${process.env.PUBLIC_URL}/projects/recipedia.png`;
-const unheardVoicesImg = `${process.env.PUBLIC_URL}/projects/unheardvoices.png`;
-const cropifyPlaceholder = `${process.env.PUBLIC_URL}/projects/placeholder-cropify.svg`;
-const voicelessPlaceholder = `${process.env.PUBLIC_URL}/projects/placeholder-voiceless.svg`;
-const gmailPlaceholder = `${process.env.PUBLIC_URL}/projects/placeholder-gmail.svg`;
-const bleedImg = `${process.env.PUBLIC_URL}/projects/bleedforacause.png`;
-const sleepTrackerImg = `${process.env.PUBLIC_URL}/projects/sleeptracker.png`;
-const fiftyShadesImg = `${process.env.PUBLIC_URL}/projects/fiftyshades.png`;
-const kanbanPlaceholder = `${process.env.PUBLIC_URL}/projects/placeholder-kanban.svg`;
-const noBrokerPlaceholder = `${process.env.PUBLIC_URL}/projects/placeholder-nobroker.svg`;
-const referralPlaceholder = `${process.env.PUBLIC_URL}/projects/placeholder-referral.svg`;
-const testGenPlaceholder = `${process.env.PUBLIC_URL}/projects/placeholder-testgen.svg`;
+// Use absolute paths from public folder for deployment
+const jordanFitnessImg = "/projects/jordanfitnessclub.png";
+const recipediaImg = "/projects/recipedia.png";
+const unheardVoicesImg = "/projects/unheardvoices.png";
+const cropifyPlaceholder = "/projects/placeholder-cropify.svg";
+const voicelessPlaceholder = "/projects/placeholder-voiceless.svg";
+const gmailPlaceholder = "/projects/placeholder-gmail.svg";
+const bleedImg = "/projects/bleedforacause.png";
+const sleepTrackerImg = "/projects/sleeptracker.png";
+const fiftyShadesImg = "/projects/fiftyshades.png";
+const kanbanPlaceholder = "/projects/placeholder-kanban.svg";
+const noBrokerPlaceholder = "/projects/placeholder-nobroker.svg";
+const referralPlaceholder = "/projects/placeholder-referral.svg";
+const testGenPlaceholder = "/projects/placeholder-testgen.svg";
 
 const projects = [
   // Front row projects (visible first)
